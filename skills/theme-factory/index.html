@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Theme Gallery — theme-factory</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:      #0f0f13;
+      --surface: #18181f;
+      --border:  #2a2a38;
+      --text:    #d4d4e8;
+      --muted:   #6b6b88;
+      --accent:  #7c7cff;
+      --radius:  8px;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: system-ui, -apple-system, sans-serif;
+      font-size: 15px;
+      line-height: 1.6;
+      padding: 2.5rem 2rem 4rem;
+      min-height: 100vh;
+    }
+
+    header {
+      max-width: 960px;
+      margin: 0 auto 2rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1.5rem;
+    }
+
+    header h1 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: #fff;
+      margin-bottom: 0.35rem;
+    }
+
+    header p { color: var(--muted); font-size: 0.875rem; }
+
+    #count {
+      display: inline-block;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 99px;
+      padding: 0.1rem 0.6rem;
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-left: 0.5rem;
+      vertical-align: middle;
+    }
+
+    #error-msg {
+      display: none;
+      max-width: 960px;
+      margin: 0 auto 1.5rem;
+      background: #2a1a1a;
+      border: 1px solid #663333;
+      border-radius: var(--radius);
+      padding: 0.75rem 1rem;
+      font-size: 0.85rem;
+      color: #ff8080;
+    }
+
+    /* ── Filters ── */
+    #filters {
+      max-width: 960px;
+      margin: 0 auto 1.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+    }
+
+    .filter-row {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .filter-label {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      color: var(--muted);
+      min-width: 36px;
+      flex-shrink: 0;
+    }
+
+    .filter-divider {
+      width: 1px;
+      height: 14px;
+      background: var(--border);
+      flex-shrink: 0;
+    }
+
+    .filter-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+    }
+
+    .chip {
+      padding: 0.18rem 0.65rem;
+      border-radius: 99px;
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--muted);
+      font-size: 0.73rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: border-color 0.12s, color 0.12s, background 0.12s;
+      font-family: inherit;
+      line-height: 1.6;
+    }
+
+    .chip:hover { border-color: var(--accent); color: var(--text); }
+
+    .chip.active {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+      font-weight: 600;
+    }
+
+    .chip-light.active { background: #c8c8ff; border-color: #c8c8ff; color: #1a1a3a; }
+    .chip-dark.active  { background: #2a2a50; border-color: var(--accent); color: #fff; }
+
+    /* ── Grid ── */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1.5rem;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      transition: border-color 0.15s, transform 0.15s, box-shadow 0.15s;
+    }
+
+    .card:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+    }
+
+    .preview {
+      height: 120px;
+      position: relative;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .mockup {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      padding: 14px;
+      gap: 7px;
+    }
+
+    .mockup-bar  { height: 10px; border-radius: 3px; opacity: 0.9; }
+    .mockup-row  { display: flex; gap: 6px; align-items: center; }
+    .mockup-dot  { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+    .mockup-line { height: 6px; border-radius: 3px; flex: 1; }
+    .mockup-btn  { height: 16px; border-radius: 3px; width: 48px; flex-shrink: 0; }
+
+    .swatches {
+      display: flex;
+      height: 6px;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+    }
+
+    .swatch { flex: 1; }
+
+    .card-body {
+      padding: 1rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .card-name { font-weight: 600; font-size: 0.9rem; color: #fff; letter-spacing: -0.01em; }
+    .card-desc  { font-size: 0.78rem; color: var(--muted); line-height: 1.5; flex: 1; }
+
+    .card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 0.6rem;
+    }
+
+    .tag {
+      font-size: 0.68rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 0.15rem 0.45rem;
+      border-radius: 3px;
+      border: 1px solid;
+      opacity: 0.8;
+    }
+
+    .open-link {
+      font-size: 0.75rem;
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    .open-link svg { width: 11px; height: 11px; }
+
+    #empty-msg {
+      display: none;
+      max-width: 960px;
+      margin: 0 auto;
+      color: var(--muted);
+      font-size: 0.85rem;
+      padding: 2rem 0;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Theme Gallery <span id="count">…</span></h1>
+  <p>Click any theme to open the full HTML preview.</p>
+</header>
+
+<div id="filters">
+  <div class="filter-row">
+    <span class="filter-label">Tone</span>
+    <div class="filter-divider"></div>
+    <div class="filter-chips" id="filter-tone">
+      <button class="chip active" data-value="">All</button>
+      <button class="chip chip-light" data-value="light">Light</button>
+      <button class="chip chip-dark"  data-value="dark">Dark</button>
+    </div>
+  </div>
+  <div class="filter-row">
+    <span class="filter-label">Style</span>
+    <div class="filter-divider"></div>
+    <div class="filter-chips" id="filter-style">
+      <button class="chip active" data-value="">All</button>
+    </div>
+  </div>
+</div>
+
+<div id="error-msg"></div>
+<div class="grid" id="grid"></div>
+<p id="empty-msg">No themes match the selected filters.</p>
+
+<script>
+  const THEME_FILES = [
+    'themes/blue-void.html',
+    'themes/green-terminal.html',
+    'themes/horizon-sunset.html',
+    'themes/minimalist.html',
+    'themes/peach-slate.html',
+    'themes/synthwave-84.html',
+    'themes/white-paper.html',
+  ];
+
+  const grid     = document.getElementById('grid');
+  const countEl  = document.getElementById('count');
+  const emptyMsg = document.getElementById('empty-msg');
+
+  let allEntries = [];
+  let activeMode      = '';
+  let activeAesthetic = '';
+
+  /* ── Colour helpers ── */
+  function hex(c) { return c && /^#/.test(c.trim()) ? c.trim() : '#888'; }
+
+  function hexToHsl(h) {
+    const r = parseInt(h.slice(1,3),16)/255;
+    const g = parseInt(h.slice(3,5),16)/255;
+    const b = parseInt(h.slice(5,7),16)/255;
+    const max = Math.max(r,g,b), min = Math.min(r,g,b);
+    let hue = 0, sat = 0;
+    const lig = (max+min)/2;
+    if (max !== min) {
+      const d = max - min;
+      sat = lig > 0.5 ? d/(2-max-min) : d/(max+min);
+      switch(max) {
+        case r: hue = ((g-b)/d + (g<b?6:0)) / 6; break;
+        case g: hue = ((b-r)/d + 2) / 6; break;
+        case b: hue = ((r-g)/d + 4) / 6; break;
+      }
+    }
+    return { h: hue*360, s: sat*100, l: lig*100 };
+  }
+
+  /* ── Sort: light first, then by hue within each tone group ── */
+  function sortEntries(entries) {
+    return [...entries].sort((a, b) => {
+      if (a.mode !== b.mode) return a.mode === 'light' ? -1 : 1;
+      return a.hue - b.hue;
+    });
+  }
+
+  /* ── Card builder ── */
+  function buildCard(entry) {
+    const { theme, filename, bg, p, sec, acc, sur, txt, mode, aesthetic } = entry;
+
+    const card = document.createElement('a');
+    card.className = 'card';
+    card.href = filename;
+    card.target = '_blank';
+
+    card.innerHTML = `
+      <div class="preview" style="background:${bg}">
+        <div class="mockup">
+          <div class="mockup-bar" style="background:${p};width:55%"></div>
+          <div class="mockup-row">
+            <div class="mockup-dot" style="background:${acc}"></div>
+            <div class="mockup-line" style="background:${sur}"></div>
+          </div>
+          <div class="mockup-row">
+            <div class="mockup-dot" style="background:${sec}"></div>
+            <div class="mockup-line" style="background:${sur};width:55%"></div>
+          </div>
+          <div class="mockup-row">
+            <div class="mockup-dot" style="background:${txt};opacity:.4"></div>
+            <div class="mockup-line" style="background:${sur};width:65%"></div>
+          </div>
+          <div class="mockup-row" style="margin-top:auto">
+            <div class="mockup-btn" style="background:${p}"></div>
+            <div class="mockup-btn" style="background:${sur}"></div>
+          </div>
+        </div>
+        <div class="swatches">
+          <div class="swatch" style="background:${p}"></div>
+          <div class="swatch" style="background:${sec}"></div>
+          <div class="swatch" style="background:${acc}"></div>
+          <div class="swatch" style="background:${sur}"></div>
+          <div class="swatch" style="background:${txt}"></div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-name">${theme.name || filename.replace('themes/','').replace('.html','')}</div>
+        <div class="card-desc">${theme.description || ''}</div>
+        <div class="card-footer">
+          <span class="tag" style="color:${p};border-color:${p}44">${mode} · ${aesthetic}</span>
+          <span class="open-link">open
+            <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M2 10L10 2M5 2h5v5"/>
+            </svg>
+          </span>
+        </div>
+      </div>`;
+
+    return card;
+  }
+
+  /* ── Render filtered + sorted entries ── */
+  function render() {
+    const filtered = allEntries.filter(e => {
+      if (activeMode      && e.mode      !== activeMode)      return false;
+      if (activeAesthetic && e.aesthetic !== activeAesthetic) return false;
+      return true;
+    });
+
+    grid.innerHTML = '';
+    filtered.forEach(e => grid.appendChild(buildCard(e)));
+
+    const total = allEntries.length;
+    countEl.textContent = filtered.length === total
+      ? `${total} theme${total !== 1 ? 's' : ''}`
+      : `${filtered.length} / ${total}`;
+
+    emptyMsg.style.display = filtered.length === 0 ? 'block' : 'none';
+  }
+
+  /* ── Filter chips wiring ── */
+  function wireChips(containerId, onChange) {
+    const container = document.getElementById(containerId);
+    container.addEventListener('click', e => {
+      const chip = e.target.closest('.chip');
+      if (!chip) return;
+      container.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+      chip.classList.add('active');
+      onChange(chip.dataset.value);
+    });
+  }
+
+  wireChips('filter-tone',  v => { activeMode      = v; render(); });
+  wireChips('filter-style', v => { activeAesthetic = v; render(); });
+
+  /* ── Build style filter chips from loaded data ── */
+  function buildStyleChips(aesthetics) {
+    const container = document.getElementById('filter-style');
+    const sorted = [...aesthetics].sort();
+    sorted.forEach(a => {
+      const btn = document.createElement('button');
+      btn.className = 'chip';
+      btn.dataset.value = a;
+      btn.textContent = a;
+      container.appendChild(btn);
+    });
+  }
+
+  /* ── Load ── */
+  async function loadTheme(filename) {
+    const res  = await fetch(filename);
+    const html = await res.text();
+    const match = html.match(/<script[^>]+id="theme-data"[^>]*>([\s\S]*?)<\/script>/);
+    if (!match) return null;
+    return JSON.parse(match[1].trim());
+  }
+
+  async function init() {
+    const results = await Promise.allSettled(
+      THEME_FILES.map(f => loadTheme(f).then(t => ({ t, f })))
+    );
+
+    const aestheticSet = new Set();
+
+    for (const r of results) {
+      if (r.status !== 'fulfilled' || !r.value.t) continue;
+      const { t: theme, f: filename } = r.value;
+
+      const c   = theme.colors || {};
+      const bg  = hex(c.background);
+      const p   = hex(c.primary);
+      const sec = hex(c.secondary || c.accent || c.primary);
+      const acc = hex(c.accent    || c.secondary || c.primary);
+      const sur = hex(c.surface   || c.background);
+      const txt = hex(c.text || '#888');
+
+      const ri = parseInt(bg.slice(1,3),16);
+      const gi = parseInt(bg.slice(3,5),16);
+      const bi = parseInt(bg.slice(5,7),16);
+      const lum = (0.299*ri + 0.587*gi + 0.114*bi) / 255;
+      const mode = lum < 0.4 ? 'dark' : 'light';
+
+      const { h: hue } = hexToHsl(bg);
+      const aesthetic = (theme.design?.aesthetic) || (theme.design?.personality?.[0]) || mode;
+
+      aestheticSet.add(aesthetic);
+
+      allEntries.push({ theme, filename, bg, p, sec, acc, sur, txt, lum, hue, mode, aesthetic });
+    }
+
+    allEntries = sortEntries(allEntries);
+
+    buildStyleChips(aestheticSet);
+
+    countEl.textContent = `${allEntries.length} theme${allEntries.length !== 1 ? 's' : ''}`;
+
+    if (allEntries.length === 0) {
+      const err = document.getElementById('error-msg');
+      err.style.display = 'block';
+      err.textContent = 'No themes loaded. Open index.html via a local server (e.g. Live Server in VS Code) rather than directly from the filesystem — browsers block fetch() on file:// URLs.';
+      return;
+    }
+
+    render();
+  }
+
+  init();
+</script>
+
+</body>
+</html>
