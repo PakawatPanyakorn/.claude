@@ -335,9 +335,11 @@
   function buildCard(entry) {
     const { theme, filename, bg, p, sec, acc, sur, txt, mode, aesthetic } = entry;
 
+    const RAW_BASE = 'https://raw.githubusercontent.com/PakawatPanyakorn/.claude/master/skills/theme-factory/';
+    const PREVIEW_BASE = 'https://html-preview.github.io/?url=';
     const card = document.createElement('a');
     card.className = 'card';
-    card.href = filename;
+    card.href = PREVIEW_BASE + RAW_BASE + filename;
     card.target = '_blank';
 
     card.innerHTML = `
