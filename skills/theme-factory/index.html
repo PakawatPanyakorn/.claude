@@ -410,17 +410,17 @@
     'themes/space-void.html':        ['cyber'],
     'themes/cyber-terminal.html':    ['cyber', 'retro'],
     'themes/horizon-sunset.html':    ['nature'],
-    'themes/coral-slate.html':       ['corporate', 'minimal'],
-    'themes/peach-slate.html':       ['nature', 'minimal'],
+    'themes/coral-slate.html':       ['corporate', 'minimalist'],
+    'themes/peach-slate.html':       ['nature', 'minimalist'],
     'themes/synthwave-84.html':      ['cyber', 'retro'],
     'themes/modern-coral.html':      ['editorial', 'nature'],
     'themes/velvet-noir.html':       ['luxe', 'gothic'],
-    'themes/chalk-press.html':       ['editorial', 'brutalist', 'minimal'],
+    'themes/chalk-press.html':       ['editorial', 'brutalist', 'minimalist'],
     'themes/neon-foundry.html':      ['cyber', 'retro'],
-    'themes/bloc-brutus.html':       ['brutalist', 'minimal'],
+    'themes/bloc-brutus.html':       ['brutalist', 'minimalist'],
     'themes/cosmica.html':           ['cosmic', 'luxe'],
     'themes/tobacco-road.html':      ['editorial', 'retro', 'nature'],
-    'themes/obsidian-mono.html':     ['minimal'],
+    'themes/obsidian-mono.html':     ['minimalist'],
     'themes/embassy-gold.html':      ['luxe', 'corporate'],
     'themes/acid-garden.html':       ['cosmic', 'cyber', 'surreal'],
     'themes/copper-alchemist.html':  ['retro', 'gothic'],
@@ -432,8 +432,8 @@
     'themes/vellum-codex.html':      ['retro', 'luxe'],
     'themes/amber-signal.html':      ['cyber', 'retro'],
     'themes/ultraviolet-rave.html':  ['cosmic', 'cyber'],
-    'themes/moss-cottage.html':      ['nature', 'minimal'],
-    'themes/titanium-cloud.html':    ['corporate', 'minimal'],
+    'themes/moss-cottage.html':      ['nature', 'minimalist'],
+    'themes/titanium-cloud.html':    ['corporate', 'minimalist'],
     'themes/alpha-signal.html':      ['finance', 'cyber'],
     'themes/vault-theorem.html':     ['finance', 'luxe'],
     'themes/meridian-capital.html':  ['finance', 'luxe', 'editorial'],
@@ -443,7 +443,7 @@
     'themes/rabbit-hole.html':       ['maximalist', 'surreal'],
   };
 
-  const TAG_ORDER = ['cyber', 'retro', 'cosmic', 'gothic', 'editorial', 'brutalist', 'luxe', 'nature', 'minimal', 'finance', 'corporate', 'maximalist', 'surreal'];
+  const TAG_ORDER = ['cyber', 'retro', 'cosmic', 'gothic', 'editorial', 'brutalist', 'luxe', 'nature', 'minimalist', 'finance', 'corporate', 'maximalist', 'surreal'];
 
   const TAG_COLORS = {
     cyber:      { fg: '#00e5ff', bg: '#00e5ff18', border: '#00e5ff55' },
@@ -454,7 +454,7 @@
     brutalist:  { fg: '#ef4444', bg: '#ef444418', border: '#ef444455' },
     luxe:       { fg: '#eab308', bg: '#eab30818', border: '#eab30855' },
     nature:     { fg: '#4ade80', bg: '#4ade8018', border: '#4ade8055' },
-    minimal:    { fg: '#e2e8f0', bg: '#e2e8f010', border: '#e2e8f035' },
+    minimalist: { fg: '#e2e8f0', bg: '#e2e8f010', border: '#e2e8f035' },
     finance:    { fg: '#38bdf8', bg: '#38bdf818', border: '#38bdf855' },
     corporate:  { fg: '#a78bfa', bg: '#a78bfa18', border: '#a78bfa55' },
     maximalist: { fg: '#ff2d78', bg: '#ff2d7818', border: '#ff2d7855' },
@@ -471,7 +471,12 @@
   (function loadTagsFromStorage() {
     try {
       const stored = JSON.parse(localStorage.getItem(STORAGE_KEY) || 'null');
-      if (stored && typeof stored === 'object') Object.assign(THEME_TAGS, stored);
+      if (stored && typeof stored === 'object') {
+        for (const key of Object.keys(stored)) {
+          stored[key] = stored[key].map(t => t === 'minimal' ? 'minimalist' : t);
+        }
+        Object.assign(THEME_TAGS, stored);
+      }
     } catch {}
   })();
 
