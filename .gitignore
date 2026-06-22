@@ -18,12 +18,9 @@ backups/
 settings.json
 ide/
 
-# Rules, scripts, hooks, plans, commands, ecc
-rules/
+# etc
 scripts/
-hooks/
 plans/
-commands/
 ecc/
 
 # Per-project memory
