@@ -681,8 +681,12 @@
         <span class="filter-label">Sort</span>
         <div class="filter-divider"></div>
         <div class="filter-chips" id="filter-sort">
-          <button class="chip active" data-value="name-asc" data-group="name">Name A→Z</button>
-          <button class="chip" data-value="date-desc" data-group="date">Date ↓ Newest</button>
+          <button class="chip active" data-value="name-asc" data-group="name">
+            Name A→Z
+          </button>
+          <button class="chip" data-value="date-desc" data-group="date">
+            Date ↓ Newest
+          </button>
         </div>
       </div>
     </div>
@@ -806,7 +810,7 @@
             typography: {
               fontFamily: "'Source Serif 4', Georgia, serif",
               fontFamilyMono: "'JetBrains Mono', 'Cascadia Code', monospace",
-              fontFamilyDisplay: "'Syne', sans-serif",
+              fontFamilyDisplay: "'JetBrains Mono', 'Cascadia Code', monospace",
               scaleBase: "16px",
               headingWeight: "800",
               bodyWeight: "400",
@@ -871,9 +875,9 @@
               error: "#FF3333",
             },
             typography: {
-              fontFamily: "'Source Serif 4', Georgia, serif",
+              fontFamily: "'JetBrains Mono', 'Cascadia Code', monospace",
               fontFamilyMono: "'JetBrains Mono', 'Cascadia Code', monospace",
-              fontFamilyDisplay: "'Syne', sans-serif",
+              fontFamilyDisplay: "'JetBrains Mono', 'Cascadia Code', monospace",
               scaleBase: "16px",
               headingWeight: "800",
               bodyWeight: "400",
@@ -4839,10 +4843,10 @@
 
       /* Sort chips — toggle direction on repeated click, switch chip on first click */
       const SORT_TOGGLE = {
-        "name-asc":  { next: "name-desc", label: "Name Z→A" },
-        "name-desc": { next: "name-asc",  label: "Name A→Z" },
-        "date-desc": { next: "date-asc",  label: "Date ↑ Oldest" },
-        "date-asc":  { next: "date-desc", label: "Date ↓ Newest" },
+        "name-asc": { next: "name-desc", label: "Name Z→A" },
+        "name-desc": { next: "name-asc", label: "Name A→Z" },
+        "date-desc": { next: "date-asc", label: "Date ↑ Oldest" },
+        "date-asc": { next: "date-desc", label: "Date ↓ Newest" },
       };
       const SORT_GROUP_DEFAULT = { name: "name-asc", date: "date-desc" };
 
@@ -4861,9 +4865,14 @@
             chip.textContent = t.label;
           } else {
             /* switching to a different chip — activate with its stored direction */
-            container.querySelectorAll(".chip").forEach((c) => c.classList.remove("active"));
+            container
+              .querySelectorAll(".chip")
+              .forEach((c) => c.classList.remove("active"));
             chip.classList.add("active");
-            activeSort = chip.dataset.value || SORT_GROUP_DEFAULT[chip.dataset.group] || "name-asc";
+            activeSort =
+              chip.dataset.value ||
+              SORT_GROUP_DEFAULT[chip.dataset.group] ||
+              "name-asc";
           }
 
           allEntries = sortEntries(allEntries);
