@@ -63,7 +63,7 @@
       "md": "0 4px 18px rgba(6,2,8,0.85)",
       "lg": "0 8px 36px rgba(6,2,8,0.9)",
       "xl": "0 16px 52px rgba(6,2,8,0.92)",
-      "colored": "0 4px 20px rgba(139,26,58,0.4)",
+      "colored": "0 0 0 1px var(--color-border)",
       "inset": "inset 0 2px 6px rgba(6,2,8,0.9)",
       "elevation": "dramatic"
     },
@@ -76,11 +76,11 @@
     },
     "effects": {
       "luminescence": "subtle",
-      "glowColor": "#8B1A3A",
-      "glowBlur": "18px",
-      "glowSm": "0 0 6px rgba(139,26,58,0.4)",
-      "glowMd": "0 0 18px rgba(139,26,58,0.4), 0 0 36px rgba(139,26,58,0.15)",
-      "glowLg": "0 0 36px rgba(139,26,58,0.45)",
+      "glowColor": "transparent",
+      "glowBlur": "0",
+      "glowSm": "0 2px 8px rgba(0,0,0,0.15)",
+      "glowMd": "0 4px 20px rgba(0,0,0,0.25)",
+      "glowLg": "0 8px 40px rgba(0,0,0,0.3)",
       "glassBlur": "0",
       "glassTint": "none",
       "gradientBorder": "linear-gradient(135deg, #8B1A3A, #C8A840, #2A5C2A)",
@@ -138,7 +138,7 @@
       --shadow-md: 0 4px 18px rgba(6,2,8,0.85);
       --shadow-lg: 0 8px 36px rgba(6,2,8,0.9);
       --shadow-xl: 0 16px 52px rgba(6,2,8,0.92);
-      --shadow-colored: 0 4px 20px rgba(139,26,58,0.4);
+      --shadow-colored: 0 0 0 1px var(--color-border);
       --shadow-inset: inset 0 2px 6px rgba(6,2,8,0.9);
 
       --gradient-hero: linear-gradient(160deg, #241420 0%, #120A10 55%, #100810 100%);
@@ -148,9 +148,9 @@
       --gradient-accent: linear-gradient(90deg, #8B1A3A 0%, #2A5C2A 100%);
       --border-gradient: linear-gradient(135deg, #8B1A3A, #C8A840, #2A5C2A);
 
-      --glow-sm: 0 0 6px rgba(139,26,58,0.4);
-      --glow-md: 0 0 18px rgba(139,26,58,0.4), 0 0 36px rgba(139,26,58,0.15);
-      --glow-lg: 0 0 36px rgba(139,26,58,0.45);
+      --glow-sm: 0 2px 8px rgba(0,0,0,0.15);
+      --glow-md: 0 4px 20px rgba(0,0,0,0.25);
+      --glow-lg: 0 8px 40px rgba(0,0,0,0.3);
       --glass-blur: 0; --glass-tint: transparent;
       --backdrop-filter: none; --noise-opacity: 0.05;
     }

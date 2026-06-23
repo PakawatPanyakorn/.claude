@@ -40,18 +40,18 @@
     "shadows": {
       "sm": "0 1px 6px rgba(20,16,60,0.08)", "md": "0 3px 16px rgba(20,16,60,0.12)",
       "lg": "0 6px 32px rgba(20,16,60,0.16)", "xl": "0 12px 48px rgba(20,16,60,0.20)",
-      "colored": "0 4px 20px rgba(92,46,255,0.3)", "inset": "inset 0 2px 6px rgba(20,16,60,0.1)", "elevation": "layered"
+      "colored": "0 4px 16px rgba(92,46,255,0.12)", "inset": "inset 0 2px 6px rgba(20,16,60,0.1)", "elevation": "layered"
     },
     "gradients": {
       "hero": "linear-gradient(135deg, #E4E6F8 0%, #EEF0FF 50%, #D8DAEF 100%)",
       "card": "linear-gradient(180deg, #E4E6F8 0%, #DDDFF4 100%)",
       "button": "linear-gradient(135deg, #7A50FF 0%, #4A18E8 100%)",
-      "text": "linear-gradient(135deg, #5C2EFF 0%, #00D4CC 60%, #A8FF20 100%)",
+      "text": "#5C2EFF",
       "accent": "linear-gradient(90deg, #5C2EFF 0%, #00D4CC 100%)"
     },
     "effects": {
-      "luminescence": "medium", "glowColor": "#5C2EFF", "glowBlur": "20px",
-      "glowSm": "0 0 8px rgba(92,46,255,0.35)", "glowMd": "0 0 20px rgba(92,46,255,0.4)", "glowLg": "0 0 40px rgba(92,46,255,0.45)",
+      "luminescence": "medium", "glowColor": "transparent", "glowBlur": "0",
+      "glowSm": "0 2px 8px rgba(0,0,0,0.15)", "glowMd": "0 4px 20px rgba(0,0,0,0.25)", "glowLg": "0 8px 40px rgba(0,0,0,0.3)",
       "glassBlur": "0", "glassTint": "none", "gradientBorder": "linear-gradient(135deg, #5C2EFF, #00D4CC, #A8FF20)",
       "noiseOpacity": "0", "textShadow": "none", "backdropFilter": "none"
     },
@@ -81,14 +81,14 @@
       --radius: 4px; --radius-card: 8px; --radius-button: 4px;
       --shadow-sm: 0 1px 6px rgba(20,16,60,0.08); --shadow-md: 0 3px 16px rgba(20,16,60,0.12);
       --shadow-lg: 0 6px 32px rgba(20,16,60,0.16); --shadow-xl: 0 12px 48px rgba(20,16,60,0.20);
-      --shadow-colored: 0 4px 20px rgba(92,46,255,0.3); --shadow-inset: inset 0 2px 6px rgba(20,16,60,0.1);
+      --shadow-colored: 0 4px 16px rgba(92,46,255,0.12); --shadow-inset: inset 0 2px 6px rgba(20,16,60,0.1);
       --gradient-hero: linear-gradient(135deg, #E4E6F8 0%, #EEF0FF 50%, #D8DAEF 100%);
       --gradient-card: linear-gradient(180deg, #E4E6F8 0%, #DDDFF4 100%);
       --gradient-button: linear-gradient(135deg, #7A50FF 0%, #4A18E8 100%);
-      --gradient-text: linear-gradient(135deg, #5C2EFF 0%, #00D4CC 60%, #A8FF20 100%);
+      --gradient-text: #5C2EFF;
       --gradient-accent: linear-gradient(90deg, #5C2EFF 0%, #00D4CC 100%);
-      --glow-color: #5C2EFF; --glow-sm: 0 0 8px rgba(92,46,255,0.35);
-      --glow-md: 0 0 20px rgba(92,46,255,0.4); --glow-lg: 0 0 40px rgba(92,46,255,0.45);
+      --glow-color: #5C2EFF; --glow-sm: 0 2px 8px rgba(0,0,0,0.15);
+      --glow-md: 0 4px 20px rgba(0,0,0,0.25); --glow-lg: 0 8px 40px rgba(0,0,0,0.3);
       --glass-blur: 0; --glass-tint: none; --backdrop-filter: none; --text-shadow: none;
       --border-gradient: linear-gradient(135deg, #5C2EFF, #00D4CC, #A8FF20); --noise-opacity: 0;
       --space-1: 4px; --space-2: 8px; --space-3: 12px; --space-4: 16px; --space-6: 24px; --space-8: 32px;
@@ -136,8 +136,7 @@
     .hero-title {
       font-family: 'Syne', sans-serif; font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 800;
       line-height: 0.9; letter-spacing: -0.04em;
-      background: var(--gradient-text);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      color: #5C2EFF;
       margin-bottom: 0.85rem;
     }
     .hero-sub { font-size: 0.95rem; color: var(--color-text-muted); max-width: 420px; font-weight: 300; line-height: 1.6; }
@@ -217,7 +216,7 @@
     .effects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem; }
     .effect-tile { background: var(--color-surface); border-radius: var(--radius-card); padding: 1.2rem; border: 1px solid var(--color-border); display: flex; flex-direction: column; gap: 0.7rem; }
     .effect-label { font-family: 'Space Mono', monospace; font-size: 0.58rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-text-muted); }
-    .gradient-text-demo { font-family: 'Syne', sans-serif; font-size: 1.6rem; font-weight: 800; background: var(--gradient-text); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1; letter-spacing: -0.03em; }
+    .gradient-text-demo { font-family: 'Syne', sans-serif; font-size: 1.6rem; font-weight: 800; color: #5C2EFF; line-height: 1; letter-spacing: -0.03em; }
     .glow-demo { padding: 0.7rem 1rem; border-radius: var(--radius-card); background: var(--color-surface-alt); border: 1px solid var(--color-border); box-shadow: var(--glow-md); text-align: center; font-weight: 800; color: var(--glow-color); font-family: 'Syne', sans-serif; font-size: 1.1rem; }
     .colored-shadow-demo { padding: 0.7rem 1rem; border-radius: var(--radius); background: var(--color-primary); color: var(--color-text-on-primary); box-shadow: var(--shadow-colored); font-weight: 700; font-size: 0.82rem; text-align: center; font-family: 'Syne', sans-serif; }
     .gb-demo { padding: 0.7rem 1rem; border-radius: var(--radius-card); background: var(--color-surface); position: relative; font-size: 0.78rem; color: var(--color-text-muted); }

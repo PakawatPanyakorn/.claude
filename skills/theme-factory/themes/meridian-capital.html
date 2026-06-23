@@ -38,7 +38,7 @@
     "shadows": {
       "sm": "0 2px 8px rgba(26,30,46,0.08)", "md": "0 4px 20px rgba(26,30,46,0.12)",
       "lg": "0 8px 40px rgba(26,30,46,0.16)", "xl": "0 16px 60px rgba(26,30,46,0.20)",
-      "colored": "0 4px 24px rgba(26,75,204,0.25)", "inset": "inset 0 2px 8px rgba(26,30,46,0.08)", "elevation": "layered"
+      "colored": "0 4px 16px rgba(0,0,0,0.12)", "inset": "inset 0 2px 8px rgba(26,30,46,0.08)", "elevation": "layered"
     },
     "gradients": {
       "hero": "linear-gradient(135deg, #F0E5C8 0%, #F4EDD8 50%, #EDE4CC 100%)",
@@ -48,8 +48,8 @@
       "accent": "linear-gradient(90deg, #1A4BCC 0%, #E85C6A 100%)"
     },
     "effects": {
-      "luminescence": "subtle", "glowColor": "#D4A020", "glowBlur": "16px",
-      "glowSm": "0 0 6px rgba(212,160,32,0.2)", "glowMd": "0 0 16px rgba(212,160,32,0.3)", "glowLg": "0 0 32px rgba(212,160,32,0.35)",
+      "luminescence": "subtle", "glowColor": "transparent", "glowBlur": "0",
+      "glowSm": "0 2px 8px rgba(0,0,0,0.15)", "glowMd": "0 4px 20px rgba(0,0,0,0.25)", "glowLg": "0 8px 40px rgba(0,0,0,0.3)",
       "glassBlur": "0", "glassTint": "none", "gradientBorder": "linear-gradient(135deg, #1A4BCC, #D4A020, #E85C6A)",
       "noiseOpacity": "0", "textShadow": "none", "backdropFilter": "none"
     },
@@ -79,14 +79,14 @@
       --radius: 4px; --radius-card: 8px; --radius-button: 3px;
       --shadow-sm: 0 2px 8px rgba(26,30,46,0.08); --shadow-md: 0 4px 20px rgba(26,30,46,0.12);
       --shadow-lg: 0 8px 40px rgba(26,30,46,0.16); --shadow-xl: 0 16px 60px rgba(26,30,46,0.20);
-      --shadow-colored: 0 4px 24px rgba(26,75,204,0.25); --shadow-inset: inset 0 2px 8px rgba(26,30,46,0.08);
+      --shadow-colored: 0 4px 16px rgba(0,0,0,0.12); --shadow-inset: inset 0 2px 8px rgba(26,30,46,0.08);
       --gradient-hero: linear-gradient(135deg, #F0E5C8 0%, #F4EDD8 50%, #EDE4CC 100%);
       --gradient-card: linear-gradient(180deg, #EDE4CC 0%, #E8DFCA 100%);
       --gradient-button: linear-gradient(135deg, #2A5BE0 0%, #1A3AAA 100%);
       --gradient-text: linear-gradient(135deg, #1A4BCC 0%, #8A3498 50%, #D4A020 100%);
       --gradient-accent: linear-gradient(90deg, #1A4BCC 0%, #E85C6A 100%);
-      --glow-color: #D4A020; --glow-sm: 0 0 6px rgba(212,160,32,0.2);
-      --glow-md: 0 0 16px rgba(212,160,32,0.3); --glow-lg: 0 0 32px rgba(212,160,32,0.35);
+      --glow-color: #D4A020; --glow-sm: 0 2px 8px rgba(0,0,0,0.15);
+      --glow-md: 0 4px 20px rgba(0,0,0,0.25); --glow-lg: 0 8px 40px rgba(0,0,0,0.3);
       --glass-blur: 0; --glass-tint: none; --backdrop-filter: none; --text-shadow: none;
       --border-gradient: linear-gradient(135deg, #1A4BCC, #D4A020, #E85C6A); --noise-opacity: 0;
       --space-1: 4px; --space-2: 8px; --space-3: 12px; --space-4: 16px; --space-6: 24px; --space-8: 32px;

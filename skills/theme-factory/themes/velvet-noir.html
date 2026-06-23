@@ -49,7 +49,7 @@
       "md": "0 4px 20px rgba(10,5,12,0.7), 0 0 0 1px rgba(201,168,76,0.12)",
       "lg": "0 8px 40px rgba(10,5,12,0.8), 0 0 0 1px rgba(201,168,76,0.15)",
       "xl": "0 16px 60px rgba(10,5,12,0.9), 0 0 0 1px rgba(201,168,76,0.2)",
-      "colored": "0 4px 24px rgba(201,168,76,0.28), 0 0 0 1px rgba(201,168,76,0.35)",
+      "colored": "0 0 0 1px var(--color-border)",
       "inset": "inset 0 2px 8px rgba(10,5,12,0.8), inset 0 1px 0 rgba(201,168,76,0.05)",
       "elevation": "dramatic"
     },
@@ -62,10 +62,10 @@
     },
     "effects": {
       "luminescence": "medium",
-      "glowColor": "#C9A84C", "glowBlur": "20px",
-      "glowSm": "0 0 8px rgba(201,168,76,0.3)",
-      "glowMd": "0 0 20px rgba(201,168,76,0.35), 0 0 40px rgba(201,168,76,0.15)",
-      "glowLg": "0 0 40px rgba(201,168,76,0.4), 0 0 80px rgba(201,168,76,0.2)",
+      "glowColor": "transparent", "glowBlur": "0",
+      "glowSm": "0 2px 8px rgba(0,0,0,0.15)",
+      "glowMd": "0 4px 20px rgba(0,0,0,0.25)",
+      "glowLg": "0 8px 40px rgba(0,0,0,0.3)",
       "glassBlur": "0", "glassTint": "none",
       "gradientBorder": "linear-gradient(135deg, #C9A84C, #8B1A4A, #C9A84C)",
       "noiseOpacity": "0.02", "textShadow": "0 0 30px rgba(201,168,76,0.3)",
@@ -107,7 +107,7 @@
       --shadow-md: 0 4px 20px rgba(10,5,12,0.7), 0 0 0 1px rgba(201,168,76,0.12);
       --shadow-lg: 0 8px 40px rgba(10,5,12,0.8), 0 0 0 1px rgba(201,168,76,0.15);
       --shadow-xl: 0 16px 60px rgba(10,5,12,0.9), 0 0 0 1px rgba(201,168,76,0.2);
-      --shadow-colored: 0 4px 24px rgba(201,168,76,0.28), 0 0 0 1px rgba(201,168,76,0.35);
+      --shadow-colored: 0 0 0 1px var(--color-border);
       --shadow-inset: inset 0 2px 8px rgba(10,5,12,0.8), inset 0 1px 0 rgba(201,168,76,0.05);
 
       --gradient-hero: linear-gradient(135deg, #2D1835 0%, #1A1018 45%, #251520 100%);
@@ -116,9 +116,9 @@
       --gradient-text: linear-gradient(135deg, #E8C96A 0%, #C9A84C 50%, #A8842A 100%);
       --gradient-accent: linear-gradient(90deg, #8B1A4A 0%, #C9A84C 100%);
 
-      --glow-color: #C9A84C; --glow-sm: 0 0 8px rgba(201,168,76,0.3);
-      --glow-md: 0 0 20px rgba(201,168,76,0.35), 0 0 40px rgba(201,168,76,0.15);
-      --glow-lg: 0 0 40px rgba(201,168,76,0.4), 0 0 80px rgba(201,168,76,0.2);
+      --glow-color: #C9A84C; --glow-sm: 0 2px 8px rgba(0,0,0,0.15);
+      --glow-md: 0 4px 20px rgba(0,0,0,0.25);
+      --glow-lg: 0 8px 40px rgba(0,0,0,0.3);
       --glass-blur: 0px; --glass-tint: none; --backdrop-filter: none;
       --text-shadow: 0 0 30px rgba(201,168,76,0.3);
       --border-gradient: linear-gradient(135deg, #C9A84C, #8B1A4A, #C9A84C);

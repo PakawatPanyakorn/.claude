@@ -18,7 +18,7 @@
     "background": {
       "type": "gradient",
       "baseColor": "#06041A",
-      "image": "radial-gradient(ellipse at 20% 40%, rgba(168,85,247,0.25) 0%, transparent 50%), radial-gradient(ellipse at 80% 20%, rgba(6,182,212,0.2) 0%, transparent 45%), radial-gradient(ellipse at 60% 80%, rgba(244,63,94,0.18) 0%, transparent 40%), radial-gradient(ellipse at 50% 50%, rgba(6,4,26,0.9) 0%, #06041A 100%)",
+      "image": "radial-gradient(ellipse at 20% 40%, rgba(168,85,247,0.25) 0%, transparent 50%), radial-gradient(ellipse at 80% 20%, rgba(6,182,212,0.12) 0%, transparent 45%), radial-gradient(ellipse at 60% 80%, rgba(244,63,94,0.18) 0%, transparent 40%), radial-gradient(ellipse at 50% 50%, rgba(6,4,26,0.9) 0%, #06041A 100%)",
       "size": "cover",
       "position": "0 0",
       "repeat": "no-repeat",
@@ -69,7 +69,7 @@
       "glassBlur": "16px",
       "glassTint": "rgba(13,8,40,0.6)",
       "gradientBorder": "linear-gradient(135deg, #A855F7, #06B6D4, #F43F5E)",
-      "noiseOpacity": "0.03", "textShadow": "0 0 40px rgba(168,85,247,0.6)",
+      "noiseOpacity": "0.05", "textShadow": "0 0 40px rgba(168,85,247,0.6)",
       "backdropFilter": "blur(16px) saturate(180%)"
     },
     "motion": {
@@ -89,7 +89,7 @@
   <style>
     :root {
       --bg-base: #06041A;
-      --bg-image: radial-gradient(ellipse at 20% 40%, rgba(168,85,247,0.25) 0%, transparent 50%), radial-gradient(ellipse at 80% 20%, rgba(6,182,212,0.2) 0%, transparent 45%), radial-gradient(ellipse at 60% 80%, rgba(244,63,94,0.18) 0%, transparent 40%), radial-gradient(ellipse at 50% 50%, rgba(6,4,26,0.9) 0%, #06041A 100%);
+      --bg-image: radial-gradient(ellipse at 20% 40%, rgba(168,85,247,0.25) 0%, transparent 50%), radial-gradient(ellipse at 80% 20%, rgba(6,182,212,0.12) 0%, transparent 45%), radial-gradient(ellipse at 60% 80%, rgba(244,63,94,0.18) 0%, transparent 40%), radial-gradient(ellipse at 50% 50%, rgba(6,4,26,0.9) 0%, #06041A 100%);
       --bg-size: cover; --bg-position: 0 0; --bg-repeat: no-repeat;
 
       --color-primary: #A855F7; --color-primary-light: #1E0A40; --color-secondary: #06B6D4; --color-accent: #F43F5E;
@@ -123,7 +123,7 @@
       --glass-blur: 16px; --glass-tint: rgba(13,8,40,0.6);
       --backdrop-filter: blur(16px) saturate(180%);
       --text-shadow: 0 0 40px rgba(168,85,247,0.6);
-      --border-gradient: linear-gradient(135deg, #A855F7, #06B6D4, #F43F5E); --noise-opacity: 0.03;
+      --border-gradient: linear-gradient(135deg, #A855F7, #06B6D4, #F43F5E); --noise-opacity: 0.05;
 
       --space-1: 4px; --space-2: 8px; --space-3: 12px; --space-4: 16px; --space-6: 24px; --space-8: 32px;
       --duration-fast: 150ms; --duration-base: 300ms; --duration-slow: 600ms;
@@ -154,7 +154,7 @@
       content: '';
       position: fixed; inset: 0;
       background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-      opacity: 0.03;
+      opacity: 0.05;
       pointer-events: none;
       z-index: 9999;
     }
@@ -201,7 +201,7 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
-      text-shadow: none;
+      text-shadow: 0 0 30px rgba(168,85,247,0.4);
       margin-bottom: 0.5rem;
     }
     .tf-header .tf-subtitle { color: var(--color-text-muted); font-size: 0.85rem; font-weight: 300; }

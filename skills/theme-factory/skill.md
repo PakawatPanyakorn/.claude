@@ -32,8 +32,9 @@ Ambiguous (has "theme" but action unclear) → ask: "Extract/create, list, delet
 1. **Multi-theme check** — count distinct themes. Single → proceed. Multiple → present numbered list, wait for selection. "all" = extract each in sequence.
 2. **Detect source** — Image / HTML file / Text (see source table in supporting-info)
 3. **Extract** — follow Path A, B, or C (see supporting-info)
-4. **Write** preset HTML (using preset-template.html) → **update** `index.html` THEMES array → tell user preset path
-5. After writing, tell user to open `~/.claude/skills/theme-factory/index.html` to preview
+4. **Anti-pattern gate** — Read `~/.claude/skills/theme-factory/anti-patterns.md`. Before writing anything, audit the generated theme against every rule in that file and silently fix all violations. See Anti-Pattern Gate in supporting-info.
+5. **Write** preset HTML (using preset-template.html) → **update** `index.html` THEMES array → tell user preset path
+6. After writing, tell user to open `~/.claude/skills/theme-factory/index.html` to preview
 
 ### List Mode
 
@@ -179,7 +180,8 @@ Mine or infer concrete CSS values for each. Absent → `'none'` or `0`. Never om
 8. **Design DNA** - assess overall language
 9. **Context gap?** - if image lacks detail, use Path C signal table and infer from color temperature, subject matter, overall mood
 10. **Name** - ask "What would you like to name it?" (skip if auto mode or provided inline)
-11. **Write** preset HTML → **update** `index.html` THEMES array
+11. **Anti-pattern gate** — apply fixes per the Anti-Pattern Gate section above
+12. **Write** preset HTML → **update** `index.html` THEMES array
 
 ---
 
@@ -204,7 +206,9 @@ Mine or infer concrete CSS values for each. Absent → `'none'` or `0`. Never om
 8. **Shape** - `border-radius` from `:root`, `.card`, `.btn`
 9. **Design DNA** - derive: density from padding/gap sizes; elevation from box-shadow frequency; motionFeel from transition durations
 10. **Context gap?** - if HTML is sparse, consult Path C signal table and infer from class names, content tone, visual intent
-11. **Name** → **Write** preset → **update** index
+11. **Name** — ask if not provided
+12. **Anti-pattern gate** — apply fixes per the Anti-Pattern Gate section above
+13. **Write** preset → **update** index
 
 ---
 
@@ -295,6 +299,45 @@ Prioritize depth over solid colors. Prefer gradient meshes, noise textures, geom
 - Showcase content must fit the theme's world - brutalist gets harsh editorial blocks; psychedelic gets flowing surreal sections
 - All decisions must feel cohesive - every component reinforces the same singular aesthetic
 - Choose a name reflecting the specific aesthetic (e.g. `midnight-telegraph`, `chrome-pastoral`, `acid-ledger`)
+
+**Before writing:** Run the Anti-Pattern Gate. Silently fix all violations found.
+
+---
+
+## Anti-Pattern Gate
+
+Run this check **after** generating the theme and **before** writing the preset HTML. Read `~/.claude/skills/theme-factory/anti-patterns.md` and silently fix any violation found. Do not report each fix unless the user asks; only flag issues that cannot be auto-resolved.
+
+### Critical fixes (block write until resolved)
+
+| Violation | Auto-fix |
+|-----------|----------|
+| Background gradient on hero (purple→blue/pink) | Replace with `--color-bg` solid |
+| `gradient-text` set to purple→pink or blue→cyan on headlines | Set `--gradient-text: none`; use weight/color instead |
+| Pure `#000000` or `#ffffff` for `background` / `surface` | Tint toward the anchor hue (±5% lightness) |
+| `background.type: gradient` where both stops are purple/blue family | Change to solid or single-hue gradient |
+| Aurora/blob mesh in `--bg-image` (purple-pink-cyan) | Replace with solid, noise, or geometric pattern |
+
+### Major fixes (apply before write)
+
+| Violation | Auto-fix |
+|-----------|----------|
+| `--font-family-display` === `--font-family` (no pairing face) | Pick a contrasting display face from the Path C typography table |
+| Display font is Inter, Roboto, Arial, system-ui, Helvetica, or Space Grotesk | Replace with a distinctive face from the Path C table |
+| `--easing` contains `cubic-bezier` with overshoot (y > 1) | Replace with `cubic-bezier(0.16, 1, 0.3, 1)` (expo-out) |
+| `--shadow-colored` produces a soft halo glow on dark surface | Tighten spread: `0 1px 3px <color>40` at most |
+| Effects imply `backdrop-filter` but `surface-texture` is `flat` | Set `surfaceTexture: frosted` in Design DNA |
+
+### Minor fixes (apply before write)
+
+| Violation | Auto-fix |
+|-----------|----------|
+| Straight quotes in any showcase text | Replace with curly quotes |
+| `--` dashes in body copy | Replace with `—` |
+| Placeholder names "Jane Doe" / "John Smith" | Replace with diverse names (Maya Okonkwo, Sam Tan, Elena Ruiz…) |
+| Startup-cliché product names ("Nexus", "Pulse") | Replace with domain-specific placeholder |
+
+After applying all fixes, proceed to write the preset.
 
 ---
 
