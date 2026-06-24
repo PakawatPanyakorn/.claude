@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SOFI — Stock Analysis · Jun26</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Courier+Prime:wght@400;700&display=swap"
+    rel="stylesheet"
+  />
+  <style>
+    :root {
+      --color-primary: #1e3b6f;
+      --color-primary-light: #c8d8ec;
+      --color-secondary: #8b4513;
+      --color-accent: #b8860b;
+      --color-bg: #f4efe2;
+      --color-surface: #ebe4d1;
+      --color-surface-alt: #ddd5bc;
+      --color-text: #1c1812;
+      --color-text-muted: #6e5e48;
+      --color-text-on-primary: #f4efe2;
+      --color-border: #c4b59a;
+      --color-success: #3d6e3a;
+      --color-warning: #b07820;
+      --color-error: #8b2020;
+
+      --font-family: "EB Garamond", Georgia, serif;
+      --font-family-display: "Cinzel", "Times New Roman", serif;
+      --font-family-mono: "Courier Prime", "Courier New", monospace;
+      --font-size-base: 16px;
+      --font-weight-heading: 700;
+      --line-height: 1.65;
+      --radius-card: 10px;
+      --shadow-sm: 0 1px 3px rgba(28, 24, 18, 0.08);
+      --shadow-md: 0 4px 12px rgba(28, 24, 18, 0.12);
+      --shadow-lg: 0 8px 24px rgba(28, 24, 18, 0.16);
+
+      --bg: var(--color-bg);
+      --card: var(--color-surface);
+      --card2: var(--color-surface-alt);
+      --border: var(--color-border);
+      --accent: var(--color-primary);
+      --green: var(--color-success);
+      --red: var(--color-error);
+      --yellow: var(--color-warning);
+      --text: var(--color-text);
+      --muted: var(--color-text-muted);
+      --radius: var(--radius-card);
+    }
+
+    body {
+      background-color: #f4efe2;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+      background-size: 300px 300px;
+      background-repeat: repeat;
+      font-family: var(--font-family);
+      color: var(--text);
+      margin: 0;
+      padding: 20px;
+    }
+
+    .page {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    /* Hero */
+    .hero {
+      background: linear-gradient(135deg, #1e3b6f 0%, #2c5298 60%, #1a3260 100%);
+      border-top: 3px solid #c9a84c;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-lg);
+      color: var(--color-text-on-primary);
+      padding: 36px 32px;
+      margin-bottom: 24px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: -60px;
+      right: -60px;
+      width: 220px;
+      height: 220px;
+      background: radial-gradient(circle, rgba(200, 216, 236, 0.12) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .hero-ticker {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      color: #b8860b;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+      font-family: var(--font-family-display);
+    }
+    .hero-name {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: #f4efe2;
+      font-family: var(--font-family-display);
+      letter-spacing: 0.03em;
+    }
+    .hero-tagline {
+      font-size: 15px;
+      color: rgba(244, 239, 226, 0.78);
+      max-width: 540px;
+      margin-bottom: 20px;
+      font-style: italic;
+    }
+    .hero-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .pill {
+      padding: 4px 14px;
+      border-radius: 50px;
+      font-size: 11px;
+      font-weight: 600;
+      border: 1px solid;
+      letter-spacing: 0.04em;
+      font-family: var(--font-family-display);
+    }
+    .pill-blue {
+      background: rgba(200, 216, 236, 0.18);
+      border-color: rgba(200, 216, 236, 0.45);
+      color: #c8d8ec;
+    }
+    .pill-green {
+      background: rgba(61, 110, 58, 0.25);
+      border-color: rgba(61, 110, 58, 0.6);
+      color: #a8d5a4;
+    }
+    .pill-red {
+      background: rgba(139, 32, 32, 0.25);
+      border-color: rgba(139, 32, 32, 0.6);
+      color: #e8a4a4;
+    }
+    .pill-yellow {
+      background: rgba(176, 120, 32, 0.25);
+      border-color: rgba(176, 120, 32, 0.6);
+      color: #e8cc90;
+    }
+
+    /* Sections & Cards */
+    .section {
+      margin-bottom: 32px;
+    }
+    .section-title {
+      font-family: var(--font-family-display);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--color-primary);
+      margin-bottom: 14px;
+    }
+    .card {
+      background: var(--card);
+      border-radius: var(--radius);
+      border-top: 3px solid var(--color-accent);
+      box-shadow: var(--shadow-sm);
+      padding: 20px 22px;
+      margin-bottom: 14px;
+    }
+    .card h3 {
+      font-family: var(--font-family-display);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--color-primary);
+      margin: 0 0 10px 0;
+    }
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .grid-3 {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 16px;
+    }
+
+    /* Stat Grid */
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+    .stat-card {
+      background: var(--card);
+      border-radius: var(--radius);
+      border-top: 3px solid var(--color-accent);
+      box-shadow: var(--shadow-sm);
+      padding: 16px 18px;
+    }
+    .stat-label {
+      font-family: var(--font-family-display);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: var(--color-primary);
+      margin-bottom: 6px;
+    }
+    .mini-stat-label {
+      font-family: var(--font-family-display);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: var(--color-primary);
+      margin-bottom: 4px;
+    }
+    .stat-value {
+      font-family: var(--font-family-display);
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--color-text);
+    }
+    .stat-sub {
+      font-family: var(--font-family-mono);
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+    .val-green { color: var(--color-success); }
+    .val-red   { color: var(--color-error); }
+    .val-yellow { color: var(--color-warning); }
+
+    /* TL;DR */
+    .tldr {
+      background: var(--card);
+      border-radius: var(--radius);
+      border-top: 3px solid var(--color-accent);
+      box-shadow: var(--shadow-md);
+      padding: 22px 24px;
+      margin-bottom: 28px;
+    }
+    .tldr h2 {
+      font-family: var(--font-family-display);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--color-primary);
+      margin: 0 0 14px 0;
+    }
+    .tldr-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 10px;
+      font-size: 15px;
+      line-height: 1.55;
+    }
+    .tldr-sym {
+      width: 16px;
+      text-align: center;
+      flex-shrink: 0;
+      font-family: var(--font-family-mono);
+      font-weight: 800;
+    }
+
+    /* Scorecard Meters */
+    .meter-row { margin-bottom: 14px; }
+    .meter-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      margin-bottom: 5px;
+      font-family: var(--font-family-display);
+    }
+    .meter-label span:last-child {
+      font-weight: 700;
+      font-family: var(--font-family-mono);
+    }
+    .meter-track {
+      background: var(--card2);
+      border-radius: 6px;
+      height: 10px;
+      overflow: hidden;
+    }
+    .meter-fill { height: 100%; border-radius: 6px; }
+    .meter-fill.green  { background: var(--green); }
+    .meter-fill.yellow { background: var(--yellow); }
+    .meter-fill.red    { background: var(--red); }
+
+    /* Scenario Cards */
+    .scenario-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 16px;
+    }
+    .scenario-card {
+      background: var(--card);
+      border-radius: var(--radius);
+      border-top: 3px solid var(--color-accent);
+      box-shadow: var(--shadow-sm);
+      padding: 18px 20px;
+    }
+    .scenario-card h3 {
+      font-family: var(--font-family-display);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin: 0 0 6px 0;
+    }
+    .scenario-prob { font-family: var(--font-family-mono); font-size: 20px; font-weight: 700; margin-bottom: 4px; }
+    .scenario-target { font-family: var(--font-family-mono); font-size: 13px; color: var(--muted); margin-bottom: 12px; }
+    .scenario-card ul { margin: 0; padding-left: 16px; font-size: 14px; line-height: 1.6; }
+    .scenario-bull h3 { color: var(--color-success); }
+    .scenario-base h3 { color: var(--color-warning); }
+    .scenario-bear h3 { color: var(--color-error); }
+
+    /* Timeline */
+    .timeline { position: relative; padding-left: 28px; }
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 7px; top: 6px; bottom: 6px;
+      width: 2px;
+      background: var(--border);
+    }
+    .timeline-item { position: relative; margin-bottom: 20px; }
+    .timeline-dot {
+      position: absolute;
+      left: -25px; top: 4px;
+      width: 12px; height: 12px;
+      border-radius: 50%;
+      border: 2px solid var(--border);
+      background: var(--card2);
+    }
+    .timeline-dot.past   { background: var(--color-text-muted); border-color: var(--color-text-muted); }
+    .timeline-dot.present { background: var(--color-primary); border-color: var(--color-primary); width: 14px; height: 14px; left: -26px; }
+    .timeline-dot.future  { background: var(--card); border-color: var(--color-accent); }
+    .timeline-date  { font-family: var(--font-family-mono); font-size: 11px; color: var(--muted); margin-bottom: 2px; }
+    .timeline-event { font-size: 14px; line-height: 1.5; }
+
+    /* Verdict */
+    .verdict {
+      background: linear-gradient(135deg, var(--color-surface) 0%, var(--color-surface-alt) 100%);
+      border-radius: var(--radius);
+      border-top: 3px solid var(--color-accent);
+      box-shadow: var(--shadow-md);
+      padding: 28px 30px;
+    }
+    .verdict-title {
+      font-family: var(--font-family-display);
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--color-primary);
+      margin-bottom: 16px;
+    }
+    .verdict p { font-size: 16px; line-height: 1.7; margin-bottom: 14px; }
+    .verdict p:last-child { margin-bottom: 0; }
+
+    /* Icon Rows */
+    .item-row { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 14px; }
+    .item-icon { width: 20px; flex-shrink: 0; text-align: center; font-size: 14px; margin-top: 1px; }
+    .item-title {
+      font-family: var(--font-family-display);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      color: var(--color-primary);
+      margin-bottom: 2px;
+    }
+    .item-desc  { font-size: 14px; line-height: 1.55; }
+    .item-meta  { font-family: var(--font-family-mono); font-size: 11px; color: var(--muted); margin-top: 3px; }
+
+    /* Debate */
+    .debate-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .debate-card {
+      background: var(--card);
+      border-radius: var(--radius);
+      border-top: 3px solid var(--color-accent);
+      box-shadow: var(--shadow-sm);
+      padding: 20px 22px;
+    }
+    .debate-card h3 {
+      font-family: var(--font-family-display);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin: 0 0 12px 0;
+    }
+    .debate-card.optimist h3  { color: var(--color-success); }
+    .debate-card.pessimist h3 { color: var(--color-error); }
+    .debate-card ul { margin: 0; padding-left: 16px; font-size: 14px; line-height: 1.65; }
+    .debate-card li { margin-bottom: 6px; }
+
+    /* Donut */
+    .donut-wrap { display: flex; align-items: center; gap: 28px; flex-wrap: wrap; }
+    .donut-legend { flex: 1; min-width: 180px; }
+    .legend-row { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; font-size: 14px; }
+    .legend-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+    .legend-pct { font-family: var(--font-family-mono); font-weight: 700; margin-left: auto; font-size: 13px; }
+
+    /* Segment bars */
+    .seg-row { margin-bottom: 16px; }
+    .seg-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      margin-bottom: 5px;
+      font-family: var(--font-family-display);
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+    .seg-track { background: var(--card2); border-radius: 4px; height: 8px; overflow: hidden; position: relative; }
+    .seg-fill   { height: 100%; border-radius: 4px; }
+    .seg-proj   { height: 100%; border-radius: 4px; opacity: 0.45; }
+    .seg-note   { font-size: 12px; color: var(--muted); margin-top: 4px; }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Section 1 · Hero Banner -->
+  <div class="hero">
+    <div class="hero-ticker">NASDAQ: SOFI &nbsp;|&nbsp; Stock Analysis &nbsp;|&nbsp; June 2026</div>
+    <div class="hero-name">SoFi Technologies, Inc.</div>
+    <div class="hero-tagline">A digital bank that does everything in one app — borrow money, save it, invest it, and spend it.</div>
+    <div class="hero-pills">
+      <span class="pill pill-blue">Digital Banking</span>
+      <span class="pill pill-green">Profitable</span>
+      <span class="pill pill-red">Accounting Scrutiny Risk</span>
+    </div>
+  </div>
+
+  <!-- Section 2 · TL;DR -->
+  <div class="tldr">
+    <h2>TL;DR</h2>
+    <div class="tldr-item">
+      <span class="tldr-sym" style="color:var(--green)">+</span>
+      <span>SoFi is a fully digital bank with 14.7 million members — it offers loans, savings accounts, investing, and credit cards all in one app, competing directly with Chase and Bank of America without a single physical branch.</span>
+    </div>
+    <div class="tldr-item">
+      <span class="tldr-sym" style="color:var(--yellow)">!</span>
+      <span>Q1 2026 delivered record $1.1B revenue (+43% year-over-year) and net income of $167M, but a Muddy Waters short-seller report and a securities law investigation by Block &amp; Leviton have created a cloud of legal uncertainty that is keeping the stock depressed despite strong fundamentals.</span>
+    </div>
+    <div class="tldr-item">
+      <span class="tldr-sym" style="color:var(--accent)">&#9658;</span>
+      <span>SoFi launched SoFiUSD — the first stablecoin (a digital dollar) ever issued by a US national bank — giving its 15 million members a yield-bearing crypto product and putting SoFi ahead of every major bank in the emerging blockchain-banking market.</span>
+    </div>
+    <div class="tldr-item">
+      <span class="tldr-sym" style="color:var(--red)">-</span>
+      <span>Active legal risks: Muddy Waters alleges off-balance-sheet debt and loan overvaluation; Block &amp; Leviton is investigating for potential securities fraud. Neither is resolved and both are keeping institutional buyers on the sidelines.</span>
+    </div>
+    <div class="tldr-item">
+      <span class="tldr-sym" style="color:var(--green)">+</span>
+      <span>Analyst average price target is $20.90 vs. current ~$17.40 (+20% upside). Hold consensus (15 analysts, Jun 20 2026). Next binary event: Q2 2026 earnings, expected late July 2026.</span>
+    </div>
+  </div>
+
+  <!-- Section 3 · Financial Snapshot -->
+  <div class="section">
+    <div class="section-title">Financial Snapshot</div>
+    <div class="stat-grid">
+      <div class="stat-card">
+        <div class="stat-label">Stock Price</div>
+        <div class="stat-value">~$17.40</div>
+        <div class="stat-sub">Approx. Jun 2026</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Market Cap</div>
+        <div class="stat-value">~$17B</div>
+        <div class="stat-sub">Approx. Jun 2026</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Revenue (Q1 2026)</div>
+        <div class="stat-value val-green">$1.10B</div>
+        <div class="stat-sub">+43% YoY</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Net Income (Q1 2026)</div>
+        <div class="stat-value val-green">$166.7M</div>
+        <div class="stat-sub">+134% YoY</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Diluted EPS (Q1 2026)</div>
+        <div class="stat-value val-green">$0.12</div>
+        <div class="stat-sub">vs $0.06 prior year</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Adj. EBITDA Margin</div>
+        <div class="stat-value val-green">31%</div>
+        <div class="stat-sub">Q1 2026 · $340M</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">FY2026 Rev. Guidance</div>
+        <div class="stat-value" style="font-size:17px">$4.655B</div>
+        <div class="stat-sub">~30% growth implied</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Analyst Avg. Target</div>
+        <div class="stat-value val-green">$20.90</div>
+        <div class="stat-sub">24 analysts · +20% upside</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Next Binary Event</div>
+        <div class="stat-value" style="font-size:15px">Q2 2026</div>
+        <div class="stat-sub">Earnings · Late Jul 2026</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 4 · Revenue Breakdown Chart -->
+  <div class="section">
+    <div class="section-title">Revenue Mix <span style="font-size:10px;font-weight:600;letter-spacing:1.5px;color:var(--muted);font-family:var(--font-family-display);text-transform:uppercase;margin-left:8px">[MODEL ESTIMATE]</span></div>
+    <div class="card">
+      <div class="donut-wrap">
+        <!-- Circumference ≈ 440 (r=70). Segments start at top (offset = -110). -->
+        <!-- Lending 58% = 255; FinServ 27% = 119; TechPlatform 15% = 66 -->
+        <svg width="200" height="200" viewBox="0 0 200 200">
+          <circle cx="100" cy="100" r="70" fill="none" stroke="#DDD5BC" stroke-width="28"/>
+          <!-- Lending: 58% -->
+          <circle cx="100" cy="100" r="70" fill="none" stroke="#1E3B6F" stroke-width="28"
+                  stroke-dasharray="255 440" stroke-dashoffset="-110" stroke-linecap="butt"/>
+          <!-- Financial Services: 27% -->
+          <circle cx="100" cy="100" r="70" fill="none" stroke="#8B4513" stroke-width="28"
+                  stroke-dasharray="119 440" stroke-dashoffset="-365" stroke-linecap="butt"/>
+          <!-- Technology Platform: 15% -->
+          <circle cx="100" cy="100" r="70" fill="none" stroke="#B8860B" stroke-width="28"
+                  stroke-dasharray="66 440" stroke-dashoffset="-484" stroke-linecap="butt"/>
+          <text x="100" y="104" text-anchor="middle" font-family="'Cinzel',serif" font-size="12" font-weight="700" fill="#1C1812">Revenue</text>
+        </svg>
+        <div class="donut-legend">
+          <div class="legend-row">
+            <div class="legend-dot" style="background:#1E3B6F"></div>
+            <span>Lending</span>
+            <span class="legend-pct">58%</span>
+          </div>
+          <div class="legend-row">
+            <div class="legend-dot" style="background:#8B4513"></div>
+            <span>Financial Services</span>
+            <span class="legend-pct">27%</span>
+          </div>
+          <div class="legend-row">
+            <div class="legend-dot" style="background:#B8860B"></div>
+            <span>Technology Platform</span>
+            <span class="legend-pct">15%</span>
+          </div>
+        </div>
+      </div>
+
+      <p style="font-size:12px;color:var(--muted);margin:14px 0 20px 0">Estimated mix based on SoFi Q1 2026 earnings release and segment disclosures. Exact revenue breakdown not publicly disclosed as percentage of total.</p>
+
+      <div class="seg-row">
+        <div class="seg-label"><span>Lending</span><span style="font-family:var(--font-family-mono)">58% &rarr; 45%</span></div>
+        <div class="seg-track">
+          <div class="seg-fill" style="width:58%;background:#1E3B6F"></div>
+        </div>
+        <div class="seg-proj js-proj-bar" data-target="45" style="width:0%;background:#1E3B6F;margin-top:3px;height:4px;border-radius:2px"></div>
+        <div class="seg-note">Personal, student, and home loans remain the largest revenue source but shrink as a share as fee-based services scale.</div>
+      </div>
+
+      <div class="seg-row">
+        <div class="seg-label"><span>Financial Services</span><span style="font-family:var(--font-family-mono)">27% &rarr; 40%</span></div>
+        <div class="seg-track">
+          <div class="seg-fill" style="width:27%;background:#8B4513"></div>
+        </div>
+        <div class="seg-proj js-proj-bar" data-target="40" style="width:0%;background:#8B4513;margin-top:3px;height:4px;border-radius:2px"></div>
+        <div class="seg-note">Banking accounts, investing, credit card, and now stablecoin — fastest-growing segment with 158% earnings growth in FY2025.</div>
+      </div>
+
+      <div class="seg-row">
+        <div class="seg-label"><span>Technology Platform</span><span style="font-family:var(--font-family-mono)">15% &rarr; 15%</span></div>
+        <div class="seg-track">
+          <div class="seg-fill" style="width:15%;background:#B8860B"></div>
+        </div>
+        <div class="seg-proj js-proj-bar" data-target="15" style="width:0%;background:#B8860B;margin-top:3px;height:4px;border-radius:2px"></div>
+        <div class="seg-note">Galileo and Technisys — infrastructure sold to other fintechs. Stable but facing client concentration risk.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 5 · What Does This Company Actually Do? -->
+  <div class="section">
+    <div class="section-title">What Does This Company Actually Do?</div>
+    <div class="grid-2">
+      <div class="card">
+        <h3>The Simple Story</h3>
+        <p>Imagine having one app on your phone that could do everything a bank does — give you a loan for school or a house, hold your savings and pay you interest, let you buy stocks, and even issue you a credit card. That is SoFi. Unlike Chase or Wells Fargo, SoFi has no physical bank branches. It does everything through your phone, which means lower costs and friendlier rates. The more products a member uses, the cheaper it is for SoFi to serve them — think of it like a gym membership that gets more valuable the more classes you take.</p>
+      </div>
+      <div class="card">
+        <h3>The Big Bet Right Now</h3>
+        <p>SoFi is betting that its 14.7 million members will each use more products over time — a strategy called "cross-sell." Right now, 43% of new financial products opened each quarter come from existing members, which means SoFi is converting its members into multi-product customers. At the same time, SoFi is pivoting toward fee-based services (investing, stablecoins, crypto) that generate revenue without putting loans on its balance sheet. If this capital-light mix shift succeeds, profit margins could expand dramatically through 2028.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 6 · Business Model -->
+  <div class="section">
+    <div class="section-title">Business Model</div>
+    <div class="grid-2">
+      <div class="card">
+        <h3>How They Make Money</h3>
+        <ul style="margin:0;padding-left:18px;font-size:15px;line-height:1.65">
+          <li>Interest income on personal, student, and home loans originated and held on balance sheet</li>
+          <li>Loan Platform Business fees — selling loans to third-party institutional buyers without holding credit risk</li>
+          <li>Banking fees from SoFi Money deposit accounts and SoFi Credit Card interchange</li>
+          <li>Investment management fees and brokerage commissions via SoFi Invest</li>
+          <li>Technology licensing fees from Galileo and Technisys — sold to other fintech companies</li>
+          <li>Stablecoin yield spread from SoFiUSD (launched May 2026)</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Why the Model Is Clever</h3>
+        <ul style="margin:0;padding-left:18px;font-size:15px;line-height:1.65">
+          <li>Member acquisition cost is amortized across more products — the flywheel gets cheaper per member over time</li>
+          <li>$40B in member deposits provides cheap funding for loans, widening net interest margin versus non-bank lenders</li>
+          <li>National bank charter (granted 2022) gives SoFi regulatory legitimacy and deposit insurance that pure fintechs lack</li>
+          <li>Galileo powers over 100 fintech companies — SoFi earns B2B infrastructure fees while competing with those same clients in B2C</li>
+          <li>Capital-light fee revenue is growing faster than lending, reducing balance-sheet risk without sacrificing revenue growth</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 7 · Hidden Catalyst Deep Dive -->
+  <div class="section">
+    <div class="section-title">Hidden Catalyst Deep Dive</div>
+
+    <div class="grid-2" style="margin-bottom:16px">
+      <div class="card">
+        <h3>The Opportunity</h3>
+        <p>SoFiUSD — launched May 2026 — is the first stablecoin (a digital coin always worth exactly $1) issued by a US national bank. It lives on Ethereum and Solana blockchains, earns members 4.2% annual yield, and is redeemable 1:1 for dollars at any time. Future roadmap includes tokenized deposits and cross-border payments. Unlike crypto-native stablecoins like USDC, SoFiUSD comes with FDIC-adjacent bank trust and can be distributed to all 14.7 million existing SoFi members with no new customer acquisition cost.</p>
+      </div>
+      <div class="card">
+        <h3>Why This Company Wins</h3>
+        <p>No major US bank has done this yet. JP Morgan has its own blockchain but only for institutional clients. Coinbase and Circle (USDC) are not banks and cannot offer insured deposits. SoFi's national bank charter gives it the legal authority that crypto-native firms lack, while its app-based distribution gives it 14.7 million retail wallets that no bank-issued stablecoin competitor currently has. Additionally, SoFi was named in the SpaceX IPO prospectus as a potential retail distribution broker — the first high-profile deal that proves SoFi can compete with Fidelity and Schwab for marquee IPO allocations.</p>
+      </div>
+    </div>
+
+    <div class="stat-grid" style="margin-bottom:20px">
+      <div class="stat-card">
+        <div class="stat-label">TAM / Market Size</div>
+        <div class="stat-value">$250B+</div>
+        <div class="stat-sub">Global stablecoin market</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Key Date / Event</div>
+        <div class="stat-value" style="font-size:16px">May 2026</div>
+        <div class="stat-sub">SoFiUSD live on banking app</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Company Readiness</div>
+        <div class="stat-value" style="font-size:15px">High</div>
+        <div class="stat-sub">Product live, 15M member base</div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-bottom:16px">
+      <h3>Timeline</h3>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-dot past"></div>
+          <div class="timeline-date">Jan 2022</div>
+          <div class="timeline-event">SoFi receives US national bank charter — a rare regulatory milestone that lets it hold deposits and issue stablecoins legally.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot past"></div>
+          <div class="timeline-date">Mar 2026</div>
+          <div class="timeline-event">Muddy Waters publishes short report — stock drops to mid-$15s but company denies all allegations and announces plan for legal action.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot past"></div>
+          <div class="timeline-date">May 2026</div>
+          <div class="timeline-event">SoFiUSD stablecoin launches — first bank-issued USD stablecoin on a consumer banking app. Stock surges 12% on the news.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot present"></div>
+          <div class="timeline-date">Now — Jun 2026</div>
+          <div class="timeline-event">SoFiUSD available to all members on Ethereum and Solana. SpaceX IPO retail distribution role confirmed. Legal investigation ongoing.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot future"></div>
+          <div class="timeline-date">Late 2026</div>
+          <div class="timeline-event">Expected rollout of tokenized deposits and cross-border transfers on SoFiUSD — could open international remittance market.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot future"></div>
+          <div class="timeline-date">2027–2028</div>
+          <div class="timeline-event">Management targets 38–42% EPS compound annual growth — stablecoin and IPO distribution fee revenue could be a meaningful contributor if regulatory environment is supportive.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-title" style="margin-top:20px">Catalyst Scenarios <span style="font-size:10px;font-weight:600;letter-spacing:1.5px;color:var(--muted);font-family:var(--font-family-display);text-transform:uppercase;margin-left:8px">[EDITORIAL OPINION]</span></div>
+    <div class="scenario-grid">
+      <div class="scenario-card scenario-bull">
+        <h3>Positive Outcome</h3>
+        <div class="scenario-prob val-green">35%</div>
+        <div class="scenario-target">+40% stock impact</div>
+        <ul>
+          <li>SoFiUSD reaches $5B+ in assets under management within 12 months</li>
+          <li>Cross-border transfer feature launches, opening remittance revenue</li>
+          <li>Legal investigation resolves favorably with no findings</li>
+        </ul>
+      </div>
+      <div class="scenario-card scenario-base">
+        <h3>Mixed Outcome</h3>
+        <div class="scenario-prob val-yellow">45%</div>
+        <div class="scenario-target">+5% to -10% stock impact</div>
+        <ul>
+          <li>SoFiUSD grows slowly as members prefer traditional yield products</li>
+          <li>Legal overhang persists through year-end, capping institutional buying</li>
+        </ul>
+      </div>
+      <div class="scenario-card scenario-bear">
+        <h3>Negative Outcome</h3>
+        <div class="scenario-prob val-red">20%</div>
+        <div class="scenario-target">-20% stock impact</div>
+        <ul>
+          <li>Regulatory body restricts bank-issued stablecoin pending new legislation</li>
+          <li>Competitor (JPMorgan retail) launches bank stablecoin with larger reach</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 8 · Competitive Edge -->
+  <div class="section">
+    <div class="section-title">Competitive Edge</div>
+    <div class="card">
+      <div class="item-row">
+        <div class="item-icon">&#9733;</div>
+        <div>
+          <div class="item-title">National Bank Charter</div>
+          <div class="item-desc">SoFi is one of the very few digital-only banks in the US with a full national bank charter, giving it access to cheap FDIC-insured deposit funding that non-bank fintechs cannot match. This structural cost advantage directly widens loan margins.</div>
+        </div>
+      </div>
+      <div class="item-row">
+        <div class="item-icon">&#9733;</div>
+        <div>
+          <div class="item-title">Cross-Sell Flywheel at Scale</div>
+          <div class="item-desc">43% of new financial products each quarter come from existing members — meaning SoFi's 14.7 million members are becoming more profitable every year without proportional marketing spend. This compounding cross-sell is the core business engine.</div>
+        </div>
+      </div>
+      <div class="item-row">
+        <div class="item-icon">&rarr;</div>
+        <div>
+          <div class="item-title">First Mover in Bank-Issued Stablecoins</div>
+          <div class="item-desc">SoFiUSD (May 2026) is the first stablecoin issued by a US national bank on a consumer banking app. No major competitor — including JPMorgan, Bank of America, or Coinbase — has matched this combination of bank charter + consumer distribution.</div>
+        </div>
+      </div>
+      <div class="item-row">
+        <div class="item-icon">&rarr;</div>
+        <div>
+          <div class="item-title">Galileo B2B Infrastructure Moat</div>
+          <div class="item-desc">Galileo processes payments for over 100 fintech companies. This gives SoFi a recurring B2B revenue stream and intelligence on fintech industry trends — an underappreciated advantage that most investors treat as a footnote.</div>
+        </div>
+      </div>
+      <div class="item-row">
+        <div class="item-icon">&#9888;</div>
+        <div>
+          <div class="item-title">CEO Insider Buying (Underappreciated)</div>
+          <div class="item-desc">CEO Anthony Noto bought $2.25 million of SOFI stock at market prices during the 2026 downturn — a direct signal of management conviction. Combined with clear 2028 financial targets (30% revenue CAGR, 38–42% EPS CAGR), this is a management team putting real money behind its own forecasts.</div>
+        </div>
+      </div>
+      <div class="item-row">
+        <div class="item-icon">&#9733;</div>
+        <div>
+          <div class="item-title">$40B Deposit Base</div>
+          <div class="item-desc">$40 billion in member deposits provides a self-funded lending machine. Unlike marketplace lenders who depend on volatile wholesale funding, SoFi's deposit-backed model is structurally lower cost and more resilient to interest rate shocks.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 9 · Analyst Scorecard -->
+  <div class="section">
+    <div class="section-title">Analyst Scorecard</div>
+    <div class="card">
+      <div class="meter-row">
+        <div class="meter-label"><span>Business Model Strength</span><span>7 / 10</span></div>
+        <div class="meter-track"><div class="meter-fill green" style="width:70%"></div></div>
+      </div>
+      <div class="meter-row">
+        <div class="meter-label"><span>Revenue Growth</span><span>9 / 10</span></div>
+        <div class="meter-track"><div class="meter-fill green" style="width:90%"></div></div>
+      </div>
+      <div class="meter-row">
+        <div class="meter-label"><span>Profitability</span><span>6 / 10</span></div>
+        <div class="meter-track"><div class="meter-fill yellow" style="width:60%"></div></div>
+      </div>
+      <div class="meter-row">
+        <div class="meter-label"><span>Competitive Moat</span><span>6 / 10</span></div>
+        <div class="meter-track"><div class="meter-fill yellow" style="width:60%"></div></div>
+      </div>
+      <div class="meter-row">
+        <div class="meter-label"><span>Regulatory Safety</span><span>3 / 10</span></div>
+        <div class="meter-track"><div class="meter-fill red" style="width:30%"></div></div>
+      </div>
+      <div class="meter-row">
+        <div class="meter-label"><span>Management Execution</span><span>7 / 10</span></div>
+        <div class="meter-track"><div class="meter-fill green" style="width:70%"></div></div>
+      </div>
+      <div class="meter-row">
+        <div class="meter-label"><span>Long-Term Potential</span><span>8 / 10</span></div>
+        <div class="meter-track"><div class="meter-fill green" style="width:80%"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 10 · Current Situation -->
+  <div class="section">
+    <div class="section-title">Current Situation</div>
+    <div class="grid-2">
+      <div class="card">
+        <h3 style="color:var(--color-success)">Growth Drivers</h3>
+        <div class="item-row">
+          <div class="item-icon" style="color:var(--green)">&rarr;</div>
+          <div>
+            <div class="item-title">Record Loan Originations</div>
+            <div class="item-desc">$12.2 billion in loans originated in Q1 2026, a 68% year-over-year jump. Demand for personal and student loans is accelerating, driving core lending revenue.</div>
+          </div>
+        </div>
+        <div class="item-row">
+          <div class="item-icon" style="color:var(--green)">&rarr;</div>
+          <div>
+            <div class="item-title">Membership Flywheel (+35% YoY)</div>
+            <div class="item-desc">1.055 million new members joined in Q1 2026 alone — a record. Each new member is a potential buyer of 5+ SoFi products over their lifetime.</div>
+          </div>
+        </div>
+        <div class="item-row">
+          <div class="item-icon" style="color:var(--green)">&rarr;</div>
+          <div>
+            <div class="item-title">SoFiUSD Stablecoin Launch</div>
+            <div class="item-desc">First bank-issued USD stablecoin live on a consumer app, offering 4.2% yield. Opens a new fee stream and differentiates SoFi in the crypto-banking convergence trend.</div>
+          </div>
+        </div>
+        <div class="item-row">
+          <div class="item-icon" style="color:var(--green)">&rarr;</div>
+          <div>
+            <div class="item-title">Capital-Light Revenue Shift</div>
+            <div class="item-desc">Financial Services segment earnings grew 158% in FY2025. The business is migrating toward fee and spread income that doesn't require growing the loan book, improving long-run return on equity.</div>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <h3 style="color:var(--color-error)">Risks</h3>
+        <div class="item-row">
+          <div class="item-icon" style="color:var(--red)">&#9888;</div>
+          <div>
+            <div class="item-title">Block &amp; Leviton Securities Investigation [ACTIVE RISK]</div>
+            <div class="item-desc">Law firm is investigating SoFi Technologies for potential securities law violations after a 13% single-day stock drop following Q1 results. No resolution announced.</div>
+            <div class="item-meta">Active as of Jun 2026 &middot; Source: GlobeNewswire</div>
+          </div>
+        </div>
+        <div class="item-row">
+          <div class="item-icon" style="color:var(--red)">&#9888;</div>
+          <div>
+            <div class="item-title">Muddy Waters Accounting Allegations [ACTIVE RISK]</div>
+            <div class="item-desc">Published Mar 2026. Claims $312M+ in unrecorded off-balance-sheet debt, "Enron-esque" structures, incorrect student loan discount rates, and understated default exposure. SoFi denies all claims and has announced planned legal action. Muddy Waters has "stonewalled" 11 follow-up questions.</div>
+            <div class="item-meta">Active as of Jun 2026 &middot; Source: Yahoo Finance / StockTwits</div>
+          </div>
+        </div>
+        <div class="item-row">
+          <div class="item-icon" style="color:var(--yellow)">&#9888;</div>
+          <div>
+            <div class="item-title">Negative Free Cash Flow [ACTIVE RISK]</div>
+            <div class="item-desc">Despite GAAP profitability, SoFi's free cash flow remains negative as it funds growth through loan originations. If credit conditions deteriorate, this cash burn becomes a balance sheet risk.</div>
+            <div class="item-meta">Active as of Jun 2026 &middot; Source: 247 Wall St.</div>
+          </div>
+        </div>
+        <div class="item-row">
+          <div class="item-icon" style="color:var(--yellow)">&#9888;</div>
+          <div>
+            <div class="item-title">Fintech Regulatory Tightening [ACTIVE RISK]</div>
+            <div class="item-desc">Broader regulatory scrutiny on digital lending and fintech business practices is increasing across the US. Policy changes could restrict SoFi's loan products or stablecoin business model.</div>
+            <div class="item-meta">Active as of Jun 2026 &middot; Source: Benzinga</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 11 · Overall Scenario Analysis -->
+  <div class="section">
+    <div class="section-title">Scenario Analysis <span style="font-size:10px;font-weight:600;letter-spacing:1.5px;color:var(--muted);font-family:var(--font-family-display);text-transform:uppercase;margin-left:8px">[EDITORIAL OPINION]</span></div>
+    <div class="scenario-grid">
+      <div class="scenario-card scenario-bull">
+        <h3>Bull Case</h3>
+        <div class="scenario-prob val-green">25%</div>
+        <div class="scenario-target">$28–$35 target</div>
+        <ul>
+          <li>Legal investigations resolve with no adverse findings</li>
+          <li>SoFiUSD gains traction, validating fintech-crypto crossover thesis</li>
+          <li>Interest rates fall 50–100bps, boosting loan demand</li>
+          <li>S&amp;P 500 inclusion triggers institutional buying</li>
+          <li>SpaceX IPO distribution fee revenue materializes at scale</li>
+        </ul>
+      </div>
+      <div class="scenario-card scenario-base">
+        <h3>Base Case</h3>
+        <div class="scenario-prob val-yellow">50%</div>
+        <div class="scenario-target">$18–$24 target</div>
+        <ul>
+          <li>Revenue continues growing 25–35% annually</li>
+          <li>Legal cloud persists through year-end without escalation</li>
+          <li>Stablecoin gains modest adoption, no breakout</li>
+          <li>P/E multiple stays compressed (30–35x) vs. fintech peers</li>
+          <li>FY2026 guidance ($4.655B) achieved, stock re-rates modestly</li>
+        </ul>
+      </div>
+      <div class="scenario-card scenario-bear">
+        <h3>Bear Case</h3>
+        <div class="scenario-prob val-red">25%</div>
+        <div class="scenario-target">$10–$14 target</div>
+        <ul>
+          <li>Muddy Waters allegations substantiated by SEC investigation</li>
+          <li>Class action lawsuit triggers large settlement or restatement</li>
+          <li>Credit cycle turns: loan defaults spike, GAAP profit disappears</li>
+          <li>Galileo loses major client, Technology Platform revenue falls</li>
+          <li>Rate environment stays elevated, crushing loan demand and margins</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 12 · Investor Debate -->
+  <div class="section">
+    <div class="section-title">Investor Debate <span style="font-size:10px;font-weight:600;letter-spacing:1.5px;color:var(--muted);font-family:var(--font-family-display);text-transform:uppercase;margin-left:8px">[EDITORIAL OPINION]</span></div>
+    <div class="debate-grid">
+      <div class="debate-card optimist">
+        <h3>The Optimist Sees&#8230;</h3>
+        <ul>
+          <li>A profitable digital bank growing at 43% YoY that trades at a P/E of just 37x — modest for a tech-adjacent financial platform with this trajectory</li>
+          <li>The stablecoin launch proves SoFi can move faster than traditional banks into new revenue categories</li>
+          <li>14.7 million members is the real moat — each additional product sold to an existing member costs almost nothing to acquire</li>
+          <li>CEO buying $2.25M of stock at market price is one of the strongest insider signals available</li>
+          <li>Management has guided to at least 30% compounding revenue growth through 2028 — if achieved, the stock is deeply undervalued at current prices</li>
+        </ul>
+      </div>
+      <div class="debate-card pessimist">
+        <h3>The Pessimist Sees&#8230;</h3>
+        <ul>
+          <li>Two unresolved legal threats — Muddy Waters and Block &amp; Leviton — that institutional money managers cannot underwrite until cleared</li>
+          <li>GAAP profits are real but free cash flow is negative — SoFi is still borrowing to grow, and that works only as long as credit quality holds</li>
+          <li>Competition is intensifying: Robinhood, Chime, and major banks are all chasing the same young professional demographic with comparable products</li>
+          <li>The Galileo technology business has been a drag — client concentration risk and slower growth make it an anchor on the premium valuation</li>
+          <li>At P/E 37x and P/S 5x, SoFi is priced like a tech company but earns like a bank — any earnings miss or credit quality deterioration will re-rate it harshly</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 13 · Bottom Line Verdict -->
+  <div class="section">
+    <div class="section-title">Bottom Line Verdict <span style="font-size:10px;font-weight:600;letter-spacing:1.5px;color:var(--muted);font-family:var(--font-family-display);text-transform:uppercase;margin-left:8px">[EDITORIAL OPINION]</span></div>
+    <div class="verdict">
+      <div class="verdict-title">The Verdict</div>
+      <p>SoFi is like a runner who just qualified for the Olympics — the talent is undeniable, the results are real, but there is an injury nobody has fully diagnosed yet. The business is growing fast and is now genuinely profitable, yet two unresolved legal investigations are doing exactly what short sellers want: keeping the stock below its fair value while the bulls wait for a green light that may or may not come.</p>
+      <p>The long-term bull case is credible. SoFi has built what the traditional banking industry could not: a fully digital, fully regulated national bank with 15 million engaged members who are using more products every quarter. The SoFiUSD stablecoin launch is not a gimmick — it is the first time any US national bank has put a bank-grade stablecoin directly into the hands of retail customers at scale. If the crypto-banking convergence continues, SoFi has a structural first-mover advantage that no traditional bank can match without years of infrastructure build.</p>
+      <p>The near-term pain is also real. The Muddy Waters report and Block &amp; Leviton investigation are not resolved and carry tail risk — if accounting irregularities are substantiated, the stock could test $10. Investors with short time horizons (under 12 months) should treat this as speculative until legal clarity emerges. For patient investors with a 2–3 year view who believe in the digital banking thesis, a gradual position at current prices — sized to tolerate a 30–40% drawdown in the bear case — offers an asymmetric risk-reward profile. Watch the Q2 2026 earnings (late July) for any update on the legal situation and free cash flow trajectory.</p>
+    </div>
+  </div>
+
+  <!-- Section 14 · Wall Street Consensus -->
+  <div class="section">
+    <div class="section-title">Wall Street Consensus <span style="font-size:10px;font-weight:600;letter-spacing:1.5px;color:var(--muted);font-family:var(--font-family-display);text-transform:uppercase;margin-left:8px">[ANALYST ESTIMATE]</span></div>
+    <div class="stat-grid">
+      <div class="stat-card">
+        <div class="stat-label">Consensus Rating</div>
+        <div class="stat-value" style="font-size:18px">Hold</div>
+        <div class="stat-sub">6 Buy &middot; 7 Hold &middot; 2 Sell (of 15)</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Avg. Price Target</div>
+        <div class="stat-value val-green">$20.90</div>
+        <div class="stat-sub">vs. ~$17.40 current (+20%)</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Target Range</div>
+        <div class="stat-value" style="font-size:16px">$17–$31</div>
+        <div class="stat-sub">Low: Truist $17 &middot; High: JPMorgan $31</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 15 · Footer -->
+  <div class="section" style="border-top:1px solid var(--border);padding-top:20px;margin-top:32px">
+    <div style="font-family:var(--font-family-display);font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:10px">Sources</div>
+    <ul style="font-size:13px;line-height:1.8;padding-left:18px;color:var(--muted)">
+      <li><a href="https://247wallst.com/investing/2026/05/29/down-30-from-its-highs-sofi-is-speeding-toward-aggressive-long-term-profits/" style="color:var(--color-primary)">Down 30% From Its Highs, SoFi Is Speeding Toward Aggressive Long-Term Profits — 24/7 Wall St.</a></li>
+      <li><a href="https://finance.yahoo.com/markets/stocks/articles/sofi-q1-2026-earnings-record-114615633.html" style="color:var(--color-primary)">SoFi Q1 2026 Earnings: Record Revenue, Profit Doubles — Yahoo Finance</a></li>
+      <li><a href="https://www.sec.gov/Archives/edgar/data/0001818874/000181887426000020/a2026q1earningsrelease.htm" style="color:var(--color-primary)">SoFi Technologies Q1 2026 Earnings Release (Form 8-K) — SEC EDGAR</a></li>
+      <li><a href="https://www.fool.com/investing/2026/05/02/sofi-technologies-just-delivered-record-growth-why/" style="color:var(--color-primary)">SoFi Technologies Just Delivered Record Growth. Why Did Investors Want More? — The Motley Fool</a></li>
+      <li><a href="https://investors.sofi.com/news/news-details/2026/SoFiUSD-Becomes-the-First-Stablecoin-Issued-by-a-US-National-Bank-to-Launch-on-a-Banking-Platform/default.aspx" style="color:var(--color-primary)">SoFiUSD Becomes the First Stablecoin Issued by a US National Bank — SoFi Investor Relations</a></li>
+      <li><a href="https://247wallst.com/investing/2026/05/29/sofi-technologies-surges-12-on-stablecoin-launch-robinhood-upstart-extend-fintech-bounce/" style="color:var(--color-primary)">SoFi Technologies Surges 12% on Stablecoin Launch — 24/7 Wall St.</a></li>
+      <li><a href="https://www.globenewswire.com/news-release/2026/04/29/3284111/23044/en/sofi-alert-securities-fraud-investigation-by-block-leviton-could-allow-sofi-technologies-investors-to-recover-losses.html" style="color:var(--color-primary)">SOFI Alert: Securities Fraud Investigation by Block &amp; Leviton — GlobeNewswire</a></li>
+      <li><a href="https://finance.yahoo.com/markets/stocks/articles/sofi-faces-muddy-waters-claims-042957120.html" style="color:var(--color-primary)">SoFi Faces Muddy Waters Claims While Strong Results Test Investor Confidence — Yahoo Finance</a></li>
+      <li><a href="https://fortune.com/2026/03/25/muddy-waters-sofi-stock-accounting/" style="color:var(--color-primary)">A Notorious Short-Seller Unloaded on SoFi. The Stock Shrugged It Off — Fortune</a></li>
+      <li><a href="https://www.benzinga.com/money/sofi-stock-price-prediction" style="color:var(--color-primary)">SoFi Technologies Stock Price Prediction 2026, 2027 &amp; 2030 — Benzinga</a></li>
+      <li><a href="https://stockanalysis.com/stocks/sofi/forecast/" style="color:var(--color-primary)">SoFi Technologies (SOFI) Stock Forecast &amp; Analyst Price Targets — Stock Analysis</a></li>
+      <li><a href="https://public.com/stocks/sofi/forecast-price-target" style="color:var(--color-primary)">SoFi Technologies Analyst Ratings &amp; Price Targets — Public.com (Jun 20, 2026)</a></li>
+      <li><a href="https://seekingalpha.com/article/4867184-sofi-recent-pullback-creates-opportunity-as-2026-catalysts-line-up" style="color:var(--color-primary)">SoFi: Recent Pullback Creates Opportunity As 2026 Catalysts Line Up — Seeking Alpha</a></li>
+      <li><a href="https://www.timothysykes.com/news/sofi-technologies-inc-sofi-news-2026_06_17/" style="color:var(--color-primary)">SOFI Stock Climbs As Stablecoin And SpaceX Link Fuel Buzz — StocksToTrade</a></li>
+      <li><a href="https://www.tradingview.com/news/zacks:bca53d164094b:0-sofi-s-capital-light-evolution-could-be-the-real-long-term-catalyst/" style="color:var(--color-primary)">SoFi's Capital-Light Evolution Could Be the Real Long-Term Catalyst — TradingView / Zacks</a></li>
+    </ul>
+    <p style="font-size:12px;color:var(--muted);margin-top:16px">This is not financial advice. For informational purposes only. Analysis produced: June 2026.</p>
+  </div>
+
+</div>
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const bar = entry.target;
+        const target = bar.dataset.target;
+        bar.style.transition = 'width 0.9s cubic-bezier(0.16,1,0.3,1)';
+        bar.style.width = target + '%';
+        observer.unobserve(bar);
+      }
+    });
+  }, { threshold: 0.3 });
+  document.querySelectorAll('.js-proj-bar').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
