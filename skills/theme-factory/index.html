@@ -4592,12 +4592,9 @@
           if (textShadow) spanStyle += `text-shadow:${textShadow};`;
         }
 
-        const RAW_BASE =
-          "https://raw.githubusercontent.com/PakawatPanyakorn/Obs-Sandbox/master/skills/theme-factory/";
-        const PREVIEW_BASE = "https://html-preview.github.io/?url=";
         const card = document.createElement("a");
         card.className = "card";
-        card.href = PREVIEW_BASE + RAW_BASE + filename;
+        card.href = filename;
         card.target = "_blank";
 
         const isFav = favorites.has(filename);
