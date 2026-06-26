@@ -94,6 +94,36 @@
         letter-spacing: 0;
       }
 
+      .home-btn {
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 99px;
+        padding: 0.3rem 0.85rem;
+        font-size: 0.72rem;
+        font-weight: 600;
+        color: var(--muted);
+        text-decoration: none;
+        transition: border-color 0.12s, color 0.12s;
+        white-space: nowrap;
+        flex-shrink: 0;
+        margin-top: 0.1rem;
+        letter-spacing: 0.02em;
+      }
+      .home-btn:hover {
+        border-color: var(--text);
+        color: var(--text);
+      }
+
+      .header-actions {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        flex-shrink: 0;
+      }
+
       .theme-toggle {
         display: flex;
         align-items: center;
@@ -665,7 +695,10 @@
         <h1>Gallery <span id="count">…</span></h1>
         <p>Click any theme to preview it.</p>
       </div>
-      <button class="theme-toggle" id="theme-toggle">☾ Dark</button>
+      <div class="header-actions">
+        <a class="home-btn" href="../../index.html">← Home</a>
+        <button class="theme-toggle" id="theme-toggle">☾ Dark</button>
+      </div>
     </header>
 
     <div id="filters">
