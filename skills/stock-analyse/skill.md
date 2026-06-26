@@ -11,7 +11,7 @@ disable-model-invocation: true
 
 ### Phase 1 · Research
 
-Read `~/.claude/skills/stock-analyse/data-schema.md`.
+Read `~/.claude/skills/stock-analyse/modules/data-schema.md`.
 Follow all research steps defined there (parallel queries → risk verification → data model population).
 Do not proceed to Phase 2 until the full data model is populated.
 
@@ -19,9 +19,9 @@ Do not proceed to Phase 2 until the full data model is populated.
 
 Read these three modules **in order** before writing a single line of HTML:
 
-1. `~/.claude/skills/stock-analyse/html-theme.md` — CSS tokens, Google Fonts, and every component's CSS
-2. `~/.claude/skills/stock-analyse/layout.md` — section order and HTML structure templates
-3. `~/.claude/skills/stock-analyse/ruleset.md` — anti-patterns, naming rules, and integrity constraints
+1. `~/.claude/skills/stock-analyse/modules/html-theme.md` — CSS tokens, Google Fonts, and every component's CSS
+2. `~/.claude/skills/stock-analyse/modules/layout.md` — section order and HTML structure templates
+3. `~/.claude/skills/stock-analyse/modules/ruleset.md` — anti-patterns, naming rules, and integrity constraints
 
 Write the complete HTML file in a single pass after reading all three modules.
 Apply every rule in `ruleset.md` silently — do not narrate fixes.
