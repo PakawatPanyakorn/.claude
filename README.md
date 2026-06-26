@@ -1,4 +1,14 @@
-Skill-showcase [Pages](https://pakawatpanyakorn.github.io/Obs-Sandbox/)
+# Obs-Sandbox
 
-- theme-factory : [Gallery](https://pakawatpanyakorn.github.io/Obs-Sandbox/skills/theme-factory/)
-- stock-analyse : [Ports](https://pakawatpanyakorn.github.io/Obs-Sandbox/skills/stock-analyse/)
+A collection of tools, analyses, and explorations.
+[**→ View Gallery**](https://pakawatpanyakorn.github.io/Obs-Sandbox/)
+
+---
+
+## Skills
+
+### [Theme Factory](https://pakawatpanyakorn.github.io/Obs-Sandbox/skills/theme-factory/)
+Extracts color palettes, typography, and design tokens from images or text prompts. Browse and preview generated themes directly in the gallery.
+
+### [Stock Analysis](https://pakawatpanyakorn.github.io/Obs-Sandbox/skills/stock-analyse/)
+Snapshot technical and fundamental data on US equities. Quick-scan charts and key metrics for research and screening.
