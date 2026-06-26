@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="prussian-blueprint">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Theme: Prussian Blueprint</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <script id="theme-data" type="application/json">
+  {
+    "name": "prussian-blueprint",
+    "description": "Architect's working drawing, pre-CAD. Prussian blue ground with white chalk lines. UI chrome IS the annotation — leader lines, dimension ticks, callout bubbles. Zero gradients, only line weights.",
+    "createdAt": "2026-06-26T00:00:00.000Z",
+    "source": "text",
+    "sourceFile": "",
+    "background": {
+      "type": "pattern",
+      "baseColor": "#003153",
+      "image": "layered-grid",
+      "size": "160px 160px, 40px 40px, 8px 8px",
+      "position": "0 0",
+      "repeat": "repeat",
+      "patternType": "hierarchical-grid",
+      "patternColor": "rgba(255,255,255,0.15)",
+      "patternOpacity": "0.15",
+      "patternSpacing": "160px / 40px / 8px",
+      "notes": "Three-layer blueprint grid: 8px sub-grid (3.5% opacity), 40px medium grid (8%), 160px major grid with dimension ticks (15%). Viewport frame border anchors the drawing sheet."
+    },
+    "colors": {
+      "primary": "#FFFFFF",
+      "primaryLight": "rgba(255,255,255,0.12)",
+      "secondary": "#CC2222",
+      "accent": "#FFD700",
+      "background": "#003153",
+      "surface": "#002644",
+      "surfaceAlt": "#001D38",
+      "text": "#FFFFFF",
+      "textMuted": "rgba(255,255,255,0.55)",
+      "textOnPrimary": "#003153",
+      "border": "rgba(255,255,255,0.22)",
+      "success": "#00CC66",
+      "warning": "#FFD700",
+      "error": "#FF4444"
+    },
+    "typography": {
+      "fontFamily": "'Share Tech Mono', 'Courier New', monospace",
+      "fontFamilyMono": "'Share Tech Mono', 'Courier New', monospace",
+      "fontFamilyDisplay": "'Rajdhani', 'Arial Narrow', sans-serif",
+      "scaleBase": "16px",
+      "headingWeight": "700",
+      "bodyWeight": "400",
+      "lineHeight": "1.6"
+    },
+    "spacing": {
+      "borderRadius": "0px",
+      "cardRadius": "0px",
+      "buttonRadius": "0px",
+      "spaceUnit": "8px",
+      "density": "comfortable"
+    },
+    "shadows": {
+      "sm": "0 0 0 1px rgba(255,255,255,0.15)",
+      "md": "0 0 0 1px rgba(255,255,255,0.2), 0 4px 16px rgba(0,0,0,0.4)",
+      "lg": "0 0 0 1px rgba(255,255,255,0.25), 0 8px 32px rgba(0,0,0,0.5)",
+      "xl": "0 0 0 1px rgba(255,255,255,0.3), 0 12px 48px rgba(0,0,0,0.6)",
+      "colored": "0 0 0 1px #CC2222",
+      "inset": "inset 0 1px 3px rgba(0,0,0,0.4)",
+      "elevation": "subtle"
+    },
+    "gradients": {
+      "hero": "none",
+      "card": "none",
+      "button": "none",
+      "text": "none",
+      "accent": "none"
+    },
+    "effects": {
+      "luminescence": "none",
+      "glowColor": "#FFFFFF",
+      "glowBlur": "0px",
+      "glowSm": "none",
+      "glowMd": "none",
+      "glowLg": "none",
+      "glassBlur": "0",
+      "glassTint": "none",
+      "gradientBorder": "none",
+      "noiseOpacity": "0",
+      "textShadow": "none",
+      "backdropFilter": "none"
+    },
+    "motion": {
+      "durationFast": "100ms",
+      "durationBase": "180ms",
+      "durationSlow": "300ms",
+      "easing": "cubic-bezier(0.25, 0, 0.5, 1)",
+      "feel": "subtle"
+    },
+    "design": {
+      "aesthetic": "technical",
+      "personality": ["precise", "architectural", "drafting", "analytical"],
+      "borderStyle": "hairline",
+      "iconStyle": "sharp",
+      "imageStyle": "abstract",
+      "surfaceTexture": "flat",
+      "hierarchyClarity": "high",
+      "notes": "UI chrome elements ARE technical annotations. Leader lines with arrowheads instead of normal labels. Callout bubbles with section markers. Dimension ticks on card borders. Only line weights as decoration — no fills, no gradients."
+    }
+  }
+  </script>
+
+  <style>
+    :root {
+      --bg-base: #003153;
+      --bg-image:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cpath d='M160 0L0 0 0 160' fill='none' stroke='rgba(255,255,255,0.15)' stroke-width='1'/%3E%3Cline x1='0' y1='0' x2='6' y2='0' stroke='rgba(255,255,255,0.5)' stroke-width='1'/%3E%3Cline x1='0' y1='0' x2='0' y2='6' stroke='rgba(255,255,255,0.5)' stroke-width='1'/%3E%3Cline x1='80' y1='0' x2='80' y2='5' stroke='rgba(255,255,255,0.3)' stroke-width='0.75'/%3E%3Cline x1='0' y1='80' x2='5' y2='80' stroke='rgba(255,255,255,0.3)' stroke-width='0.75'/%3E%3Cline x1='40' y1='0' x2='40' y2='3' stroke='rgba(255,255,255,0.2)' stroke-width='0.5'/%3E%3Cline x1='120' y1='0' x2='120' y2='3' stroke='rgba(255,255,255,0.2)' stroke-width='0.5'/%3E%3Cline x1='0' y1='40' x2='3' y2='40' stroke='rgba(255,255,255,0.2)' stroke-width='0.5'/%3E%3Cline x1='0' y1='120' x2='3' y2='120' stroke='rgba(255,255,255,0.2)' stroke-width='0.5'/%3E%3C/svg%3E"),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Cpath d='M40 0L0 0 0 40' fill='none' stroke='rgba(255,255,255,0.08)' stroke-width='0.5'/%3E%3C/svg%3E"),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M8 0L0 0 0 8' fill='none' stroke='rgba(255,255,255,0.035)' stroke-width='0.5'/%3E%3C/svg%3E");
+      --bg-size: 160px 160px, 40px 40px, 8px 8px;
+      --bg-position: 0 0, 0 0, 0 0;
+      --bg-repeat: repeat, repeat, repeat;
+
+      --color-primary: #FFFFFF;
+      --color-primary-light: rgba(255,255,255,0.12);
+      --color-secondary: #CC2222;
+      --color-accent: #FFD700;
+      --color-bg: #003153;
+      --color-surface: #002644;
+      --color-surface-alt: #001D38;
+      --color-text: #FFFFFF;
+      --color-text-muted: rgba(255,255,255,0.55);
+      --color-text-on-primary: #003153;
+      --color-border: rgba(255,255,255,0.22);
+      --color-success: #00CC66;
+      --color-warning: #FFD700;
+      --color-error: #FF4444;
+
+      --font-family: 'Share Tech Mono', 'Courier New', monospace;
+      --font-family-mono: 'Share Tech Mono', 'Courier New', monospace;
+      --font-family-display: 'Rajdhani', 'Arial Narrow', sans-serif;
+      --font-size-base: 16px;
+      --font-weight-heading: 700;
+      --font-weight-body: 400;
+      --line-height: 1.6;
+
+      --radius: 0px;
+      --radius-card: 0px;
+      --radius-button: 0px;
+
+      --shadow-sm: 0 0 0 1px rgba(255,255,255,0.15);
+      --shadow-md: 0 0 0 1px rgba(255,255,255,0.2), 0 4px 16px rgba(0,0,0,0.4);
+      --shadow-lg: 0 0 0 1px rgba(255,255,255,0.25), 0 8px 32px rgba(0,0,0,0.5);
+      --shadow-xl: 0 0 0 1px rgba(255,255,255,0.3), 0 12px 48px rgba(0,0,0,0.6);
+      --shadow-colored: 0 0 0 1px #CC2222;
+      --shadow-inset: inset 0 1px 3px rgba(0,0,0,0.4);
+
+      --gradient-hero: none;
+      --gradient-card: none;
+      --gradient-button: none;
+      --gradient-text: none;
+      --gradient-accent: none;
+
+      --glow-color: #FFFFFF;
+      --glow-sm: none; --glow-md: none; --glow-lg: none;
+      --glass-blur: 0px; --glass-tint: none;
+      --backdrop-filter: none; --text-shadow: none;
+      --border-gradient: none; --noise-opacity: 0;
+
+      --space-1: 4px; --space-2: 8px; --space-3: 12px;
+      --space-4: 16px; --space-6: 24px; --space-8: 32px;
+      --duration-fast: 100ms; --duration-base: 180ms; --duration-slow: 300ms;
+      --easing: cubic-bezier(0.25, 0, 0.5, 1);
+      --border-width: 1px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: var(--bg-base);
+      background-image: var(--bg-image);
+      background-size: var(--bg-size);
+      background-position: var(--bg-position);
+      background-repeat: var(--bg-repeat);
+      color: var(--color-text);
+      font-family: var(--font-family);
+      font-size: var(--font-size-base);
+      line-height: var(--line-height);
+      padding: 2rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    /* ── GIMMICK: Leader lines — annotation arrows as UI chrome ── */
+    .leader-label {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: var(--font-family-display);
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+    }
+    .leader-label::before {
+      content: '→';
+      color: var(--color-secondary);
+      font-size: 0.8rem;
+    }
+
+    /* ── GIMMICK: Callout bubble — section markers ── */
+    .callout-marker {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 22px;
+      height: 22px;
+      border: 1.5px solid var(--color-primary);
+      font-family: var(--font-family-display);
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--color-primary);
+      flex-shrink: 0;
+    }
+
+    /* ── GIMMICK: Dimension ticks on card borders ── */
+    .dim-card {
+      position: relative;
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      padding: 1.5rem;
+      box-shadow: var(--shadow-md);
+    }
+    .dim-card::before,
+    .dim-card::after {
+      content: '';
+      position: absolute;
+      background: var(--color-primary);
+      opacity: 0.4;
+    }
+    .dim-card::before {
+      top: -5px; left: 20%; right: 20%;
+      height: 1px;
+    }
+    .dim-card::after {
+      bottom: -5px; left: 20%; right: 20%;
+      height: 1px;
+    }
+    .dim-tick-left,
+    .dim-tick-right {
+      position: absolute;
+      top: 20%;
+      bottom: 20%;
+      width: 1px;
+      background: var(--color-primary);
+      opacity: 0.4;
+    }
+    .dim-tick-left { left: -5px; }
+    .dim-tick-right { right: -5px; }
+
+    .tf-header {
+      background: var(--color-surface-alt);
+      border: 1px solid var(--color-border);
+      color: var(--color-text);
+      padding: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: var(--shadow-lg);
+      position: relative;
+    }
+    .tf-header::before {
+      content: 'SHEET 001 — THEME PREVIEW — SCALE 1:1';
+      position: absolute;
+      top: 0.5rem; right: 1rem;
+      font-family: var(--font-family-mono);
+      font-size: 0.6rem;
+      color: var(--color-text-muted);
+      letter-spacing: 0.1em;
+    }
+    .tf-header .tag-line {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.65rem;
+      color: var(--color-text-muted);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
+    .tf-header h1 {
+      font-family: var(--font-family-display);
+      font-size: 2.5rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+      color: var(--color-primary);
+    }
+    .tf-header p { font-size: 0.85rem; color: var(--color-text-muted); }
+    .title-bar {
+      height: 5px;
+      background: repeating-linear-gradient(
+        45deg,
+        var(--color-secondary),
+        var(--color-secondary) 3px,
+        rgba(0,0,0,0.35) 3px,
+        rgba(0,0,0,0.35) 6px
+      );
+      margin-top: 1.5rem;
+    }
+
+    .tf-section { margin-bottom: 2rem; }
+    .tf-section-title {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-family: var(--font-family-display);
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      margin-bottom: 0.75rem;
+    }
+    .tf-section-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--color-border);
+    }
+
+    .tf-swatches { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 0.75rem; }
+    .tf-swatch { overflow: hidden; border: 1px solid var(--color-border); }
+    .tf-swatch-color { height: 64px; width: 100%; }
+    .tf-swatch-label { background: var(--color-surface-alt); padding: 0.4rem 0.5rem; font-size: 0.65rem; font-family: var(--font-family-mono); color: var(--color-text-muted); }
+    .tf-swatch-label strong { display: block; color: var(--color-text); font-size: 0.7rem; margin-bottom: 0.1rem; }
+
+    .tf-type-scale { display: flex; flex-direction: column; gap: 0.75rem; }
+    .tf-type-scale .t-h1 { font-size: 2.5rem; font-weight: 700; font-family: var(--font-family-display); text-transform: uppercase; letter-spacing: 0.05em; }
+    .tf-type-scale .t-h2 { font-size: 1.75rem; font-weight: 700; font-family: var(--font-family-display); text-transform: uppercase; }
+    .tf-type-scale .t-h3 { font-size: 1.1rem; font-weight: 700; font-family: var(--font-family-display); text-transform: uppercase; letter-spacing: 0.08em; }
+    .tf-type-scale .t-body { font-size: 0.95rem; color: var(--color-text-muted); }
+    .tf-type-scale .t-small { font-size: 0.8rem; color: var(--color-text-muted); }
+    .tf-type-scale .t-mono { font-family: var(--font-family-mono); font-size: 0.85rem; background: var(--color-surface-alt); padding: 0.25rem 0.5rem; border: 1px solid var(--color-border); }
+
+    .tf-buttons { display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; }
+    .tf-btn {
+      padding: 0.5rem 1.5rem;
+      font-family: var(--font-family-display);
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      border: 1px solid var(--color-border);
+      transition: border-color var(--duration-fast), background var(--duration-fast);
+    }
+    .tf-btn:hover { border-color: var(--color-primary); background: var(--color-primary-light); }
+    .tf-btn-primary { background: var(--color-primary); color: var(--color-text-on-primary); border-color: var(--color-primary); }
+    .tf-btn-primary:hover { background: rgba(255,255,255,0.88); }
+    .tf-btn-secondary { background: var(--color-secondary); color: #fff; border-color: var(--color-secondary); }
+    .tf-btn-outline { background: transparent; color: var(--color-primary); border-color: var(--color-primary); }
+    .tf-btn-ghost { background: var(--color-surface); color: var(--color-text-muted); }
+
+    /* Annotation-style cards */
+    .annotation-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+    .annotation-card {
+      position: relative;
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      padding: 1.5rem 1.5rem 1.5rem 3rem;
+    }
+    .annotation-card .ann-marker {
+      position: absolute;
+      left: 0.75rem;
+      top: 1.5rem;
+    }
+    .annotation-card h3 {
+      font-family: var(--font-family-display);
+      font-size: 1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.5rem;
+      color: var(--color-primary);
+    }
+    .annotation-card p { color: var(--color-text-muted); font-size: 0.85rem; }
+
+    .tf-form { display: flex; flex-direction: column; gap: 1rem; max-width: 400px; }
+    .tf-form label {
+      font-family: var(--font-family-display);
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--color-text-muted);
+      margin-bottom: 0.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .tf-form input, .tf-form select {
+      width: 100%;
+      padding: 0.5rem 0.75rem;
+      border: 1px solid var(--color-border);
+      background: var(--color-surface-alt);
+      color: var(--color-text);
+      font-family: var(--font-family-mono);
+      font-size: 0.85rem;
+      outline: none;
+      transition: border-color var(--duration-fast);
+    }
+    .tf-form input:focus, .tf-form select:focus { border-color: var(--color-primary); }
+
+    .tf-badges { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .tf-badge {
+      padding: 0.15rem 0.75rem;
+      font-family: var(--font-family-mono);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      border: 1px solid;
+    }
+    .tf-badge-primary { background: var(--color-primary-light); color: var(--color-primary); border-color: var(--color-border); }
+    .tf-badge-success { background: rgba(0,204,102,0.15); color: var(--color-success); border-color: var(--color-success); }
+    .tf-badge-warning { background: rgba(255,215,0,0.12); color: var(--color-warning); border-color: var(--color-warning); }
+    .tf-badge-error { background: rgba(255,68,68,0.12); color: var(--color-error); border-color: var(--color-error); }
+    .tf-badge-neutral { background: var(--color-surface); color: var(--color-text-muted); border-color: var(--color-border); }
+
+    .tf-effects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem; }
+    .tf-effect-tile { border: 1px solid var(--color-border); padding: 1.25rem; display: flex; flex-direction: column; gap: 0.5rem; background: var(--color-surface); }
+    .tf-effect-tile .tile-label { font-family: var(--font-family-display); font-size: 0.65rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-text-muted); }
+    .tf-effect-tile .tile-value { font-size: 0.7rem; color: var(--color-text-muted); font-family: var(--font-family-mono); word-break: break-all; }
+    .tf-gradient-hero { height: 80px; background: var(--color-surface-alt); border: 1px solid var(--color-border); display: flex; align-items: center; padding: 0 1.5rem; gap: 1rem; color: var(--color-primary); font-weight: 700; font-family: var(--font-family-display); font-size: 1.1rem; text-transform: uppercase; letter-spacing: 0.1em; }
+    .tf-glow-demo { background: var(--color-surface); border: 1px solid var(--color-primary); padding: 1rem 1.5rem; text-align: center; font-weight: 700; font-family: var(--font-family-display); color: var(--color-primary); text-transform: uppercase; letter-spacing: 0.1em; }
+    .tf-glass-demo { padding: 1rem 1.5rem; background: var(--color-primary-light); border: 1px solid var(--color-border); font-size: 0.85rem; color: var(--color-text-muted); font-family: var(--font-family-mono); }
+    .tf-inset-demo { background: var(--color-surface-alt); padding: 0.6rem 1rem; box-shadow: var(--shadow-inset); border: 1px solid var(--color-border); font-size: 0.8rem; color: var(--color-text-muted); font-family: var(--font-family-mono); }
+    .tf-btn-gradient { background: var(--color-secondary); color: #fff; font-family: var(--font-family-display); font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; border: 1px solid var(--color-secondary); }
+
+    /* ── Blueprint drawing frame ── */
+    .blueprint-frame {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 9999;
+      border: 1px solid rgba(255,255,255,0.1);
+      box-shadow: inset 0 0 0 8px rgba(0,22,49,0.25), inset 0 0 0 9px rgba(255,255,255,0.06);
+    }
+    .blueprint-frame::before {
+      content: 'PROJ: PRUSSIAN BLUEPRINT — DWG NO. TF-001 — SCALE NTS — DATE 2026-06-26';
+      position: absolute;
+      bottom: 10px;
+      right: 14px;
+      font-family: var(--font-family-mono);
+      font-size: 0.5rem;
+      color: rgba(255,255,255,0.2);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .blueprint-frame::after {
+      content: 'REV A';
+      position: absolute;
+      bottom: 10px;
+      left: 14px;
+      font-family: var(--font-family-mono);
+      font-size: 0.5rem;
+      color: rgba(255,255,255,0.2);
+      letter-spacing: 0.2em;
+    }
+  </style>
+</head>
+<body>
+  <div class="blueprint-frame"></div>
+
+  <div class="tf-header">
+    <div class="tag-line">
+      <span class="callout-marker">◎</span>
+      Light · Technical
+    </div>
+    <h1>Prussian Blueprint</h1>
+    <p>Architect's working drawing — annotation leader lines, dimension ticks, section callout markers as UI chrome</p>
+    <div class="title-bar"></div>
+  </div>
+
+  <div class="tf-section">
+    <div class="tf-section-title"><span class="callout-marker">①</span> Color Palette</div>
+    <div class="tf-swatches">
+      <div class="tf-swatch"><div class="tf-swatch-color" style="background:var(--color-primary)"></div><div class="tf-swatch-label"><strong>primary</strong>#FFFFFF</div></div>
+      <div class="tf-swatch"><div class="tf-swatch-color" style="background:var(--color-primary-light)"></div><div class="tf-swatch-label"><strong>primaryLight</strong>rgba(255,255,255,.12)</div></div>
+      <div class="tf-swatch"><div class="tf-swatch-color" style="background:var(--color-secondary)"></div><div class="tf-swatch-label"><strong>secondary</strong>#CC2222</div></div>
+      <div class="tf-swatch"><div class="tf-swatch-color" style="background:var(--color-accent)"></div><div class="tf-swatch-label"><strong>accent</strong>#FFD700</div></div>
+      <div class="tf-swatch"><div class="tf-swatch-color" style="background:var(--color-bg);border:1px solid var(--color-border)"></div><div class="tf-swatch-label"><strong>background</strong>#003153</div></div>
+      <div class="tf-swatch"><div class="tf-swatch-color" style="background:var(--color-surface)"></div><div class="tf-swatch-label"><strong>surface</strong>#002644</div></div>
+      <div class="tf-swatch"><div class="tf-swatch-color" style="background:var(--color-surface-alt)"></div><div class="tf-swatch-label"><strong>surfaceAlt</strong>#001D38</div></div>
+      <div class="tf-swatch"><div class="tf-swatch-color" style="background:var(--color-text)"></div><div class="tf-swatch-label"><strong>text</strong>#FFFFFF</div></div>
+      <div class="tf-swatch"><div class="tf-swatch-color" style="background:rgba(255,255,255,0.55)"></div><div class="tf-swatch-label"><strong>textMuted</strong>rgba(255,255,255,.55)</div></div>
+      <div class="tf-swatch"><div class="tf-swatch-color" style="background:rgba(255,255,255,0.22);border:1px solid rgba(255,255,255,0.4)"></div><div class="tf-swatch-label"><strong>border</strong>rgba(255,255,255,.22)</div></div>
+      <div class="tf-swatch"><div class="tf-swatch-color" style="background:var(--color-success)"></div><div class="tf-swatch-label"><strong>success</strong>#00CC66</div></div>
+      <div class="tf-swatch"><div class="tf-swatch-color" style="background:var(--color-warning)"></div><div class="tf-swatch-label"><strong>warning</strong>#FFD700</div></div>
+      <div class="tf-swatch"><div class="tf-swatch-color" style="background:var(--color-error)"></div><div class="tf-swatch-label"><strong>error</strong>#FF4444</div></div>
+    </div>
+  </div>
+
+  <div class="tf-section">
+    <div class="tf-section-title"><span class="callout-marker">②</span> Typography</div>
+    <div class="tf-type-scale">
+      <div class="t-h1">Display Heading</div>
+      <div class="t-h2">Section Heading</div>
+      <div class="t-h3">Subsection Heading</div>
+      <div class="t-body">Body text — monospace throughout. The quick brown fox jumps over the lazy dog. All text follows the same type rhythm as the grid.</div>
+      <div class="t-small">Small / muted — captions, annotations, dimension labels</div>
+      <div class="t-mono">monospace: code(), ref(), section_id</div>
+    </div>
+  </div>
+
+  <div class="tf-section">
+    <div class="tf-section-title"><span class="callout-marker">③</span> Buttons</div>
+    <div class="tf-buttons">
+      <button class="tf-btn tf-btn-primary">Primary Action</button>
+      <button class="tf-btn tf-btn-secondary">Red Markup</button>
+      <button class="tf-btn tf-btn-outline">Outlined</button>
+      <button class="tf-btn tf-btn-ghost">Ghost</button>
+    </div>
+  </div>
+
+  <div class="tf-section">
+    <div class="tf-section-title"><span class="callout-marker">④</span> Cards — Annotation Style</div>
+    <div class="annotation-grid">
+      <div class="annotation-card dim-card">
+        <span class="ann-marker"><span class="callout-marker">A</span></span>
+        <div class="dim-tick-left"></div><div class="dim-tick-right"></div>
+        <h3>Detail A</h3>
+        <p>Standard panel with callout marker and dimension ticks — annotation chrome is structural.</p>
+      </div>
+      <div class="annotation-card dim-card">
+        <span class="ann-marker"><span class="callout-marker">B</span></span>
+        <div class="dim-tick-left"></div><div class="dim-tick-right"></div>
+        <h3>Detail B</h3>
+        <p>Every card is a drawing detail. Labels read like section cuts on a working blueprint.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="tf-section">
+    <div class="tf-section-title"><span class="callout-marker">⑤</span> Form Elements</div>
+    <div class="tf-form">
+      <div>
+        <label><span class="leader-label">field_01</span></label>
+        <input type="text" placeholder="enter value…">
+      </div>
+      <div>
+        <label><span class="leader-label">field_02</span></label>
+        <select><option>Option A</option><option>Option B</option><option>Option C</option></select>
+      </div>
+    </div>
+  </div>
+
+  <div class="tf-section">
+    <div class="tf-section-title"><span class="callout-marker">⑥</span> Badges &amp; Status</div>
+    <div class="tf-badges">
+      <span class="tf-badge tf-badge-primary">PRIMARY</span>
+      <span class="tf-badge tf-badge-success">SUCCESS</span>
+      <span class="tf-badge tf-badge-warning">WARNING</span>
+      <span class="tf-badge tf-badge-error">ERROR</span>
+      <span class="tf-badge tf-badge-neutral">NEUTRAL</span>
+    </div>
+  </div>
+
+  <div class="tf-section">
+    <div class="tf-section-title"><span class="callout-marker">⑦</span> Gradients &amp; Effects</div>
+    <div class="tf-effects-grid">
+      <div class="tf-effect-tile" style="grid-column:1/-1"><div class="tile-label">→ Hero / Banner Surface</div><div class="tf-gradient-hero"><span class="callout-marker">◎</span> PRUSSIAN BLUEPRINT — HERO SURFACE</div><div class="tile-value">var(--color-surface-alt) · no gradient</div></div>
+      <div class="tf-effect-tile"><div class="tile-label">→ White Ink Text</div><div style="font-family:var(--font-family-display);font-size:1.5rem;font-weight:700;color:var(--color-primary);text-transform:uppercase;letter-spacing:0.05em">SOLID WHITE</div><div class="tile-value">var(--color-primary)</div></div>
+      <div class="tf-effect-tile"><div class="tile-label">→ Markup Button</div><button class="tf-btn tf-btn-gradient" style="width:100%">RED MARKUP</button><div class="tile-value">var(--color-secondary) · revision ink</div></div>
+      <div class="tf-effect-tile"><div class="tile-label">→ Focus Border</div><div class="tf-glow-demo">ACTIVE ELEMENT</div><div class="tile-value">border 1px var(--color-primary)</div></div>
+      <div class="tf-effect-tile"><div class="tile-label">→ Surface Variant</div><div class="tf-glass-demo">Alt — deeper blue, no frost</div><div class="tile-value">var(--color-primary-light)</div></div>
+      <div class="tf-effect-tile"><div class="tile-label">→ Inset Input</div><div class="tf-inset-demo">data_entry_field</div><div class="tile-value">var(--shadow-inset)</div></div>
+      <div class="tf-effect-tile"><div class="tile-label">→ Primary Card</div><div style="padding:0.75rem 1rem;background:var(--color-primary);color:var(--color-text-on-primary);box-shadow:var(--shadow-colored);font-weight:700;font-size:0.85rem;font-family:var(--font-family-display);text-transform:uppercase;letter-spacing:0.08em">WHITE CARD</div><div class="tile-value">var(--shadow-colored) · red outline</div></div>
+    </div>
+  </div>
+
+</body>
+</html>

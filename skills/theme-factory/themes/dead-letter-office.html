@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dead-letter-office">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Theme: Dead Letter Office</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+  <script id="theme-data" type="application/json">
+  {
+    "name": "dead-letter-office",
+    "description": "US Postal Service undeliverable mail, 1940s–60s. Manila envelope ground. Cards ARE envelopes — diagonal airmail stripe corners, stamp float in top-right. Status indicators are rubber stamps (RECEIVED, PENDING, RETURN TO SENDER). Typewriter monospace throughout.",
+    "createdAt": "2026-06-26T00:00:00.000Z",
+    "source": "text",
+    "sourceFile": "",
+    "background": {
+      "type": "noise",
+      "baseColor": "#D8CC94",
+      "image": "none",
+      "size": "200px",
+      "position": "0 0",
+      "repeat": "repeat",
+      "patternType": "noise",
+      "patternColor": "#8A7A40",
+      "patternOpacity": "0.05",
+      "patternSpacing": "auto",
+      "notes": "Manila envelope kraft paper — warm ochre with grain."
+    },
+    "colors": {
+      "primary": "#CC1122",
+      "primaryLight": "rgba(204,17,34,0.1)",
+      "secondary": "#1B3A8B",
+      "accent": "#6A4A8B",
+      "background": "#D8CC94",
+      "surface": "#E8DEAA",
+      "surfaceAlt": "#CABE88",
+      "text": "#1A1A14",
+      "textMuted": "#6A5A30",
+      "textOnPrimary": "#F8F0D4",
+      "border": "#1B3A8B",
+      "success": "#2A6622",
+      "warning": "#CC8800",
+      "error": "#CC1122"
+    },
+    "typography": {
+      "fontFamily": "'Special Elite', 'Courier New', monospace",
+      "fontFamilyMono": "'Special Elite', 'Courier New', monospace",
+      "fontFamilyDisplay": "'Libre Baskerville', Georgia, serif",
+      "scaleBase": "16px",
+      "headingWeight": "700",
+      "bodyWeight": "400",
+      "lineHeight": "1.55"
+    },
+    "spacing": {
+      "borderRadius": "0px",
+      "cardRadius": "2px",
+      "buttonRadius": "0px",
+      "spaceUnit": "8px",
+      "density": "comfortable"
+    },
+    "shadows": {
+      "sm": "1px 2px 4px rgba(30,20,0,0.2)",
+      "md": "2px 4px 10px rgba(30,20,0,0.25)",
+      "lg": "3px 6px 18px rgba(30,20,0,0.3)",
+      "xl": "4px 8px 28px rgba(30,20,0,0.35)",
+      "colored": "2px 4px 10px rgba(204,17,34,0.25)",
+      "inset": "inset 0 1px 4px rgba(30,20,0,0.2)",
+      "elevation": "subtle"
+    },
+    "gradients": {
+      "hero": "none",
+      "card": "none",
+      "button": "none",
+      "text": "none",
+      "accent": "none"
+    },
+    "effects": {
+      "luminescence": "none",
+      "glowColor": "#CC1122",
+      "glowBlur": "0px",
+      "glowSm": "none",
+      "glowMd": "none",
+      "glowLg": "none",
+      "glassBlur": "0",
+      "glassTint": "none",
+      "gradientBorder": "none",
+      "noiseOpacity": "0.05",
+      "textShadow": "none",
+      "backdropFilter": "none"
+    },
+    "motion": {
+      "durationFast": "100ms",
+      "durationBase": "180ms",
+      "durationSlow": "300ms",
+      "easing": "cubic-bezier(0.25, 0, 0.5, 1)",
+      "feel": "subtle"
+    },
+    "design": {
+      "aesthetic": "editorial",
+      "personality": ["bureaucratic", "postal", "ephemeral", "stamped"],
+      "borderStyle": "subtle",
+      "iconStyle": "sharp",
+      "imageStyle": "none",
+      "surfaceTexture": "noise",
+      "hierarchyClarity": "high",
+      "notes": "THE gimmick: cards ARE envelopes. Corner decoration = airmail diagonal stripes (red/blue/red). Stamp floats top-right of each card. Status = rubber stamp text (RECEIVED · PENDING · RETURN TO SENDER). All type is typewriter/Special Elite — uneven baseline implied."
+    }
+  }
+  </script>
+
+  <style>
+    :root {
+      --bg-base: #D8CC94;
+      --bg-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+      --bg-size: 200px;
+      --bg-position: 0 0;
+      --bg-repeat: repeat;
+
+      --color-primary: #CC1122;
+      --color-primary-light: rgba(204,17,34,0.1);
+      --color-secondary: #1B3A8B;
+      --color-accent: #6A4A8B;
+      --color-bg: #D8CC94;
+      --color-surface: #E8DEAA;
+      --color-surface-alt: #CABE88;
+      --color-text: #1A1A14;
+      --color-text-muted: #6A5A30;
+      --color-text-on-primary: #F8F0D4;
+      --color-border: #1B3A8B;
+      --color-success: #2A6622;
+      --color-warning: #CC8800;
+      --color-error: #CC1122;
+
+      --font-family: 'Special Elite', 'Courier New', monospace;
+      --font-family-mono: 'Special Elite', 'Courier New', monospace;
+      --font-family-display: 'Libre Baskerville', Georgia, serif;
+      --font-size-base: 16px;
+      --font-weight-heading: 700;
+      --font-weight-body: 400;
+      --line-height: 1.55;
+
+      --radius: 0px;
+      --radius-card: 2px;
+      --radius-button: 0px;
+
+      --shadow-sm: 1px 2px 4px rgba(30,20,0,0.2);
+      --shadow-md: 2px 4px 10px rgba(30,20,0,0.25);
+      --shadow-lg: 3px 6px 18px rgba(30,20,0,0.3);
+      --shadow-xl: 4px 8px 28px rgba(30,20,0,0.35);
+      --shadow-colored: 2px 4px 10px rgba(204,17,34,0.25);
+      --shadow-inset: inset 0 1px 4px rgba(30,20,0,0.2);
+
+      --gradient-hero: none;
+      --gradient-card: none;
+      --gradient-button: none;
+      --gradient-text: none;
+      --gradient-accent: none;
+
+      --glow-color: #CC1122;
+      --glow-sm: none; --glow-md: none; --glow-lg: none;
+      --glass-blur: 0px; --glass-tint: none;
+      --backdrop-filter: none; --text-shadow: none;
+      --border-gradient: none; --noise-opacity: 0.05;
+
+      --space-1: 4px; --space-2: 8px; --space-3: 12px;
+      --space-4: 16px; --space-6: 24px; --space-8: 32px;
+      --duration-fast: 100ms; --duration-base: 180ms; --duration-slow: 300ms;
+      --easing: cubic-bezier(0.25, 0, 0.5, 1);
+      --border-width: 1px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: var(--bg-base);
+      background-image: var(--bg-image);
+      background-size: var(--bg-size);
+      color: var(--color-text);
+      font-family: var(--font-family);
+      font-size: var(--font-size-base);
+      line-height: var(--line-height);
+      padding: 2rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    /* ── GIMMICK: Envelope card — faint airmail corner marks ── */
+    .envelope-card {
+      background: var(--color-surface);
+      border: 1px solid rgba(27,58,139,0.4);
+      padding: 1.5rem;
+      box-shadow: var(--shadow-md);
+      position: relative;
+      overflow: hidden;
+      border-radius: var(--radius-card);
+    }
+    /* Airmail mark — top-left, whisper only */
+    .envelope-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 30px; height: 30px;
+      background: repeating-linear-gradient(
+        -45deg,
+        #CC1122 0px, #CC1122 3px,
+        #F8F0D4 3px, #F8F0D4 6px,
+        #1B3A8B 6px, #1B3A8B 9px,
+        #F8F0D4 9px, #F8F0D4 12px
+      );
+      clip-path: polygon(0 0, 30px 0, 0 30px);
+      opacity: 0.22;
+    }
+    /* Airmail mark — bottom-right, whisper only */
+    .envelope-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0; right: 0;
+      width: 30px; height: 30px;
+      background: repeating-linear-gradient(
+        -45deg,
+        #CC1122 0px, #CC1122 3px,
+        #F8F0D4 3px, #F8F0D4 6px,
+        #1B3A8B 6px, #1B3A8B 9px,
+        #F8F0D4 9px, #F8F0D4 12px
+      );
+      clip-path: polygon(30px 30px, 30px 0, 0 30px);
+      opacity: 0.22;
+    }
+    .envelope-content {
+      position: relative;
+      z-index: 1;
+      padding-left: 0.25rem;
+    }
+    .envelope-content h3 {
+      font-family: var(--font-family-display);
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: var(--color-text);
+    }
+    .envelope-content p { color: var(--color-text-muted); font-size: 0.85rem; }
+
+    /* ── GIMMICK: Postmark ring — ink cancellation, not a full stamp block ── */
+    .postal-stamp {
+      position: absolute;
+      top: 0.75rem;
+      right: 0.75rem;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 1px solid rgba(27,58,139,0.35);
+      background: transparent;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.45rem;
+      color: rgba(27,58,139,0.5);
+      font-weight: 700;
+      text-align: center;
+      line-height: 1.15;
+      text-transform: uppercase;
+      z-index: 2;
+      opacity: 0.6;
+    }
+
+    /* ── GIMMICK: Rubber stamp status ── */
+    .rubber-stamp {
+      display: inline-block;
+      padding: 0.15rem 0.6rem;
+      border: 2px solid;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transform: rotate(-2deg);
+      opacity: 0.85;
+    }
+    .rubber-stamp.received { color: var(--color-primary); border-color: var(--color-primary); }
+    .rubber-stamp.pending { color: var(--color-warning); border-color: var(--color-warning); }
+    .rubber-stamp.return { color: var(--color-text); border-color: var(--color-text); transform: rotate(3deg); }
+    .rubber-stamp.forwarded { color: var(--color-secondary); border-color: var(--color-secondary); transform: rotate(-1deg); }
+
+    .tf-header {
+      background: var(--color-surface);
+      border: 1px solid rgba(27,58,139,0.3);
+      color: var(--color-text);
+      padding: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: var(--shadow-lg);
+      position: relative;
+      overflow: hidden;
+      border-radius: var(--radius-card);
+    }
+    .tf-header::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 42px; height: 42px;
+      background: repeating-linear-gradient(-45deg, #CC1122 0px, #CC1122 3px, #F8F0D4 3px, #F8F0D4 6px, #1B3A8B 6px, #1B3A8B 9px, #F8F0D4 9px, #F8F0D4 12px);
+      clip-path: polygon(0 0, 42px 0, 0 42px);
+      opacity: 0.18;
+    }
+    .tf-header::after {
+      content: '';
+      position: absolute;
+      bottom: 0; right: 0;
+      width: 42px; height: 42px;
+      background: repeating-linear-gradient(-45deg, #CC1122 0px, #CC1122 3px, #F8F0D4 3px, #F8F0D4 6px, #1B3A8B 6px, #1B3A8B 9px, #F8F0D4 9px, #F8F0D4 12px);
+      clip-path: polygon(42px 42px, 42px 0, 0 42px);
+      opacity: 0.18;
+    }
+    .tf-header .header-content { position: relative; z-index: 1; padding-left: 0.25rem; }
+    .tf-header .tag-line { font-size: 0.65rem; color: var(--color-text-muted); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.5rem; }
+    .tf-header h1 {
+      font-family: var(--font-family-display);
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 0.35rem;
+    }
+    .tf-header p { font-size: 0.85rem; color: var(--color-text-muted); font-style: italic; }
+    .header-stamp {
+      position: absolute;
+      top: 1rem; right: 1rem;
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      border: 1px solid rgba(27,58,139,0.3);
+      background: transparent;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.42rem;
+      color: rgba(27,58,139,0.45);
+      font-weight: 700;
+      text-align: center;
+      line-height: 1.2;
+      text-transform: uppercase;
+      z-index: 3;
+      opacity: 0.55;
+    }
+
+    .tf-section { margin-bottom: 2rem; }
+    .tf-section-title {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .tf-section-title::after { content: ''; flex: 1; height: 1px; background: rgba(27,58,139,0.3); }
+
+    .tf-swatches { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 0.75rem; }
+    .tf-swatch { overflow: hidden; border: 1px solid rgba(27,58,139,0.3); box-shadow: var(--shadow-sm); border-radius: var(--radius); }
+    .tf-swatch-color { height: 64px; width: 100%; }
+    .tf-swatch-label { background: var(--color-surface); padding: 0.4rem 0.5rem; font-size: 0.65rem; font-family: var(--font-family-mono); color: var(--color-text-muted); }
+    .tf-swatch-label strong { display: block; color: var(--color-text); font-size: 0.7rem; margin-bottom: 0.1rem; }
+
+    .tf-type-scale { display: flex; flex-direction: column; gap: 0.75rem; }
+    .tf-type-scale .t-h1 { font-size: 2.5rem; font-weight: 700; font-family: var(--font-family-display); }
+    .tf-type-scale .t-h2 { font-size: 1.75rem; font-weight: 700; font-family: var(--font-family-display); }
+    .tf-type-scale .t-h3 { font-size: 1.1rem; font-weight: 700; }
+    .tf-type-scale .t-body { font-size: 0.95rem; }
+    .tf-type-scale .t-small { font-size: 0.85rem; color: var(--color-text-muted); font-style: italic; }
+    .tf-type-scale .t-mono { font-family: var(--font-family-mono); font-size: 0.85rem; background: var(--color-surface-alt); padding: 0.25rem 0.5rem; border: 1px solid rgba(27,58,139,0.3); }
+
+    .tf-buttons { display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; }
+    .tf-btn {
+      padding: 0.45rem 1.25rem;
+      font-family: var(--font-family);
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      cursor: pointer;
+      border: 1px solid;
+      transition: box-shadow var(--duration-fast) var(--easing);
+    }
+    .tf-btn:hover { box-shadow: var(--shadow-md); }
+    .tf-btn-primary { background: var(--color-primary); color: var(--color-text-on-primary); border-color: var(--color-primary); }
+    .tf-btn-secondary { background: var(--color-secondary); color: var(--color-text-on-primary); border-color: var(--color-secondary); }
+    .tf-btn-outline { background: transparent; color: var(--color-secondary); border-color: var(--color-secondary); }
+    .tf-btn-ghost { background: var(--color-surface-alt); color: var(--color-text-muted); border-color: rgba(27,58,139,0.3); }
+
+    .envelopes-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1.25rem; }
+
+    .tf-form { display: flex; flex-direction: column; gap: 1rem; max-width: 400px; }
+    .tf-form label { font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-text-muted); margin-bottom: 0.25rem; display: block; }
+    .tf-form input, .tf-form select {
+      width: 100%;
+      padding: 0.5rem 0.75rem;
+      border: 1px solid rgba(27,58,139,0.4);
+      background: var(--color-surface);
+      color: var(--color-text);
+      font-family: var(--font-family);
+      font-size: 0.9rem;
+      outline: none;
+      transition: border-color var(--duration-fast), box-shadow var(--duration-fast);
+      border-radius: var(--radius);
+    }
+    .tf-form input:focus, .tf-form select:focus { border-color: var(--color-secondary); box-shadow: 0 0 0 2px rgba(27,58,139,0.15); }
+
+    .tf-badges { display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; }
+
+    .tf-effects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem; }
+    .tf-effect-tile { border: 1px solid rgba(27,58,139,0.3); padding: 1.25rem; display: flex; flex-direction: column; gap: 0.5rem; background: var(--color-surface); border-radius: var(--radius-card); }
+    .tf-effect-tile .tile-label { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-text-muted); }
+    .tf-effect-tile .tile-value { font-size: 0.7rem; color: var(--color-text-muted); font-family: var(--font-family-mono); word-break: break-all; }
+    .tf-gradient-hero { height: 80px; background: var(--color-surface); border: 1px solid rgba(27,58,139,0.3); display: flex; align-items: center; padding: 0 1.5rem; position: relative; overflow: hidden; }
+    .tf-gradient-hero::before { content: ''; position: absolute; top: 0; left: 0; width: 30px; height: 30px; background: repeating-linear-gradient(-45deg, #CC1122 0px, #CC1122 3px, #F8F0D4 3px, #F8F0D4 6px, #1B3A8B 6px, #1B3A8B 9px, #F8F0D4 9px, #F8F0D4 12px); clip-path: polygon(0 0, 30px 0, 0 30px); opacity: 0.2; }
+    .tf-gradient-hero-content { position: relative; z-index: 1; padding-left: 1rem; font-family: var(--font-family-display); font-weight: 700; font-size: 1rem; color: var(--color-text); }
+    .tf-glow-demo { background: var(--color-surface); border: 1px solid rgba(27,58,139,0.3); padding: 1rem 1.5rem; text-align: center; box-shadow: var(--shadow-md); font-weight: 700; color: var(--color-text); border-radius: var(--radius-card); }
+    .tf-glass-demo { padding: 1rem 1.5rem; background: var(--color-surface-alt); border: 1px solid rgba(27,58,139,0.3); font-size: 0.85rem; color: var(--color-text-muted); font-style: italic; border-radius: var(--radius-card); }
+    .tf-inset-demo { background: var(--color-bg); padding: 0.6rem 1rem; box-shadow: var(--shadow-inset); border: 1px solid rgba(27,58,139,0.3); font-size: 0.85rem; color: var(--color-text-muted); font-family: var(--font-family-mono); }
+    .tf-btn-gradient { background: var(--color-accent); color: var(--color-text-on-primary); box-shadow: var(--shadow-colored); border: 1px solid var(--color-accent); }
+  </style>
+</head>
+<body>
+
+  <div class="tf-header">
+    <div class="header-stamp">USA<br>3¢<br>POSTAGE</div>
+    <div class="header-content">
+      <div class="tag-line">Light · Editorial — Undeliverable</div>
+      <h1>Dead Letter Office</h1>
+      <p>US Postal Service, 1940s–60s — cards are envelopes, stamps float, status is a rubber ink stamp</p>
+    </div>
+  </div>
+
+  <div class="tf-section">
+    <div class="tf-section-title">Color Palette</div>
+    <div class="tf-swatches">
+      <div class="tf-swatch"><div class="tf-swatch-color" style="background:var(--color-primary)"></div><div class="tf-swatch-label"><strong>primary</strong>#CC1122</div></div>
+      <div class="tf-swatch"><div class="tf-swatch-color" style="background:var(--color-primary-light)"></div><div class="tf-swatch-label"><strong>primaryLight</strong>rgba(204,17,34,.1)</div></div>
+      <div class="tf-swatch"><div class="tf-swatch-color" style="background:var(--color-secondary)"></div><div class="tf-swatch-label"><strong>secondary</strong>#1B3A8B</div></div>
+      <div class="tf-swatch"><div class="tf-swatch-color" style="background:var(--color-accent)"></div><div class="tf-swatch-label"><strong>accent</strong>#6A4A8B</div></div>
+      <div class="tf-swatch"><div class="tf-swatch-color" style="background:var(--color-bg)"></div><div class="tf-swatch-label"><strong>background</strong>#D8CC94</div></div>
+      <div class="tf-swatch"><div class="tf-swatch-color" style="background:var(--color-surface)"></div><div class="tf-swatch-label"><strong>surface</strong>#E8DEAA</div></div>
+      <div class="tf-swatch"><div class="tf-swatch-color" style="background:var(--color-surface-alt)"></div><div class="tf-swatch-label"><strong>surfaceAlt</strong>#CABE88</div></div>
+      <div class="tf-swatch"><div class="tf-swatch-color" style="background:var(--color-text)"></div><div class="tf-swatch-label"><strong>text</strong>#1A1A14</div></div>
+      <div class="tf-swatch"><div class="tf-swatch-color" style="background:var(--color-text-muted)"></div><div class="tf-swatch-label"><strong>textMuted</strong>#6A5A30</div></div>
+      <div class="tf-swatch"><div class="tf-swatch-color" style="background:var(--color-border)"></div><div class="tf-swatch-label"><strong>border</strong>#1B3A8B</div></div>
+      <div class="tf-swatch"><div class="tf-swatch-color" style="background:var(--color-success)"></div><div class="tf-swatch-label"><strong>success</strong>#2A6622</div></div>
+      <div class="tf-swatch"><div class="tf-swatch-color" style="background:var(--color-warning)"></div><div class="tf-swatch-label"><strong>warning</strong>#CC8800</div></div>
+      <div class="tf-swatch"><div class="tf-swatch-color" style="background:var(--color-error)"></div><div class="tf-swatch-label"><strong>error</strong>#CC1122</div></div>
+    </div>
+  </div>
+
+  <div class="tf-section">
+    <div class="tf-section-title">Typography</div>
+    <div class="tf-type-scale">
+      <div class="t-h1">Display Heading</div>
+      <div class="t-h2">Section Heading</div>
+      <div class="t-h3">Subsection / Label</div>
+      <div class="t-body">Body text — Special Elite typewriter font throughout. The quick brown fox jumps over the lazy dog. Uneven baseline implied by the font.</div>
+      <div class="t-small">Small / muted — postmark dates, sender addresses, route codes</div>
+      <div class="t-mono">TXN-8841 · ROUTE: DL-OFC-009 · 1952-04-17</div>
+    </div>
+  </div>
+
+  <div class="tf-section">
+    <div class="tf-section-title">Buttons</div>
+    <div class="tf-buttons">
+      <button class="tf-btn tf-btn-primary">DISPATCH</button>
+      <button class="tf-btn tf-btn-secondary">FORWARD</button>
+      <button class="tf-btn tf-btn-outline">INSPECT</button>
+      <button class="tf-btn tf-btn-ghost">HOLD</button>
+    </div>
+  </div>
+
+  <div class="tf-section">
+    <div class="tf-section-title">Cards — Envelope Format</div>
+    <div class="envelopes-grid">
+      <div class="envelope-card">
+        <div class="postal-stamp">FIRST CLASS</div>
+        <div class="envelope-content">
+          <h3>Card Title</h3>
+          <p>Standard envelope card. Airmail stripes mark the corners. Stamp floats top-right.</p>
+        </div>
+      </div>
+      <div class="envelope-card">
+        <div class="postal-stamp">AIR MAIL</div>
+        <div class="envelope-content">
+          <h3>Data Card</h3>
+          <p>Every value through :root. The postal system as a UI metaphor.</p>
+        </div>
+      </div>
+      <div class="envelope-card" style="background:var(--color-surface-alt)">
+        <div class="postal-stamp">RETURN</div>
+        <div class="envelope-content">
+          <h3>Alt Surface</h3>
+          <p>surfaceAlt — a slightly older, more worn envelope from the back of the stack.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tf-section">
+    <div class="tf-section-title">Form Elements</div>
+    <div class="tf-form">
+      <div><label>Recipient Address</label><input type="text" placeholder="Enter value…"></div>
+      <div><label>Route Code</label><select><option>DL-OFC-001</option><option>DL-OFC-009</option><option>UNDELIVERABLE</option></select></div>
+    </div>
+  </div>
+
+  <div class="tf-section">
+    <div class="tf-section-title">Badges — Rubber Stamps</div>
+    <div class="tf-badges">
+      <span class="rubber-stamp received">RECEIVED</span>
+      <span class="rubber-stamp pending">PENDING</span>
+      <span class="rubber-stamp return">RETURN TO SENDER</span>
+      <span class="rubber-stamp forwarded">FORWARDED</span>
+      <span class="rubber-stamp" style="color:var(--color-success);border-color:var(--color-success);transform:rotate(1deg)">DELIVERED</span>
+    </div>
+  </div>
+
+  <div class="tf-section">
+    <div class="tf-section-title">Gradients &amp; Effects</div>
+    <div class="tf-effects-grid">
+      <div class="tf-effect-tile" style="grid-column:1/-1">
+        <div class="tile-label">Hero / Banner — Envelope Header</div>
+        <div class="tf-gradient-hero">
+          <div class="tf-gradient-hero-content">Dead Letter Office — Hero Surface</div>
+        </div>
+        <div class="tile-value">var(--color-surface) · airmail stripe corner decoration</div>
+      </div>
+      <div class="tf-effect-tile"><div class="tile-label">Stamp Red</div><div style="font-family:var(--font-family-display);font-size:1.5rem;font-weight:700;color:var(--color-primary)">Postal Red</div><div class="tile-value">var(--color-primary)</div></div>
+      <div class="tf-effect-tile"><div class="tile-label">Violet Postmark</div><button class="tf-btn tf-btn-gradient" style="width:100%">POSTMARK</button><div class="tile-value">var(--color-accent) · violet</div></div>
+      <div class="tf-effect-tile"><div class="tile-label">Shadow Demo</div><div class="tf-glow-demo">Warm Paper Shadow</div><div class="tile-value">var(--shadow-md)</div></div>
+      <div class="tf-effect-tile"><div class="tile-label">Alt Surface</div><div class="tf-glass-demo">surfaceAlt — older envelope</div><div class="tile-value">var(--color-surface-alt)</div></div>
+      <div class="tf-effect-tile"><div class="tile-label">Inset Well</div><div class="tf-inset-demo">address_field</div><div class="tile-value">var(--shadow-inset)</div></div>
+      <div class="tf-effect-tile"><div class="tile-label">Primary Card</div><div style="padding:0.75rem 1rem;background:var(--color-primary);color:var(--color-text-on-primary);box-shadow:var(--shadow-colored);font-weight:700;font-size:0.85rem;border-radius:var(--radius-card)">DISPATCH CARD</div><div class="tile-value">var(--shadow-colored)</div></div>
+    </div>
+  </div>
+
+</body>
+</html>

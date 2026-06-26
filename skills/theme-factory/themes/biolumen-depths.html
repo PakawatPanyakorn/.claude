@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="biolumen-depths">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Theme: biolumen-depths</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;600;700;800&family=Oxanium:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <script id="theme-data" type="application/json">
+  {
+    "name": "biolumen-depths",
+    "description": "Midnight zone bioluminescence — absolute ocean darkness pierced by cold teal organism glow, pressure-depth blue light scatter, and dinoflagellate amber flash. Scientific field log meets alien wilderness.",
+    "createdAt": "2026-06-26T00:00:00.000Z",
+    "source": "text",
+    "sourceFile": "",
+    "background": {
+      "type": "gradient",
+      "baseColor": "#020d1a",
+      "image": "url('data:image/svg+xml,...fractalNoise...'), radial-gradient concentric depth rings + cold blue bloom",
+      "patternType": "sonar-rings",
+      "patternColor": "#00e5c8",
+      "patternOpacity": "0.04",
+      "patternSpacing": "200px",
+      "notes": "SVG fractalNoise grain + three sonar-style concentric depth-contour rings from bottom-left focal point + cold blue bloom top-right. No generic blobs."
+    },
+    "colors": {
+      "primary": "#00e5c8",
+      "primaryLight": "#003d38",
+      "secondary": "#1e8fff",
+      "accent": "#ff8c42",
+      "background": "#020d1a",
+      "surface": "#051828",
+      "surfaceAlt": "#071f34",
+      "text": "#b8e8e8",
+      "textMuted": "#4a8899",
+      "textOnPrimary": "#020d1a",
+      "border": "#0d3a52",
+      "success": "#00cc88",
+      "warning": "#cc8800",
+      "error": "#ff4060"
+    },
+    "typography": {
+      "fontFamily": "'Oxanium', 'Share Tech', sans-serif",
+      "fontFamilyMono": "'JetBrains Mono', 'Fira Code', monospace",
+      "fontFamilyDisplay": "'Exo 2', 'Audiowide', sans-serif",
+      "scaleBase": "16px",
+      "headingWeight": "700",
+      "bodyWeight": "400",
+      "lineHeight": "1.65"
+    },
+    "spacing": {
+      "borderRadius": "2px",
+      "cardRadius": "3px",
+      "buttonRadius": "2px",
+      "spaceUnit": "8px",
+      "density": "comfortable"
+    },
+    "shadows": {
+      "sm": "0 2px 8px rgba(0,0,0,0.7)",
+      "md": "0 4px 20px rgba(0,0,0,0.85)",
+      "lg": "0 8px 40px rgba(0,0,0,0.9)",
+      "xl": "0 16px 64px rgba(0,0,0,0.95)",
+      "colored": "0 4px 24px rgba(0,229,200,0.35), 0 2px 8px rgba(0,229,200,0.15)",
+      "inset": "inset 0 1px 3px rgba(0,0,0,0.6), inset 0 0 8px rgba(0,229,200,0.05)",
+      "elevation": "dramatic"
+    },
+    "gradients": {
+      "hero": "linear-gradient(180deg, #041428 0%, #020d1a 100%)",
+      "card": "none",
+      "button": "linear-gradient(135deg, #00e5c8 0%, #00b8a0 100%)",
+      "text": "none",
+      "accent": "linear-gradient(90deg, rgba(0,229,200,0.7) 0%, rgba(30,143,255,0.7) 100%)"
+    },
+    "effects": {
+      "luminescence": "strong",
+      "glowColor": "#00e5c8",
+      "glowBlur": "20px",
+      "glowSm": "0 0 6px rgba(0,229,200,0.35), 0 0 12px rgba(0,229,200,0.15)",
+      "glowMd": "0 0 16px rgba(0,229,200,0.45), 0 0 32px rgba(0,229,200,0.2)",
+      "glowLg": "0 0 32px rgba(0,229,200,0.55), 0 0 64px rgba(0,229,200,0.25), 0 0 100px rgba(0,229,200,0.1)",
+      "glassBlur": "12px",
+      "glassTint": "rgba(0,229,200,0.04)",
+      "gradientBorder": "linear-gradient(135deg, #00e5c8, #1e8fff)",
+      "noiseOpacity": "0.04",
+      "textShadow": "none",
+      "backdropFilter": "blur(12px) saturate(150%)"
+    },
+    "motion": {
+      "durationFast": "120ms",
+      "durationBase": "200ms",
+      "durationSlow": "400ms",
+      "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+      "feel": "subtle"
+    },
+    "design": {
+      "aesthetic": "technical",
+      "personality": ["haunting", "scientific", "luminous", "alien"],
+      "borderStyle": "hairline",
+      "iconStyle": "outlined",
+      "imageStyle": "abstract",
+      "surfaceTexture": "noise",
+      "hierarchyClarity": "high",
+      "notes": "Scientifically grounded bioluminescent palette: teal (organism core), cold blue (pressure depth scatter), amber (dinoflagellate flash). Sonar depth-contour ring background. Scanline body overlay. Gradient card borders. Hex grid on alt surfaces."
+    }
+  }
+  </script>
+
+  <style>
+    :root {
+      /* Background: noise grain + sonar depth-contour rings + cold blue depth bloom */
+      --bg-base: #020d1a;
+      --bg-image:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E"),
+        radial-gradient(circle at 22% 72%, transparent 19%, rgba(0,229,200,0.045) 20%, transparent 21%),
+        radial-gradient(circle at 22% 72%, transparent 34%, rgba(0,229,200,0.028) 35%, transparent 36%),
+        radial-gradient(circle at 22% 72%, transparent 52%, rgba(0,229,200,0.016) 53%, transparent 54%),
+        radial-gradient(ellipse 55% 45% at 82% 18%, rgba(30,143,255,0.07) 0%, transparent 65%);
+      --bg-size: 200px 200px, cover, cover, cover, cover;
+      --bg-position: 0 0, 0 0, 0 0, 0 0, 0 0;
+      --bg-repeat: repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+
+      /* Palette — scientifically grounded bioluminescent organism colors */
+      --color-primary: #00e5c8;       /* organism core teal */
+      --color-primary-light: #003d38;
+      --color-secondary: #1e8fff;     /* pressure-depth blue (not purple) */
+      --color-accent: #ff8c42;        /* dinoflagellate amber flash */
+      --color-bg: #020d1a;
+      --color-surface: #051828;
+      --color-surface-alt: #071f34;
+      --color-text: #b8e8e8;
+      --color-text-muted: #4a8899;
+      --color-text-on-primary: #020d1a;
+      --color-border: #0d3a52;
+      --color-success: #00cc88;
+      --color-warning: #cc8800;
+      --color-error: #ff4060;
+
+      --font-family: 'Oxanium', 'Share Tech', sans-serif;
+      --font-family-mono: 'JetBrains Mono', 'Fira Code', monospace;
+      --font-family-display: 'Exo 2', 'Audiowide', sans-serif;
+      --font-size-base: 16px; --font-weight-heading: 700; --font-weight-body: 400; --line-height: 1.65;
+
+      --radius: 2px; --radius-card: 3px; --radius-button: 2px;
+
+      --shadow-sm: 0 2px 8px rgba(0,0,0,0.7);
+      --shadow-md: 0 4px 20px rgba(0,0,0,0.85);
+      --shadow-lg: 0 8px 40px rgba(0,0,0,0.9);
+      --shadow-xl: 0 16px 64px rgba(0,0,0,0.95);
+      --shadow-colored: 0 4px 24px rgba(0,229,200,0.35), 0 2px 8px rgba(0,229,200,0.15);
+      --shadow-inset: inset 0 1px 3px rgba(0,0,0,0.6), inset 0 0 8px rgba(0,229,200,0.05);
+
+      --gradient-hero: linear-gradient(180deg, #041428 0%, #020d1a 100%);
+      --gradient-card: none;
+      --gradient-button: linear-gradient(135deg, #00e5c8 0%, #00b8a0 100%);
+      --gradient-text: none;
+      --gradient-accent: linear-gradient(90deg, rgba(0,229,200,0.7) 0%, rgba(30,143,255,0.7) 100%);
+
+      /* Card gradient border: teal-to-blue light refraction sheen */
+      --card-border-gradient: linear-gradient(135deg, rgba(0,229,200,0.28), rgba(30,143,255,0.14) 55%, rgba(0,229,200,0.07));
+      --card-border-hover: linear-gradient(135deg, rgba(0,229,200,0.55), rgba(30,143,255,0.28) 55%, rgba(0,229,200,0.14));
+
+      --glow-color: #00e5c8;
+      --glow-sm: 0 0 6px rgba(0,229,200,0.35), 0 0 12px rgba(0,229,200,0.15);
+      --glow-md: 0 0 16px rgba(0,229,200,0.45), 0 0 32px rgba(0,229,200,0.2);
+      --glow-lg: 0 0 32px rgba(0,229,200,0.55), 0 0 64px rgba(0,229,200,0.25), 0 0 100px rgba(0,229,200,0.1);
+      --glass-blur: 12px;
+      --glass-tint: rgba(0,229,200,0.04);
+      --backdrop-filter: blur(12px) saturate(150%);
+      --text-shadow: none;
+      --border-gradient: linear-gradient(135deg, #00e5c8, #1e8fff);
+      --noise-opacity: 0.04;
+
+      --space-1: 4px; --space-2: 8px; --space-3: 12px;
+      --space-4: 16px; --space-6: 24px; --space-8: 32px;
+      --duration-fast: 120ms; --duration-base: 200ms; --duration-slow: 400ms;
+      --easing: cubic-bezier(0.16, 1, 0.3, 1); --border-width: 1px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: var(--bg-base, var(--color-bg));
+      background-image: var(--bg-image, none);
+      background-size: var(--bg-size, auto);
+      background-position: var(--bg-position, 0 0);
+      background-repeat: var(--bg-repeat, repeat);
+      color: var(--color-text);
+      font-family: var(--font-family);
+      font-size: var(--font-size-base);
+      line-height: var(--line-height);
+      padding: 2rem;
+      max-width: 900px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    /* Scanline overlay — sonar monitor CRT texture at ~1.2% opacity */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 9999;
+      background-image: repeating-linear-gradient(
+        0deg,
+        transparent 0px,
+        transparent 2px,
+        rgba(0, 229, 200, 0.012) 2px,
+        rgba(0, 229, 200, 0.012) 3px
+      );
+    }
+
+    @keyframes biolumen-pulse {
+      0%, 100% { box-shadow: var(--glow-sm); }
+      50% { box-shadow: var(--glow-md); }
+    }
+
+    @keyframes sonar-ping {
+      0% { transform: scale(0.5); opacity: 0.8; }
+      100% { transform: scale(4); opacity: 0; }
+    }
+
+    /* Header */
+    .tf-header {
+      background: var(--gradient-hero);
+      color: var(--color-text);
+      border-radius: var(--radius-card);
+      padding: 2rem 2.5rem;
+      margin-bottom: 2rem;
+      border: 1px solid var(--color-border);
+      box-shadow: var(--shadow-md), inset 0 1px 0 rgba(0,229,200,0.08);
+      position: relative;
+      overflow: hidden;
+    }
+    /* Thin teal accent line bleeding from left edge */
+    .tf-header::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, var(--color-primary), rgba(30,143,255,0.5) 60%, transparent);
+    }
+    .tf-header h1 {
+      font-family: var(--font-family-display);
+      font-size: 2rem;
+      font-weight: var(--font-weight-heading);
+      margin-bottom: 0.25rem;
+      color: var(--color-text);
+      letter-spacing: 0.04em;
+    }
+    .tf-header p {
+      font-size: 0.85rem;
+      color: var(--color-text-muted);
+      font-family: var(--font-family-mono);
+      letter-spacing: 0.06em;
+    }
+    /* Depth annotation — top right corner */
+    .tf-header-depth {
+      position: absolute;
+      top: 1.25rem;
+      right: 1.5rem;
+      font-family: var(--font-family-mono);
+      font-size: 0.68rem;
+      color: var(--color-primary);
+      letter-spacing: 0.12em;
+      opacity: 0.55;
+      text-transform: uppercase;
+    }
+
+    .tf-section { margin-bottom: 2rem; }
+
+    /* Section titles: left accent bar with glow instead of bottom border */
+    .tf-section-title {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--color-primary);
+      margin-bottom: 0.75rem;
+      padding-left: 0.75rem;
+      border-left: 2px solid var(--color-primary);
+      box-shadow: -4px 0 10px rgba(0,229,200,0.22);
+      font-family: var(--font-family-mono);
+    }
+
+    .tf-swatches { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 0.75rem; }
+    .tf-swatch { border-radius: var(--radius); overflow: hidden; border: 1px solid var(--color-border); box-shadow: var(--shadow-sm); }
+    .tf-swatch-color { height: 64px; width: 100%; }
+    .tf-swatch-label { background: var(--color-surface); padding: 0.4rem 0.5rem; font-size: 0.7rem; font-family: var(--font-family-mono); color: var(--color-text-muted); }
+    .tf-swatch-label strong { display: block; color: var(--color-text); font-size: 0.75rem; margin-bottom: 0.1rem; }
+
+    .tf-type-scale { display: flex; flex-direction: column; gap: 0.5rem; }
+    .tf-type-scale .t-h1 { font-size: 2.5rem; font-weight: var(--font-weight-heading); font-family: var(--font-family-display); }
+    .tf-type-scale .t-h2 { font-size: 1.75rem; font-weight: var(--font-weight-heading); }
+    .tf-type-scale .t-h3 { font-size: 1.25rem; font-weight: var(--font-weight-heading); }
+    .tf-type-scale .t-body { font-size: 1rem; }
+    .tf-type-scale .t-small { font-size: 0.85rem; color: var(--color-text-muted); }
+    .tf-type-scale .t-mono {
+      font-family: var(--font-family-mono);
+      font-size: 0.9rem;
+      background: var(--color-surface-alt);
+      padding: 0.25rem 0.5rem;
+      border-radius: var(--radius);
+      color: var(--color-primary);
+      border: 1px solid var(--color-border);
+    }
+
+    .tf-buttons { display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; }
+    .tf-btn {
+      padding: 0.5rem 1.25rem;
+      border-radius: var(--radius-button);
+      font-family: var(--font-family-display);
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      transition: opacity var(--duration-fast) var(--easing), box-shadow var(--duration-fast) var(--easing);
+    }
+    .tf-btn:hover { opacity: 0.88; }
+    .tf-btn-primary {
+      background: var(--gradient-button);
+      color: var(--color-text-on-primary);
+      box-shadow: var(--glow-sm);
+    }
+    .tf-btn-primary:hover { box-shadow: var(--glow-md); opacity: 1; }
+    .tf-btn-secondary { background: var(--color-secondary); color: #fff; box-shadow: var(--shadow-sm); }
+    .tf-btn-outline { background: transparent; color: var(--color-primary); border: 1px solid var(--color-primary); }
+    .tf-btn-outline:hover { box-shadow: var(--glow-sm); opacity: 1; }
+    .tf-btn-ghost { background: var(--color-surface-alt); color: var(--color-text); border: 1px solid var(--color-border); }
+
+    /* Cards: gradient border using padding-box/border-box trick — teal-to-blue refraction sheen */
+    .tf-card {
+      background:
+        linear-gradient(var(--color-surface), var(--color-surface)) padding-box,
+        var(--card-border-gradient) border-box;
+      border: 1px solid transparent;
+      border-radius: var(--radius-card);
+      padding: 1.5rem;
+      box-shadow: var(--shadow-md), inset 0 1px 0 rgba(0,229,200,0.06);
+      transition: box-shadow var(--duration-base) var(--easing), background var(--duration-base) var(--easing);
+    }
+    .tf-card:hover {
+      background:
+        linear-gradient(var(--color-surface), var(--color-surface)) padding-box,
+        var(--card-border-hover) border-box;
+      box-shadow: var(--shadow-md), var(--glow-sm), inset 0 1px 0 rgba(0,229,200,0.1);
+    }
+    .tf-card h3 {
+      font-weight: var(--font-weight-heading);
+      margin-bottom: 0.5rem;
+      color: var(--color-primary);
+      font-family: var(--font-family-display);
+      font-size: 1rem;
+      letter-spacing: 0.04em;
+    }
+    .tf-card p { color: var(--color-text-muted); font-size: 0.9rem; line-height: var(--line-height); }
+    .tf-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1rem; }
+
+    /* Alt surface card variant: hex grid overlay suggesting sonar grid */
+    .tf-card--hex {
+      background:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='23'%3E%3Cpath d='M10 1 L18 5.5 L18 17.5 L10 22 L2 17.5 L2 5.5 Z' stroke='%2300e5c8' stroke-width='0.4' fill='none' opacity='0.09'/%3E%3C/svg%3E"),
+        linear-gradient(var(--color-surface-alt), var(--color-surface-alt)) padding-box,
+        var(--card-border-gradient) border-box;
+      background-size: 20px 23px, auto, auto;
+      background-repeat: repeat, no-repeat, no-repeat;
+      border: 1px solid transparent;
+    }
+    .tf-card--hex:hover {
+      background:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='23'%3E%3Cpath d='M10 1 L18 5.5 L18 17.5 L10 22 L2 17.5 L2 5.5 Z' stroke='%2300e5c8' stroke-width='0.4' fill='none' opacity='0.09'/%3E%3C/svg%3E"),
+        linear-gradient(var(--color-surface-alt), var(--color-surface-alt)) padding-box,
+        var(--card-border-hover) border-box;
+      background-size: 20px 23px, auto, auto;
+      background-repeat: repeat, no-repeat, no-repeat;
+    }
+
+    .tf-form { display: flex; flex-direction: column; gap: 1rem; max-width: 400px; }
+    .tf-form label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--color-text-muted);
+      margin-bottom: 0.25rem;
+      display: block;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-family: var(--font-family-mono);
+    }
+    .tf-form input, .tf-form select {
+      width: 100%;
+      padding: 0.5rem 0.75rem;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      background: var(--color-surface);
+      color: var(--color-text);
+      font-family: var(--font-family-mono);
+      font-size: 0.9rem;
+      outline: none;
+      transition: border-color var(--duration-fast) var(--easing), box-shadow var(--duration-fast) var(--easing);
+    }
+    .tf-form input:focus, .tf-form select:focus {
+      border-color: var(--color-primary);
+      box-shadow: var(--glow-sm);
+    }
+
+    .tf-effects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem; }
+    .tf-effect-tile {
+      border-radius: var(--radius-card);
+      padding: 1.25rem;
+      background:
+        linear-gradient(var(--color-surface), var(--color-surface)) padding-box,
+        var(--card-border-gradient) border-box;
+      border: 1px solid transparent;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .tf-effect-tile .tile-label { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-text-muted); font-family: var(--font-family-mono); }
+    .tf-effect-tile .tile-value { font-size: 0.7rem; color: var(--color-text-muted); font-family: var(--font-family-mono); word-break: break-all; }
+    .tf-gradient-hero {
+      height: 80px;
+      border-radius: var(--radius-card);
+      background: var(--gradient-hero, var(--color-primary));
+      border: 1px solid var(--color-border);
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 0 1.5rem;
+      color: var(--color-primary);
+      font-weight: var(--font-weight-heading);
+      font-family: var(--font-family-display);
+      font-size: 0.95rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+    .tf-glow-demo {
+      background: var(--color-surface);
+      border-radius: var(--radius-card);
+      padding: 1rem 1.5rem;
+      text-align: center;
+      border: 1px solid rgba(0,229,200,0.2);
+      font-weight: 600;
+      color: var(--glow-color, var(--color-primary));
+      font-family: var(--font-family-display);
+      animation: biolumen-pulse 3s ease-in-out infinite;
+    }
+    .tf-glass-demo {
+      border-radius: var(--radius-card);
+      padding: 1rem 1.5rem;
+      background: var(--glass-tint, rgba(0,229,200,0.04));
+      backdrop-filter: var(--backdrop-filter, none);
+      -webkit-backdrop-filter: var(--backdrop-filter, none);
+      border: 1px solid rgba(0,229,200,0.15);
+      font-size: 0.85rem;
+      color: var(--color-text);
+    }
+    .tf-gradient-text {
+      font-size: 1.5rem;
+      font-weight: var(--font-weight-heading);
+      font-family: var(--font-family-display);
+      color: var(--color-primary);
+      display: inline-block;
+    }
+    .tf-btn-gradient {
+      background: var(--gradient-button, var(--color-primary));
+      color: var(--color-text-on-primary);
+      box-shadow: var(--shadow-colored, var(--shadow-sm));
+    }
+    .tf-inset-demo {
+      background: var(--color-surface-alt);
+      border-radius: var(--radius);
+      padding: 0.6rem 1rem;
+      box-shadow: var(--shadow-inset);
+      border: 1px solid var(--color-border);
+      font-size: 0.85rem;
+      color: var(--color-text-muted);
+      font-family: var(--font-family-mono);
+    }
+
+    /* Sonar ping: pure CSS expanding ring from a dot */
+    .tf-sonar-demo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 72px;
+    }
+    .tf-sonar-dot {
+      position: relative;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--color-primary);
+      box-shadow: var(--glow-sm);
+      flex-shrink: 0;
+    }
+    .tf-sonar-dot::before,
+    .tf-sonar-dot::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      border: 1px solid var(--color-primary);
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 0;
+      animation: sonar-ping 2.8s ease-out infinite;
+    }
+    .tf-sonar-dot::after {
+      animation-delay: 1.4s;
+    }
+
+    .tf-badges { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .tf-badge {
+      padding: 0.2rem 0.75rem;
+      border-radius: 1px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-family: var(--font-family-mono);
+    }
+    .tf-badge-primary { background: var(--color-primary-light); color: var(--color-primary); border: 1px solid rgba(0,229,200,0.3); }
+    .tf-badge-success { background: rgba(0,204,136,0.12); color: var(--color-success); border: 1px solid rgba(0,204,136,0.3); }
+    .tf-badge-warning { background: rgba(204,136,0,0.12); color: var(--color-warning); border: 1px solid rgba(204,136,0,0.3); }
+    .tf-badge-error { background: rgba(255,64,96,0.12); color: var(--color-error); border: 1px solid rgba(255,64,96,0.3); }
+    .tf-badge-neutral { background: var(--color-surface-alt); color: var(--color-text-muted); border: 1px solid var(--color-border); }
+  </style>
+</head>
+<body>
+
+  <div class="tf-header">
+    <h1>Biolumen Depths</h1>
+    <p>Dark · Atmospheric · Teal + Cold Blue + Amber · Scientific</p>
+    <div class="tf-header-depth">↓ 4,021 m</div>
+  </div>
+
+  <div class="tf-section">
+    <div class="tf-section-title">Color Palette</div>
+    <div class="tf-swatches">
+      <div class="tf-swatch"><div class="tf-swatch-color" style="background:var(--color-primary)"></div><div class="tf-swatch-label"><strong>primary</strong>#00e5c8</div></div>
+      <div class="tf-swatch"><div class="tf-swatch-color" style="background:var(--color-primary-light)"></div><div class="tf-swatch-label"><strong>primaryLight</strong>#003d38</div></div>
+      <div class="tf-swatch"><div class="tf-swatch-color" style="background:var(--color-secondary)"></div><div class="tf-swatch-label"><strong>secondary</strong>#1e8fff</div></div>
+      <div class="tf-swatch"><div class="tf-swatch-color" style="background:var(--color-accent)"></div><div class="tf-swatch-label"><strong>accent</strong>#ff8c42</div></div>
+      <div class="tf-swatch"><div class="tf-swatch-color" style="background:var(--color-bg)"></div><div class="tf-swatch-label"><strong>background</strong>#020d1a</div></div>
+      <div class="tf-swatch"><div class="tf-swatch-color" style="background:var(--color-surface)"></div><div class="tf-swatch-label"><strong>surface</strong>#051828</div></div>
+      <div class="tf-swatch"><div class="tf-swatch-color" style="background:var(--color-surface-alt)"></div><div class="tf-swatch-label"><strong>surfaceAlt</strong>#071f34</div></div>
+      <div class="tf-swatch"><div class="tf-swatch-color" style="background:var(--color-text)"></div><div class="tf-swatch-label"><strong>text</strong>#b8e8e8</div></div>
+      <div class="tf-swatch"><div class="tf-swatch-color" style="background:var(--color-text-muted)"></div><div class="tf-swatch-label"><strong>textMuted</strong>#4a8899</div></div>
+      <div class="tf-swatch"><div class="tf-swatch-color" style="background:var(--color-border)"></div><div class="tf-swatch-label"><strong>border</strong>#0d3a52</div></div>
+      <div class="tf-swatch"><div class="tf-swatch-color" style="background:var(--color-success)"></div><div class="tf-swatch-label"><strong>success</strong>#00cc88</div></div>
+      <div class="tf-swatch"><div class="tf-swatch-color" style="background:var(--color-warning)"></div><div class="tf-swatch-label"><strong>warning</strong>#cc8800</div></div>
+      <div class="tf-swatch"><div class="tf-swatch-color" style="background:var(--color-error)"></div><div class="tf-swatch-label"><strong>error</strong>#ff4060</div></div>
+    </div>
+  </div>
+
+  <div class="tf-section">
+    <div class="tf-section-title">Typography</div>
+    <div class="tf-type-scale">
+      <div class="t-h1">Display Heading</div>
+      <div class="t-h2">Section Heading</div>
+      <div class="t-h3">Subsection Heading</div>
+      <div class="t-body">Body text — the quick brown fox jumps over the lazy dog.</div>
+      <div class="t-small">Small / muted — captions, depth readings, specimen timestamps</div>
+      <div class="t-mono">monospace: specimen_id(), depth_m, temp_c</div>
+    </div>
+  </div>
+
+  <div class="tf-section">
+    <div class="tf-section-title">Buttons</div>
+    <div class="tf-buttons">
+      <button class="tf-btn tf-btn-primary">Activate Scan</button>
+      <button class="tf-btn tf-btn-secondary">Secondary</button>
+      <button class="tf-btn tf-btn-outline">Outlined</button>
+      <button class="tf-btn tf-btn-ghost">Ghost</button>
+    </div>
+  </div>
+
+  <div class="tf-section">
+    <div class="tf-section-title">Cards</div>
+    <div class="tf-cards">
+      <div class="tf-card"><h3>Specimen BD-2840</h3><p>Gradient border — teal-to-blue light refraction sheen from padding-box/border-box stacking. Hover to intensify.</p></div>
+      <div class="tf-card"><h3>Depth Log Entry</h3><p>Every visual property references a CSS variable — swap themes by swapping :root.</p></div>
+      <div class="tf-card tf-card--hex"><h3>Alt Surface</h3><p>surfaceAlt with SVG hex grid overlay — sonar sensor array reference.</p></div>
+    </div>
+  </div>
+
+  <div class="tf-section">
+    <div class="tf-section-title">Form Elements</div>
+    <div class="tf-form">
+      <div><label>Specimen ID</label><input type="text" placeholder="BD-2840-A…"></div>
+      <div><label>Zone Classification</label><select><option>Midnight Zone (1000–4000m)</option><option>Abyssal Zone (4000–6000m)</option><option>Hadal Zone (&gt;6000m)</option></select></div>
+    </div>
+  </div>
+
+  <div class="tf-section">
+    <div class="tf-section-title">Badges &amp; Status</div>
+    <div class="tf-badges">
+      <span class="tf-badge tf-badge-primary">Bioluminescent</span>
+      <span class="tf-badge tf-badge-success">Viable</span>
+      <span class="tf-badge tf-badge-warning">Unstable</span>
+      <span class="tf-badge tf-badge-error">Critical</span>
+      <span class="tf-badge tf-badge-neutral">Catalogued</span>
+    </div>
+  </div>
+
+  <div class="tf-section">
+    <div class="tf-section-title">Gradients &amp; Effects</div>
+    <div class="tf-effects-grid">
+      <div class="tf-effect-tile" style="grid-column:1/-1">
+        <div class="tile-label">Hero Gradient</div>
+        <div class="tf-gradient-hero">DEPTH SURVEY LOG — SECTOR 7</div>
+        <div class="tile-value">var(--gradient-hero)</div>
+      </div>
+      <div class="tf-effect-tile">
+        <div class="tile-label">Gradient Text</div>
+        <div class="tf-gradient-text">Specimen Data</div>
+        <div class="tile-value">var(--gradient-text) — solid primary</div>
+      </div>
+      <div class="tf-effect-tile">
+        <div class="tile-label">Gradient Button</div>
+        <button class="tf-btn tf-btn-gradient" style="width:100%">Gradient CTA</button>
+        <div class="tile-value">var(--gradient-button)</div>
+      </div>
+      <div class="tf-effect-tile">
+        <div class="tile-label">Glow / Luminescence</div>
+        <div class="tf-glow-demo">Bioluminescent Signal</div>
+        <div class="tile-value">var(--glow-md) · animated pulse</div>
+      </div>
+      <div class="tf-effect-tile">
+        <div class="tile-label">Depth Ping</div>
+        <div class="tf-sonar-demo">
+          <div class="tf-sonar-dot"></div>
+        </div>
+        <div class="tile-value">CSS sonar pulse · dual ring offset</div>
+      </div>
+      <div class="tf-effect-tile">
+        <div class="tile-label">Glass / Frost</div>
+        <div class="tf-glass-demo">Pressure vessel surface</div>
+        <div class="tile-value">var(--glass-blur) · var(--glass-tint)</div>
+      </div>
+      <div class="tf-effect-tile">
+        <div class="tile-label">Inset / Well</div>
+        <div class="tf-inset-demo">depth_reading: 4021.8m</div>
+        <div class="tile-value">var(--shadow-inset)</div>
+      </div>
+      <div class="tf-effect-tile">
+        <div class="tile-label">Colored Shadow</div>
+        <div style="padding:0.75rem 1rem;border-radius:var(--radius-card);background:var(--color-primary);color:var(--color-text-on-primary);box-shadow:var(--shadow-colored);font-weight:700;font-size:0.82rem;text-align:center;font-family:var(--font-family-display);letter-spacing:0.06em;text-transform:uppercase">Teal Primary</div>
+        <div class="tile-value">var(--shadow-colored)</div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

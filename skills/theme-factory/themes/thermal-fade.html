@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="thermal-fade">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Theme: Thermal Fade</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+  <script id="theme-data" type="application/json">
+  {
+    "name": "thermal-fade",
+    "description": "BPA receipt paper, end-of-roll. Content starts crisp at top, gradually fades as ink runs out. Monospace receipt typography. Date stamp header. The page physically decays toward the footer.",
+    "createdAt": "2026-06-26T00:00:00.000Z",
+    "source": "text",
+    "sourceFile": "",
+    "background": {
+      "type": "noise",
+      "baseColor": "#FFF8EE",
+      "image": "none",
+      "size": "200px",
+      "position": "0 0",
+      "repeat": "repeat",
+      "patternType": "noise",
+      "patternColor": "#AA9966",
+      "patternOpacity": "0.04",
+      "patternSpacing": "auto",
+      "notes": "Warm thermal paper off-white. Subtle paper texture noise. Content fades via gradient mask toward footer."
+    },
+    "colors": {
+      "primary": "#1A1A0A",
+      "primaryLight": "rgba(26,26,10,0.1)",
+      "secondary": "#666650",
+      "accent": "#AA7700",
+      "background": "#FFF8EE",
+      "surface": "#FFF3E0",
+      "surfaceAlt": "#F5EDDB",
+      "text": "#1A1A0A",
+      "textMuted": "#888872",
+      "textOnPrimary": "#FFF8EE",
+      "border": "#C8C0A8",
+      "success": "#446644",
+      "warning": "#AA7700",
+      "error": "#882200"
+    },
+    "typography": {
+      "fontFamily": "'Courier Prime', 'Courier New', monospace",
+      "fontFamilyMono": "'Courier Prime', 'Courier New', monospace",
+      "fontFamilyDisplay": "'Courier Prime', 'Courier New', monospace",
+      "scaleBase": "16px",
+      "headingWeight": "700",
+      "bodyWeight": "400",
+      "lineHeight": "1.5"
+    },
+    "spacing": {
+      "borderRadius": "0px",
+      "cardRadius": "2px",
+      "buttonRadius": "0px",
+      "spaceUnit": "8px",
+      "density": "compact"
+    },
+    "shadows": {
+      "sm": "0 1px 3px rgba(100,80,40,0.12)",
+      "md": "0 2px 8px rgba(100,80,40,0.16)",
+      "lg": "0 4px 16px rgba(100,80,40,0.2)",
+      "xl": "0 8px 32px rgba(100,80,40,0.24)",
+      "colored": "0 2px 8px rgba(170,119,0,0.2)",
+      "inset": "inset 0 1px 4px rgba(100,80,40,0.15)",
+      "elevation": "subtle"
+    },
+    "gradients": {
+      "hero": "none",
+      "card": "none",
+      "button": "none",
+      "text": "none",
+      "accent": "none"
+    },
+    "effects": {
+      "luminescence": "none",
+      "glowColor": "#AA7700",
+      "glowBlur": "0px",
+      "glowSm": "none",
+      "glowMd": "none",
+      "glowLg": "none",
+      "glassBlur": "0",
+      "glassTint": "none",
+      "gradientBorder": "none",
+      "noiseOpacity": "0.04",
+      "textShadow": "none",
+      "backdropFilter": "none"
+    },
+    "motion": {
+      "durationFast": "80ms",
+      "durationBase": "150ms",
+      "durationSlow": "250ms",
+      "easing": "cubic-bezier(0.25, 0, 0.5, 1)",
+      "feel": "instant"
+    },
+    "design": {
+      "aesthetic": "editorial",
+      "personality": ["ephemeral", "monochrome", "retro", "fading"],
+      "borderStyle": "hairline",
+      "iconStyle": "sharp",
+      "imageStyle": "none",
+      "surfaceTexture": "noise",
+      "hierarchyClarity": "medium",
+      "notes": "THE gimmick: body has a masking gradient that fades content to near-invisible at the bottom, simulating thermal ink running out. All fonts monospace. Header stamped with date/time. Dashed separators mimic receipt perforations."
+    }
+  }
+  </script>
+
+  <style>
+    :root {
+      --bg-base: #FFF8EE;
+      --bg-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      --bg-size: 200px;
+      --bg-position: 0 0;
+      --bg-repeat: repeat;
+
+      --color-primary: #1A1A0A;
+      --color-primary-light: rgba(26,26,10,0.1);
+      --color-secondary: #666650;
+      --color-accent: #AA7700;
+      --color-bg: #FFF8EE;
+      --color-surface: #FFF3E0;
+      --color-surface-alt: #F5EDDB;
+      --color-text: #1A1A0A;
+      --color-text-muted: #888872;
+      --color-text-on-primary: #FFF8EE;
+      --color-border: #C8C0A8;
+      --color-success: #446644;
+      --color-warning: #AA7700;
+      --color-error: #882200;
+
+      --font-family: 'Courier Prime', 'Courier New', monospace;
+      --font-family-mono: 'Courier Prime', 'Courier New', monospace;
+      --font-family-display: 'Courier Prime', 'Courier New', monospace;
+      --font-size-base: 16px;
+      --font-weight-heading: 700;
+      --font-weight-body: 400;
+      --line-height: 1.5;
+
+      --radius: 0px;
+      --radius-card: 2px;
+      --radius-button: 0px;
+
+      --shadow-sm: 0 1px 3px rgba(100,80,40,0.12);
+      --shadow-md: 0 2px 8px rgba(100,80,40,0.16);
+      --shadow-lg: 0 4px 16px rgba(100,80,40,0.2);
+      --shadow-xl: 0 8px 32px rgba(100,80,40,0.24);
+      --shadow-colored: 0 2px 8px rgba(170,119,0,0.2);
+      --shadow-inset: inset 0 1px 4px rgba(100,80,40,0.15);
+
+      --gradient-hero: none;
+      --gradient-card: none;
+      --gradient-button: none;
+      --gradient-text: none;
+      --gradient-accent: none;
+
+      --glow-color: #AA7700;
+      --glow-sm: none; --glow-md: none; --glow-lg: none;
+      --glass-blur: 0px; --glass-tint: none;
+      --backdrop-filter: none; --text-shadow: none;
+      --border-gradient: none; --noise-opacity: 0.04;
+
+      --space-1: 4px; --space-2: 8px; --space-3: 12px;
+      --space-4: 16px; --space-6: 24px; --space-8: 32px;
+      --duration-fast: 80ms; --duration-base: 150ms; --duration-slow: 250ms;
+      --easing: cubic-bezier(0.25, 0, 0.5, 1);
+      --border-width: 1px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: var(--bg-base);
+      background-image: var(--bg-image);
+      background-size: var(--bg-size);
+      background-position: var(--bg-position);
+      background-repeat: var(--bg-repeat);
+      color: var(--color-text);
+      font-family: var(--font-family);
+      font-size: var(--font-size-base);
+      line-height: var(--line-height);
+      padding: 2rem;
+      max-width: 680px;
+      margin: 0 auto;
+      /* GIMMICK: fade content to blank thermal paper at bottom */
+      -webkit-mask-image: linear-gradient(to bottom, black 0%, black 60%, rgba(0,0,0,0.6) 78%, rgba(0,0,0,0.25) 90%, rgba(0,0,0,0.05) 100%);
+      mask-image: linear-gradient(to bottom, black 0%, black 60%, rgba(0,0,0,0.6) 78%, rgba(0,0,0,0.25) 90%, rgba(0,0,0,0.05) 100%);
+    }
+
+    /* ── Perforation divider ── */
+    .perforation {
+      border: none;
+      border-top: 1px dashed var(--color-border);
+      margin: 1.5rem 0;
+      opacity: 0.6;
+    }
+
+    /* ── Receipt stamp ── */
+    .receipt-stamp {
+      font-size: 0.65rem;
+      color: var(--color-text-muted);
+      text-align: center;
+      letter-spacing: 0.05em;
+      padding: 0.25rem 0;
+    }
+
+    .tf-header {
+      background: var(--color-bg);
+      padding: 1.5rem 0 1rem;
+      margin-bottom: 1rem;
+      text-align: center;
+      border-bottom: 1px solid var(--color-border);
+    }
+    .tf-header .receipt-stamp { font-size: 0.7rem; margin-bottom: 0.5rem; }
+    .tf-header h1 {
+      font-family: var(--font-family);
+      font-size: 1.4rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.25rem;
+    }
+    .tf-header p { font-size: 0.8rem; color: var(--color-text-muted); }
+    .header-dashes {
+      font-size: 0.85rem;
+      letter-spacing: 0.02em;
+      color: var(--color-border);
+      margin: 0.75rem 0;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
+    .tf-section { margin-bottom: 1.5rem; }
+    .tf-section-title {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      margin-bottom: 0.75rem;
+    }
+
+    .tf-swatches { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 0.5rem; }
+    .tf-swatch { overflow: hidden; border: 1px solid var(--color-border); }
+    .tf-swatch-color { height: 48px; width: 100%; }
+    .tf-swatch-label { background: var(--color-surface); padding: 0.3rem 0.4rem; font-size: 0.65rem; font-family: var(--font-family-mono); color: var(--color-text-muted); }
+    .tf-swatch-label strong { display: block; color: var(--color-text); font-size: 0.7rem; margin-bottom: 0.1rem; }
+
+    .tf-type-scale { display: flex; flex-direction: column; gap: 0.5rem; }
+    .tf-type-scale .t-h1 { font-size: 1.8rem; font-weight: 700; }
+    .tf-type-scale .t-h2 { font-size: 1.3rem; font-weight: 700; }
+    .tf-type-scale .t-h3 { font-size: 1.05rem; font-weight: 700; }
+    .tf-type-scale .t-body { font-size: 0.95rem; }
+    .tf-type-scale .t-small { font-size: 0.8rem; color: var(--color-text-muted); }
+    .tf-type-scale .t-mono { font-family: var(--font-family-mono); font-size: 0.85rem; background: var(--color-surface-alt); padding: 0.2rem 0.4rem; border: 1px solid var(--color-border); }
+
+    .tf-buttons { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; }
+    .tf-btn {
+      padding: 0.35rem 1rem;
+      font-family: var(--font-family);
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      cursor: pointer;
+      border: 1px solid var(--color-border);
+      background: var(--color-bg);
+      color: var(--color-text);
+      transition: opacity var(--duration-fast);
+    }
+    .tf-btn:hover { opacity: 0.7; }
+    .tf-btn-primary { background: var(--color-primary); color: var(--color-text-on-primary); border-color: var(--color-primary); }
+    .tf-btn-secondary { background: var(--color-secondary); color: var(--color-text-on-primary); border-color: var(--color-secondary); }
+    .tf-btn-outline { background: transparent; color: var(--color-primary); border-color: var(--color-primary); }
+    .tf-btn-ghost { background: var(--color-surface-alt); color: var(--color-text-muted); }
+
+    /* Receipt-style line items as "cards" */
+    .receipt-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      padding: 1rem;
+    }
+    .receipt-line {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.9rem;
+      padding: 0.2rem 0;
+    }
+    .receipt-line.total {
+      font-weight: 700;
+      border-top: 1px solid var(--color-border);
+      margin-top: 0.5rem;
+      padding-top: 0.5rem;
+    }
+    .receipt-line.muted { color: var(--color-text-muted); font-size: 0.8rem; }
+    .receipt-card h3 { font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-text-muted); margin-bottom: 0.75rem; }
+
+    .tf-form { display: flex; flex-direction: column; gap: 0.75rem; max-width: 400px; }
+    .tf-form label { font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--color-text-muted); margin-bottom: 0.2rem; display: block; }
+    .tf-form input, .tf-form select {
+      width: 100%;
+      padding: 0.4rem 0.6rem;
+      border: 1px solid var(--color-border);
+      background: var(--color-bg);
+      color: var(--color-text);
+      font-family: var(--font-family);
+      font-size: 0.9rem;
+      outline: none;
+      transition: border-color var(--duration-fast);
+    }
+    .tf-form input:focus, .tf-form select:focus { border-color: var(--color-primary); }
+
+    .tf-badges { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .tf-badge { padding: 0.1rem 0.6rem; font-family: var(--font-family); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.04em; border: 1px solid; }
+    .tf-badge-primary { background: var(--color-primary-light); color: var(--color-primary); border-color: var(--color-border); }
+    .tf-badge-success { background: rgba(68,102,68,0.1); color: var(--color-success); border-color: var(--color-success); }
+    .tf-badge-warning { background: rgba(170,119,0,0.1); color: var(--color-warning); border-color: var(--color-warning); }
+    .tf-badge-error { background: rgba(136,34,0,0.1); color: var(--color-error); border-color: var(--color-error); }
+    .tf-badge-neutral { background: var(--color-surface-alt); color: var(--color-text-muted); border-color: var(--color-border); }
+
+    .tf-effects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 0.75rem; }
+    .tf-effect-tile { border: 1px solid var(--color-border); padding: 1rem; display: flex; flex-direction: column; gap: 0.5rem; background: var(--color-surface); }
+    .tf-effect-tile .tile-label { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-text-muted); }
+    .tf-effect-tile .tile-value { font-size: 0.7rem; color: var(--color-text-muted); word-break: break-all; }
+    .tf-gradient-hero { height: 64px; background: var(--color-bg); border: 1px dashed var(--color-border); display: flex; flex-direction: column; align-items: center; justify-content: center; color: var(--color-text); font-weight: 700; font-size: 0.95rem; gap: 0.2rem; }
+    .tf-glow-demo { background: var(--color-surface); border: 1px solid var(--color-border); padding: 0.75rem 1rem; text-align: center; font-weight: 700; color: var(--color-text); font-size: 0.9rem; box-shadow: var(--shadow-md); }
+    .tf-glass-demo { padding: 0.75rem 1rem; background: var(--color-surface-alt); border: 1px dashed var(--color-border); font-size: 0.85rem; color: var(--color-text-muted); }
+    .tf-inset-demo { background: var(--color-bg); padding: 0.5rem 0.75rem; box-shadow: var(--shadow-inset); border: 1px solid var(--color-border); font-size: 0.8rem; color: var(--color-text-muted); }
+    .tf-btn-gradient { background: var(--color-accent); color: var(--color-text-on-primary); border: 1px solid var(--color-accent); font-weight: 700; letter-spacing: 0.04em; }
+  </style>
+</head>
+<body>
+
+  <div class="tf-header">
+    <div class="receipt-stamp">★ THEME FACTORY ★<br>2026-06-26 — TXN #0001 — 10:24:37</div>
+    <div class="header-dashes">- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -</div>
+    <h1>THERMAL FADE</h1>
+    <p>BPA receipt paper — crisp at top, fading toward the end of the roll</p>
+    <div class="header-dashes">- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -</div>
+    <div class="receipt-stamp">Light · Editorial</div>
+  </div>
+
+  <div class="tf-section">
+    <div class="tf-section-title">Color Palette</div>
+    <div class="tf-swatches">
+      <div class="tf-swatch"><div class="tf-swatch-color" style="background:var(--color-primary)"></div><div class="tf-swatch-label"><strong>primary</strong>#1A1A0A</div></div>
+      <div class="tf-swatch"><div class="tf-swatch-color" style="background:var(--color-primary-light)"></div><div class="tf-swatch-label"><strong>primaryLight</strong>rgba(26,26,10,.1)</div></div>
+      <div class="tf-swatch"><div class="tf-swatch-color" style="background:var(--color-secondary)"></div><div class="tf-swatch-label"><strong>secondary</strong>#666650</div></div>
+      <div class="tf-swatch"><div class="tf-swatch-color" style="background:var(--color-accent)"></div><div class="tf-swatch-label"><strong>accent</strong>#AA7700</div></div>
+      <div class="tf-swatch"><div class="tf-swatch-color" style="background:var(--color-bg);border:1px solid var(--color-border)"></div><div class="tf-swatch-label"><strong>background</strong>#FFF8EE</div></div>
+      <div class="tf-swatch"><div class="tf-swatch-color" style="background:var(--color-surface)"></div><div class="tf-swatch-label"><strong>surface</strong>#FFF3E0</div></div>
+      <div class="tf-swatch"><div class="tf-swatch-color" style="background:var(--color-surface-alt)"></div><div class="tf-swatch-label"><strong>surfaceAlt</strong>#F5EDDB</div></div>
+      <div class="tf-swatch"><div class="tf-swatch-color" style="background:var(--color-text)"></div><div class="tf-swatch-label"><strong>text</strong>#1A1A0A</div></div>
+      <div class="tf-swatch"><div class="tf-swatch-color" style="background:var(--color-text-muted)"></div><div class="tf-swatch-label"><strong>textMuted</strong>#888872</div></div>
+      <div class="tf-swatch"><div class="tf-swatch-color" style="background:var(--color-border)"></div><div class="tf-swatch-label"><strong>border</strong>#C8C0A8</div></div>
+      <div class="tf-swatch"><div class="tf-swatch-color" style="background:var(--color-success)"></div><div class="tf-swatch-label"><strong>success</strong>#446644</div></div>
+      <div class="tf-swatch"><div class="tf-swatch-color" style="background:var(--color-warning)"></div><div class="tf-swatch-label"><strong>warning</strong>#AA7700</div></div>
+      <div class="tf-swatch"><div class="tf-swatch-color" style="background:var(--color-error)"></div><div class="tf-swatch-label"><strong>error</strong>#882200</div></div>
+    </div>
+  </div>
+
+  <hr class="perforation">
+
+  <div class="tf-section">
+    <div class="tf-section-title">Typography</div>
+    <div class="tf-type-scale">
+      <div class="t-h1">Display Heading</div>
+      <div class="t-h2">Section Heading</div>
+      <div class="t-h3">Subsection Heading</div>
+      <div class="t-body">Body text — Courier throughout. The quick brown fox jumps over the lazy dog. Receipt monospace for everything.</div>
+      <div class="t-small">Small / muted — captions, timestamps, transaction ids</div>
+      <div class="t-mono">code(): TXN_ID_8841 · ITEM_002</div>
+    </div>
+  </div>
+
+  <hr class="perforation">
+
+  <div class="tf-section">
+    <div class="tf-section-title">Buttons</div>
+    <div class="tf-buttons">
+      <button class="tf-btn tf-btn-primary">Primary</button>
+      <button class="tf-btn tf-btn-secondary">Secondary</button>
+      <button class="tf-btn tf-btn-outline">Outlined</button>
+      <button class="tf-btn tf-btn-ghost">Ghost</button>
+    </div>
+  </div>
+
+  <hr class="perforation">
+
+  <div class="tf-section">
+    <div class="tf-section-title">Cards — Receipt Line Items</div>
+    <div class="receipt-card">
+      <h3>ORDER SUMMARY</h3>
+      <div class="receipt-line"><span>Card Title</span><span>SURFACE</span></div>
+      <div class="receipt-line muted"><span>Standard theme card</span><span>—</span></div>
+      <div class="receipt-line"><span>Alt Surface</span><span>surfaceAlt</span></div>
+      <div class="receipt-line muted"><span>Sidebar, alt rows</span><span>—</span></div>
+      <div class="receipt-line total"><span>All tokens reference :root</span><span>✓</span></div>
+    </div>
+  </div>
+
+  <hr class="perforation">
+
+  <div class="tf-section">
+    <div class="tf-section-title">Form Elements</div>
+    <div class="tf-form">
+      <div><label>Text Input</label><input type="text" placeholder="enter value…"></div>
+      <div><label>Select</label><select><option>Option A</option><option>Option B</option><option>Option C</option></select></div>
+    </div>
+  </div>
+
+  <hr class="perforation">
+
+  <div class="tf-section">
+    <div class="tf-section-title">Badges &amp; Status</div>
+    <div class="tf-badges">
+      <span class="tf-badge tf-badge-primary">Primary</span>
+      <span class="tf-badge tf-badge-success">Success</span>
+      <span class="tf-badge tf-badge-warning">Warning</span>
+      <span class="tf-badge tf-badge-error">Error</span>
+      <span class="tf-badge tf-badge-neutral">Neutral</span>
+    </div>
+  </div>
+
+  <hr class="perforation">
+
+  <div class="tf-section">
+    <div class="tf-section-title">Gradients &amp; Effects</div>
+    <div class="tf-effects-grid">
+      <div class="tf-effect-tile" style="grid-column:1/-1">
+        <div class="tile-label">Hero / Banner — Receipt Header</div>
+        <div class="tf-gradient-hero">
+          <span>* * * THERMAL FADE * * *</span>
+          <span style="font-size:0.7rem;color:var(--color-text-muted)">No gradient — solid receipt paper</span>
+        </div>
+        <div class="tile-value">var(--color-bg) solid · dashed border</div>
+      </div>
+      <div class="tf-effect-tile"><div class="tile-label">Accent Ink</div><div style="font-size:1.3rem;font-weight:700;color:var(--color-accent)">$45.36</div><div class="tile-value">var(--color-accent) · amber ink</div></div>
+      <div class="tf-effect-tile"><div class="tile-label">Accent Button</div><button class="tf-btn tf-btn-gradient" style="width:100%">CONFIRM</button><div class="tile-value">var(--color-accent)</div></div>
+      <div class="tf-effect-tile"><div class="tile-label">Shadow Demo</div><div class="tf-glow-demo">Subtle warm shadow</div><div class="tile-value">var(--shadow-md)</div></div>
+      <div class="tf-effect-tile"><div class="tile-label">Surface Variant</div><div class="tf-glass-demo">surfaceAlt — slightly more aged paper</div><div class="tile-value">var(--color-surface-alt)</div></div>
+      <div class="tf-effect-tile"><div class="tile-label">Inset Well</div><div class="tf-inset-demo">entry_field</div><div class="tile-value">var(--shadow-inset)</div></div>
+      <div class="tf-effect-tile"><div class="tile-label">Primary Card</div><div style="padding:0.6rem 0.75rem;background:var(--color-primary);color:var(--color-text-on-primary);box-shadow:var(--shadow-colored);font-weight:700;font-size:0.85rem">PRIMARY CARD</div><div class="tile-value">var(--shadow-colored)</div></div>
+    </div>
+  </div>
+
+  <hr class="perforation">
+  <div class="receipt-stamp" style="padding:1rem 0 0">* * * * * * * THANK YOU * * * * * * *<br><span style="opacity:0.5;font-size:0.65rem">PAPER RUNS OUT BELOW THIS LINE</span></div>
+
+</body>
+</html>

@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="verdigris-patina">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Theme: Verdigris Patina</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,600;1,300&family=Josefin+Sans:wght@300;600;700&display=swap" rel="stylesheet">
+
+  <script id="theme-data" type="application/json">
+  {
+    "name": "verdigris-patina",
+    "description": "Oxidized bronze, ancient through weathered. Color ages down the page — header zone is fresh-cast brass, mid sections are light patina teal, lower sections deep verdigris. A single palette that tells geological time. Chalk mineral deposits as highlights.",
+    "createdAt": "2026-06-26T00:00:00.000Z",
+    "source": "text",
+    "sourceFile": "",
+    "background": {
+      "type": "css-gradient",
+      "baseColor": "#0F1C18",
+      "image": "multi-layer radial-gradient CSS texture",
+      "size": "auto",
+      "position": "fixed",
+      "repeat": "no-repeat",
+      "patternType": "verdigris-oxidation",
+      "patternColor": "rgba(42,208,178,0.72)",
+      "patternOpacity": "0.72",
+      "patternSpacing": "organic",
+      "notes": "Dark teal-black ground with 20-layer radial-gradient CSS texture: bright verdigris splotches (upper-left cluster, upper-right patch, lower corners), dark navy-black shadow pockets (mid-page crevices), warm bronze-gold seams exposed through the oxide. Fixed attachment makes it a true environmental background."
+    },
+    "colors": {
+      "primary": "#C8A830",
+      "primaryLight": "rgba(200,168,48,0.18)",
+      "secondary": "#3DC8B0",
+      "accent": "#60DCC8",
+      "background": "#0F1C18",
+      "surface": "rgba(15,38,30,0.88)",
+      "surfaceAlt": "rgba(10,26,20,0.92)",
+      "text": "#DCF0EA",
+      "textMuted": "#78BAA8",
+      "textOnPrimary": "#0F1C18",
+      "border": "rgba(52,188,162,0.28)",
+      "success": "#3DC8B0",
+      "warning": "#C8A830",
+      "error": "#E05040"
+    },
+    "typography": {
+      "fontFamily": "'Cormorant Garamond', Georgia, serif",
+      "fontFamilyMono": "'Courier New', monospace",
+      "fontFamilyDisplay": "'Josefin Sans', 'Helvetica Neue', sans-serif",
+      "scaleBase": "16px",
+      "headingWeight": "600",
+      "bodyWeight": "300",
+      "lineHeight": "1.7"
+    },
+    "spacing": {
+      "borderRadius": "2px",
+      "cardRadius": "2px",
+      "buttonRadius": "2px",
+      "spaceUnit": "8px",
+      "density": "spacious"
+    },
+    "shadows": {
+      "sm": "0 1px 4px rgba(42,32,16,0.12)",
+      "md": "0 2px 12px rgba(42,32,16,0.16)",
+      "lg": "0 4px 24px rgba(42,32,16,0.2)",
+      "xl": "0 8px 40px rgba(42,32,16,0.24)",
+      "colored": "0 2px 12px rgba(74,144,128,0.25)",
+      "inset": "inset 0 1px 4px rgba(42,32,16,0.15)",
+      "elevation": "subtle"
+    },
+    "gradients": {
+      "hero": "linear-gradient(180deg, rgba(200,168,48,0.12) 0%, rgba(74,144,128,0.08) 100%)",
+      "card": "none",
+      "button": "none",
+      "text": "none",
+      "accent": "none"
+    },
+    "effects": {
+      "luminescence": "none",
+      "glowColor": "#4A9080",
+      "glowBlur": "0px",
+      "glowSm": "none",
+      "glowMd": "none",
+      "glowLg": "none",
+      "glassBlur": "0",
+      "glassTint": "none",
+      "gradientBorder": "none",
+      "noiseOpacity": "0",
+      "textShadow": "none",
+      "backdropFilter": "none"
+    },
+    "motion": {
+      "durationFast": "120ms",
+      "durationBase": "240ms",
+      "durationSlow": "400ms",
+      "easing": "cubic-bezier(0.25, 0, 0.5, 1)",
+      "feel": "subtle"
+    },
+    "design": {
+      "aesthetic": "editorial",
+      "personality": ["aged", "archaeological", "geological", "patinated"],
+      "borderStyle": "hairline",
+      "iconStyle": "outlined",
+      "imageStyle": "none",
+      "surfaceTexture": "flat",
+      "hierarchyClarity": "high",
+      "notes": "THE gimmick: color literally ages down the page. Section classes .era-brass, .era-patina, .era-verdigris apply the colour progression. Each section has a slightly different primary/border/accent hue, as if the bronze has had more time to oxidize. Laid out top-to-bottom, it reads as a timeline of corrosion."
+    }
+  }
+  </script>
+
+  <style>
+    :root {
+      --bg-base: #0F1C18;
+      --bg-image: none;
+      --bg-size: auto;
+      --bg-position: 0 0;
+      --bg-repeat: no-repeat;
+
+      --color-primary: #C8A830;
+      --color-primary-light: rgba(200,168,48,0.18);
+      --color-secondary: #3DC8B0;
+      --color-accent: #60DCC8;
+      --color-bg: #0F1C18;
+      --color-surface: rgba(15,38,30,0.88);
+      --color-surface-alt: rgba(10,26,20,0.92);
+      --color-text: #DCF0EA;
+      --color-text-muted: #78BAA8;
+      --color-text-on-primary: #0F1C18;
+      --color-border: rgba(52,188,162,0.28);
+      --color-success: #3DC8B0;
+      --color-warning: #C8A830;
+      --color-error: #E05040;
+
+      --font-family: 'Cormorant Garamond', Georgia, serif;
+      --font-family-mono: 'Courier New', monospace;
+      --font-family-display: 'Josefin Sans', 'Helvetica Neue', sans-serif;
+      --font-size-base: 16px;
+      --font-weight-heading: 600;
+      --font-weight-body: 300;
+      --line-height: 1.7;
+
+      --radius: 2px;
+      --radius-card: 4px;
+      --radius-button: 2px;
+
+      --shadow-sm: 0 1px 6px rgba(0,0,0,0.4);
+      --shadow-md: 0 2px 16px rgba(0,0,0,0.5);
+      --shadow-lg: 0 4px 30px rgba(0,0,0,0.6);
+      --shadow-xl: 0 8px 48px rgba(0,0,0,0.7);
+      --shadow-colored: 0 2px 16px rgba(42,192,168,0.35);
+      --shadow-inset: inset 0 1px 6px rgba(0,0,0,0.5);
+
+      --gradient-hero: linear-gradient(180deg, rgba(200,168,48,0.18) 0%, rgba(42,192,168,0.14) 100%);
+      --gradient-card: none;
+      --gradient-button: none;
+      --gradient-text: none;
+      --gradient-accent: none;
+
+      --glow-color: #3DC8B0;
+      --glow-sm: none; --glow-md: none; --glow-lg: none;
+      --glass-blur: 0px; --glass-tint: none;
+      --backdrop-filter: none; --text-shadow: none;
+      --border-gradient: none; --noise-opacity: 0;
+
+      --space-1: 4px; --space-2: 8px; --space-3: 12px;
+      --space-4: 16px; --space-6: 24px; --space-8: 32px;
+      --duration-fast: 120ms; --duration-base: 240ms; --duration-slow: 400ms;
+      --easing: cubic-bezier(0.25, 0, 0.5, 1);
+      --border-width: 1px;
+
+      /* ── GIMMICK: Era colour variables — age down the page ── */
+      --era-brass-primary: #D4B238;
+      --era-brass-border: rgba(180,148,42,0.55);
+      --era-brass-accent: #E0C448;
+
+      --era-patina-primary: #52CCB8;
+      --era-patina-border: rgba(52,192,162,0.45);
+      --era-patina-accent: #70DCC8;
+
+      --era-verdigris-primary: #38B8A5;
+      --era-verdigris-border: rgba(35,152,130,0.45);
+      --era-verdigris-accent: #50C8B5;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: #0F1C18;
+      background-image:
+        /* Upper-left verdigris cluster — heavy oxidation */
+        radial-gradient(ellipse 210px 165px at 11% 23%, rgba(42,208,178,0.72) 0%, rgba(42,208,178,0.18) 48%, transparent 72%),
+        radial-gradient(ellipse 95px 125px at 5% 44%,  rgba(28,176,150,0.78) 0%, transparent 60%),
+        radial-gradient(ellipse 55px  48px  at 19% 11%, rgba(95,228,208,0.68) 0%, transparent 52%),
+        radial-gradient(ellipse 115px 82px  at 24% 34%, rgba(55,198,172,0.48) 0%, transparent 62%),
+        /* Upper-right verdigris patch */
+        radial-gradient(ellipse 155px 98px  at 79%  8%, rgba(38,198,172,0.68) 0%, transparent 64%),
+        radial-gradient(ellipse 68px  88px  at 91% 20%, rgba(58,215,192,0.58) 0%, transparent 54%),
+        radial-gradient(ellipse 125px 58px  at 66% 17%, rgba(45,188,162,0.38) 0%, transparent 57%),
+        /* Dark navy-black shadow pockets — crevices in the oxide */
+        radial-gradient(ellipse 125px 98px  at 40% 18%, rgba(4,10,18,0.88)   0%, transparent 67%),
+        radial-gradient(ellipse 88px  125px at 60% 30%, rgba(6,13,22,0.78)   0%, transparent 60%),
+        radial-gradient(ellipse 65px  58px  at 50% 42%, rgba(8,16,28,0.72)   0%, transparent 52%),
+        /* Bronze-gold seams showing through the crust */
+        radial-gradient(ellipse 95px  68px  at 44% 49%, rgba(115,80,12,0.58) 0%, transparent 60%),
+        radial-gradient(ellipse 75px  48px  at 32% 60%, rgba(132,95,18,0.48) 0%, transparent 54%),
+        radial-gradient(ellipse 48px  75px  at 72% 54%, rgba(105,72,10,0.42) 0%, transparent 50%),
+        /* Central misty verdigris bloom — centuries of patina fog */
+        radial-gradient(ellipse 310px 225px at 54% 60%, rgba(35,162,142,0.32) 0%, transparent 67%),
+        radial-gradient(ellipse 195px 148px at 57% 64%, rgba(52,182,160,0.22) 0%, transparent 57%),
+        /* Lower-left verdigris */
+        radial-gradient(ellipse 165px 128px at 16% 80%, rgba(38,180,155,0.62) 0%, transparent 64%),
+        radial-gradient(ellipse 98px  68px  at  6% 90%, rgba(28,155,132,0.52) 0%, transparent 57%),
+        /* Lower-right verdigris */
+        radial-gradient(ellipse 135px 98px  at 74% 84%, rgba(42,190,165,0.58) 0%, transparent 60%),
+        radial-gradient(ellipse 75px  108px at 90% 72%, rgba(25,165,140,0.48) 0%, transparent 54%),
+        /* Deep base depth — aged mineral substrate */
+        radial-gradient(ellipse 240px 175px at 38% 87%, rgba(22,115,95,0.38) 0%, transparent 62%);
+      background-attachment: fixed;
+      color: var(--color-text);
+      font-family: var(--font-family);
+      font-size: var(--font-size-base);
+      line-height: var(--line-height);
+      font-weight: 300;
+      padding: 2rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    /* ── Era zone coloring — sections age as you scroll down ── */
+    .era-brass {
+      --zone-primary: var(--era-brass-primary);
+      --zone-border: var(--era-brass-border);
+      --zone-accent: var(--era-brass-accent);
+    }
+    .era-patina {
+      --zone-primary: var(--era-patina-primary);
+      --zone-border: var(--era-patina-border);
+      --zone-accent: var(--era-patina-accent);
+    }
+    .era-verdigris {
+      --zone-primary: var(--era-verdigris-primary);
+      --zone-border: var(--era-verdigris-border);
+      --zone-accent: var(--era-verdigris-accent);
+    }
+
+    /* ── Era badge ── */
+    .era-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-family: var(--font-family-display);
+      font-size: 0.6rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--zone-primary, var(--color-primary));
+      margin-bottom: 0.5rem;
+    }
+    .era-label::before {
+      content: '';
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      background: var(--zone-primary, var(--color-primary));
+      border-radius: 50%;
+    }
+
+    .tf-header {
+      background: var(--color-surface);
+      border: 1px solid var(--era-brass-border);
+      color: var(--color-text);
+      padding: 2.5rem 2rem;
+      margin-bottom: 2rem;
+      box-shadow: var(--shadow-md);
+      border-radius: var(--radius-card);
+      position: relative;
+    }
+    .tf-header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--gradient-hero);
+      border-radius: var(--radius-card);
+      pointer-events: none;
+    }
+    .tf-header .tag-line {
+      font-family: var(--font-family-display);
+      font-size: 0.6rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--era-brass-primary);
+      margin-bottom: 0.75rem;
+    }
+    .tf-header h1 {
+      font-family: var(--font-family-display);
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--era-brass-primary);
+      margin-bottom: 0.4rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      position: relative;
+    }
+    .tf-header p { font-size: 0.9rem; color: var(--color-text-muted); font-style: italic; font-family: var(--font-family); font-weight: 300; position: relative; }
+
+    /* ── Age divider — tarnish line ── */
+    .tarnish-line {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin: 1.75rem 0;
+    }
+    .tarnish-line::before,
+    .tarnish-line::after { content: ''; flex: 1; height: 1px; }
+    .tarnish-line.brass::before, .tarnish-line.brass::after { background: var(--era-brass-border); }
+    .tarnish-line.patina::before, .tarnish-line.patina::after { background: var(--era-patina-border); }
+    .tarnish-line.verdigris::before, .tarnish-line.verdigris::after { background: var(--era-verdigris-border); }
+    .tarnish-glyph {
+      font-family: var(--font-family);
+      font-size: 0.75rem;
+      line-height: 1;
+    }
+
+    .tf-section { margin-bottom: 1.75rem; }
+    .tf-section-title {
+      font-family: var(--font-family-display);
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--zone-primary, var(--color-primary));
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .tf-section-title::after { content: ''; flex: 1; height: 1px; background: var(--zone-border, var(--color-border)); }
+
+    /* Colors section — split into 3 era columns */
+    .era-palette-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1px;
+      background: rgba(52,188,162,0.35);
+      border: 1px solid rgba(52,188,162,0.35);
+    }
+    .era-col { background: var(--color-surface); padding: 1rem; }
+    .era-col-label { font-family: var(--font-family-display); font-size: 0.6rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.75rem; }
+    .era-col.brass .era-col-label { color: var(--era-brass-primary); }
+    .era-col.patina .era-col-label { color: var(--era-patina-primary); }
+    .era-col.verdigris .era-col-label { color: var(--era-verdigris-primary); }
+    .era-swatches { display: flex; flex-direction: column; gap: 4px; }
+    .era-swatch { display: flex; align-items: center; gap: 8px; font-size: 0.65rem; font-family: var(--font-family-mono); color: var(--color-text-muted); }
+    .era-chip { width: 24px; height: 24px; border: 1px solid var(--color-border); flex-shrink: 0; }
+
+    .tf-type-scale { display: flex; flex-direction: column; gap: 0.75rem; }
+    .tf-type-scale .t-h1 { font-size: 2.5rem; font-weight: 600; font-family: var(--font-family-display); text-transform: uppercase; letter-spacing: 0.06em; color: var(--zone-primary, var(--color-primary)); }
+    .tf-type-scale .t-h2 { font-size: 1.75rem; font-weight: 600; font-family: var(--font-family-display); text-transform: uppercase; letter-spacing: 0.04em; }
+    .tf-type-scale .t-h3 { font-size: 1.2rem; font-weight: 600; font-family: var(--font-family-display); letter-spacing: 0.06em; text-transform: uppercase; }
+    .tf-type-scale .t-body { font-size: 1rem; font-weight: 300; font-style: italic; }
+    .tf-type-scale .t-small { font-size: 0.85rem; color: var(--color-text-muted); font-style: italic; }
+    .tf-type-scale .t-mono { font-family: var(--font-family-mono); font-size: 0.85rem; background: var(--color-surface-alt); padding: 0.25rem 0.5rem; border: 1px solid var(--zone-border, var(--color-border)); border-radius: var(--radius); }
+
+    .tf-buttons { display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; }
+    .tf-btn {
+      padding: 0.5rem 1.5rem;
+      font-family: var(--font-family-display);
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      border: 1px solid;
+      border-radius: var(--radius-button);
+      transition: box-shadow var(--duration-fast) var(--easing), transform var(--duration-fast) var(--easing);
+    }
+    .tf-btn:hover { box-shadow: var(--shadow-md); transform: translateY(-1px); }
+    .tf-btn-primary { background: var(--zone-primary, var(--color-primary)); color: var(--color-text-on-primary); border-color: var(--zone-primary, var(--color-primary)); }
+    .tf-btn-secondary { background: transparent; color: var(--zone-primary, var(--color-primary)); border-color: var(--zone-primary, var(--color-primary)); }
+    .tf-btn-outline { background: transparent; color: var(--color-text-muted); border-color: var(--zone-border, var(--color-border)); }
+    .tf-btn-ghost { background: var(--color-surface-alt); color: var(--color-text-muted); border-color: var(--color-surface-alt); }
+
+    /* Cards that age by era */
+    .era-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+    .era-card {
+      padding: 1.5rem;
+      border: 1px solid;
+      border-radius: var(--radius-card);
+      box-shadow: var(--shadow-sm);
+    }
+    .era-card.brass { background: var(--color-surface); border-color: var(--era-brass-border); }
+    .era-card.patina { background: rgba(52,200,178,0.08); border-color: var(--era-patina-border); }
+    .era-card.verdigris { background: rgba(35,152,130,0.1); border-color: var(--era-verdigris-border); }
+    .era-card h3 { font-family: var(--font-family-display); font-size: 0.85rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.4rem; }
+    .era-card.brass h3 { color: var(--era-brass-primary); }
+    .era-card.patina h3 { color: var(--era-patina-primary); }
+    .era-card.verdigris h3 { color: var(--era-verdigris-primary); }
+    .era-card p { font-size: 0.82rem; color: var(--color-text-muted); font-style: italic; }
+
+    .tf-form { display: flex; flex-direction: column; gap: 1rem; max-width: 400px; }
+    .tf-form label { font-family: var(--font-family-display); font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.15em; color: var(--zone-primary, var(--color-primary)); margin-bottom: 0.25rem; display: block; }
+    .tf-form input, .tf-form select {
+      width: 100%;
+      padding: 0.5rem 0.75rem;
+      border: 1px solid var(--zone-border, var(--color-border));
+      border-radius: var(--radius);
+      background: var(--color-surface);
+      color: var(--color-text);
+      font-family: var(--font-family);
+      font-size: 0.9rem;
+      font-weight: 300;
+      outline: none;
+      transition: border-color var(--duration-fast), box-shadow var(--duration-fast);
+    }
+    .tf-form input:focus, .tf-form select:focus { border-color: var(--zone-primary, var(--color-primary)); box-shadow: 0 0 0 2px rgba(61,200,176,0.28); }
+
+    .tf-badges { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .tf-badge { padding: 0.2rem 0.75rem; border-radius: 999px; font-size: 0.72rem; font-weight: 600; border: 1px solid; font-family: var(--font-family-display); letter-spacing: 0.06em; text-transform: uppercase; }
+    .tf-badge-primary { background: var(--color-primary-light); color: var(--color-primary); border-color: var(--color-primary); }
+    .tf-badge-success { background: rgba(61,200,176,0.15); color: var(--color-success); border-color: var(--color-success); }
+    .tf-badge-warning { background: rgba(200,168,48,0.18); color: var(--color-warning); border-color: var(--color-warning); }
+    .tf-badge-error { background: rgba(224,80,64,0.18); color: var(--color-error); border-color: var(--color-error); }
+    .tf-badge-neutral { background: var(--color-surface-alt); color: var(--color-text-muted); border-color: var(--color-border); }
+
+    .tf-effects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem; }
+    .tf-effect-tile { border: 1px solid var(--zone-border, var(--color-border)); padding: 1.25rem; display: flex; flex-direction: column; gap: 0.5rem; background: var(--color-surface); border-radius: var(--radius-card); }
+    .tf-effect-tile .tile-label { font-family: var(--font-family-display); font-size: 0.6rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--zone-primary, var(--color-primary)); }
+    .tf-effect-tile .tile-value { font-size: 0.7rem; color: var(--color-text-muted); font-family: var(--font-family-mono); word-break: break-all; }
+    .tf-gradient-hero { height: 80px; background: var(--gradient-hero); border: 1px solid var(--era-brass-border); border-radius: var(--radius-card); display: flex; align-items: center; justify-content: center; color: var(--era-brass-primary); font-family: var(--font-family-display); font-weight: 700; font-size: 1rem; text-transform: uppercase; letter-spacing: 0.1em; }
+    .tf-glow-demo { background: var(--color-surface); border: 1px solid var(--zone-border, var(--color-border)); padding: 1rem 1.5rem; text-align: center; box-shadow: var(--shadow-md); font-weight: 600; font-family: var(--font-family-display); color: var(--zone-primary, var(--color-primary)); text-transform: uppercase; letter-spacing: 0.08em; border-radius: var(--radius-card); }
+    .tf-glass-demo { padding: 1rem 1.5rem; background: var(--color-surface-alt); border: 1px solid var(--zone-border, var(--color-border)); border-radius: var(--radius-card); font-size: 0.85rem; color: var(--color-text-muted); font-style: italic; }
+    .tf-inset-demo { background: var(--color-surface); padding: 0.6rem 1rem; box-shadow: var(--shadow-inset); border: 1px solid var(--zone-border, var(--color-border)); border-radius: var(--radius); font-size: 0.85rem; color: var(--color-text-muted); font-family: var(--font-family-mono); }
+    .tf-btn-gradient { background: var(--zone-primary, var(--color-primary)); color: var(--color-text-on-primary); box-shadow: var(--shadow-colored); font-family: var(--font-family-display); font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; border: 1px solid var(--zone-primary, var(--color-primary)); border-radius: var(--radius-button); }
+  </style>
+</head>
+<body>
+
+  <!-- ═══════════════════════════════ ERA: BRASS (top) ══════════════════════════════ -->
+  <div class="era-brass">
+    <div class="tf-header">
+      <div class="tag-line">Light · Editorial — Fresh Cast</div>
+      <h1>Verdigris Patina</h1>
+      <p>Bronze aging down the page — brass header oxidizes to deep verdigris footer over geological time</p>
+    </div>
+
+    <div class="tarnish-line brass"><span class="tarnish-glyph" style="color:var(--era-brass-primary)">◈ BRASS — YEAR 0 ◈</span></div>
+
+    <div class="tf-section era-brass">
+      <div class="tf-section-title">Color Palette — Three Eras of Oxidation</div>
+      <div class="era-palette-grid">
+        <div class="era-col brass">
+          <div class="era-col-label">Brass · Year 0</div>
+          <div class="era-swatches">
+            <div class="era-swatch"><div class="era-chip" style="background:#C8A830"></div>#C8A830</div>
+            <div class="era-swatch"><div class="era-chip" style="background:#D4B840"></div>#D4B840</div>
+            <div class="era-swatch"><div class="era-chip" style="background:#A89050"></div>#A89050</div>
+          </div>
+        </div>
+        <div class="era-col patina">
+          <div class="era-col-label">Patina · Year 50</div>
+          <div class="era-swatches">
+            <div class="era-swatch"><div class="era-chip" style="background:#7AB8A0"></div>#7AB8A0</div>
+            <div class="era-swatch"><div class="era-chip" style="background:#9ACEBB"></div>#9ACEBB</div>
+            <div class="era-swatch"><div class="era-chip" style="background:#5A9888"></div>#5A9888</div>
+          </div>
+        </div>
+        <div class="era-col verdigris">
+          <div class="era-col-label">Verdigris · Year 300</div>
+          <div class="era-swatches">
+            <div class="era-swatch"><div class="era-chip" style="background:#2A6860"></div>#2A6860</div>
+            <div class="era-swatch"><div class="era-chip" style="background:#4A9080"></div>#4A9080</div>
+            <div class="era-swatch"><div class="era-chip" style="background:#1E4840"></div>#1E4840</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tf-section era-brass">
+      <div class="tf-section-title">Typography</div>
+      <div class="tf-type-scale">
+        <div class="t-h1">Display Heading</div>
+        <div class="t-h2">Section Heading</div>
+        <div class="t-h3">Subsection Heading</div>
+        <div class="t-body">Body text — the quick brown fox jumps over the lazy dog. Cormorant Garamond light italic pairs with Josefin Sans display.</div>
+        <div class="t-small">Small / muted — geological annotations, museum catalogue numbers</div>
+        <div class="t-mono">Cu₂(OH)₂CO₃ · PATINA COEFFICIENT: 0.42</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════ ERA: PATINA (mid) ════════════════════════════ -->
+  <div class="tarnish-line patina"><span class="tarnish-glyph" style="color:var(--era-patina-primary)">◈ LIGHT PATINA — YEAR 50 ◈</span></div>
+
+  <div class="era-patina">
+    <div class="tf-section">
+      <div class="tf-section-title">Buttons — Aging by Era</div>
+      <div class="tf-buttons">
+        <button class="tf-btn tf-btn-primary">Primary</button>
+        <button class="tf-btn tf-btn-secondary">Secondary</button>
+        <button class="tf-btn tf-btn-outline">Outlined</button>
+        <button class="tf-btn tf-btn-ghost">Ghost</button>
+      </div>
+    </div>
+
+    <div class="tf-section">
+      <div class="tf-section-title">Cards — Bronze Ages as You Read Down</div>
+      <div class="era-cards">
+        <div class="era-card brass">
+          <div class="era-label" style="--zone-primary:var(--era-brass-primary)">Year 0</div>
+          <h3>Fresh Brass</h3>
+          <p>Just cast. Warm gold, clean surface, new.</p>
+        </div>
+        <div class="era-card patina">
+          <div class="era-label" style="--zone-primary:var(--era-patina-primary)">Year 50</div>
+          <h3>Light Patina</h3>
+          <p>Teal wash forming. Copper carbonate crystals emerging.</p>
+        </div>
+        <div class="era-card verdigris">
+          <div class="era-label" style="--zone-primary:var(--era-verdigris-primary)">Year 300</div>
+          <h3>Deep Verdigris</h3>
+          <p>Full oxidation. Mineral crust. Centuries of weather.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="tf-section">
+      <div class="tf-section-title">Form Elements</div>
+      <div class="tf-form">
+        <div><label>Text Input</label><input type="text" placeholder="Enter value…"></div>
+        <div><label>Select</label><select><option>Year 0 — Brass</option><option>Year 50 — Patina</option><option>Year 300 — Verdigris</option></select></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════ ERA: VERDIGRIS (bottom) ══════════════════════ -->
+  <div class="tarnish-line verdigris"><span class="tarnish-glyph" style="color:var(--era-verdigris-primary)">◈ DEEP VERDIGRIS — YEAR 300 ◈</span></div>
+
+  <div class="era-verdigris">
+    <div class="tf-section">
+      <div class="tf-section-title">Badges &amp; Status</div>
+      <div class="tf-badges">
+        <span class="tf-badge tf-badge-primary">Primary</span>
+        <span class="tf-badge tf-badge-success">Success</span>
+        <span class="tf-badge tf-badge-warning">Warning</span>
+        <span class="tf-badge tf-badge-error">Error</span>
+        <span class="tf-badge tf-badge-neutral">Neutral</span>
+      </div>
+    </div>
+
+    <div class="tf-section">
+      <div class="tf-section-title">Gradients &amp; Effects</div>
+      <div class="tf-effects-grid">
+        <div class="tf-effect-tile" style="grid-column:1/-1">
+          <div class="tile-label">Hero Gradient — Brass to Patina</div>
+          <div class="tf-gradient-hero">Verdigris Patina — Hero Band</div>
+          <div class="tile-value">var(--gradient-hero) · linear brass→verdigris</div>
+        </div>
+        <div class="tf-effect-tile"><div class="tile-label">Brass Display</div><div style="font-family:var(--font-family-display);font-size:1.4rem;font-weight:700;color:var(--era-brass-primary);text-transform:uppercase;letter-spacing:0.06em">Year Zero</div><div class="tile-value">--era-brass-primary · raw gold</div></div>
+        <div class="tf-effect-tile"><div class="tile-label">Verdigris CTA</div><button class="tf-btn tf-btn-gradient" style="width:100%">OXIDIZED</button><div class="tile-value">--era-verdigris-primary · deep teal</div></div>
+        <div class="tf-effect-tile"><div class="tile-label">Shadow Demo</div><div class="tf-glow-demo">Aged Stone</div><div class="tile-value">var(--shadow-md)</div></div>
+        <div class="tf-effect-tile"><div class="tile-label">Alt Surface</div><div class="tf-glass-demo">surfaceAlt — worn limestone</div><div class="tile-value">var(--color-surface-alt)</div></div>
+        <div class="tf-effect-tile"><div class="tile-label">Inset Well</div><div class="tf-inset-demo">mineral_deposit</div><div class="tile-value">var(--shadow-inset)</div></div>
+        <div class="tf-effect-tile"><div class="tile-label">Verdigris Card</div><div style="padding:0.75rem 1rem;background:rgba(35,152,130,0.14);color:var(--era-verdigris-primary);border:1px solid var(--era-verdigris-border);box-shadow:var(--shadow-colored);font-weight:700;font-size:0.85rem;font-family:var(--font-family-display);text-transform:uppercase;letter-spacing:0.08em;border-radius:var(--radius-card)">Deep Oxide</div><div class="tile-value">var(--shadow-colored) · teal</div></div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
