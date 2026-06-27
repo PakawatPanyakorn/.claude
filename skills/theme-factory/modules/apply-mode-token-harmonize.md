@@ -3,7 +3,7 @@
 ## Token Template
 
 ```css
-/* Theme: <name> - applied by theme-factory */
+/* Theme: <name> - applied by obs-theme-factory */
 :root {
   --color-primary: <hex>;
   --color-primary-light: <hex>;

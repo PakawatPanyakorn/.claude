@@ -56,7 +56,7 @@ Do not read files, render swatches, or summarize themes.
 
 ### Apply Mode
 
-**First, detect if the file was previously themed by this skill** — grep for the comment pattern `/* Theme: <anything> - applied by theme-factory */` inside the file's `<style>` block. If the pattern matches, use **Path R**; otherwise use **Path F**.
+**First, detect if the file was previously themed by this skill** — grep for the comment pattern `/* Theme: <anything> - applied by obs-theme-factory */` inside the file's `<style>` block. If the pattern matches, use **Path R**; otherwise use **Path F**.
 
 Read `modules/apply-mode-token-harmonize.md` for the full token template, harmonize steps, and report format.
 
@@ -68,7 +68,7 @@ Read `modules/apply-mode-token-harmonize.md` for the full token template, harmon
 
 Fast swap — the structure is already harmonized; only values change.
 
-1. **Replace token values** — find the existing `/* Theme: … - applied by theme-factory */` `:root` block and overwrite every CSS variable value in-place with the new theme's values. Update the comment to the new theme name. Use `Edit`, never rewrite the whole file.
+1. **Replace token values** — find the existing `/* Theme: … - applied by obs-theme-factory */` `:root` block and overwrite every CSS variable value in-place with the new theme's values. Update the comment to the new theme name. Use `Edit`, never rewrite the whole file.
 2. **Final touch** — scan for obvious mismatches only:
    - Hardcoded hex colors in JS/SVG blocks that clash with the new palette → swap to nearest theme token hex
    - Colored sections (hero, header, callout) whose gradient or bg now visually clashes → update to new theme's `--gradient-hero` or `--color-primary`
